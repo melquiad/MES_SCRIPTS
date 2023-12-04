@@ -1,0 +1,112 @@
+Base de données;Nom du serveur
+??;RKS1409W140.ign.fr
+??;RKS1409W140.ign.fr
+articles spip;Inventaire-forestier-admin.ign.fr
+badas2;egon.toulouse.ign.fr
+bd_gpao_actualisation;SMLPRGALTIBD1.ign.fr
+bd_gpao_actualisation;SMLPRGALTIBD1.ign.fr
+bd_gv_*;vmbdsis.ign.fr
+BDU_Metadata;lnv1812w069.ign.fr
+cartoifnv2;Inventaire-forestier-admin.ign.fr
+cobalt;rgealti_sandbox.ign.fr
+cobalt;rgealti_sandbox.ign.fr
+cobalt;rgealti_cobalt.ign.fr
+cobalt;rgealti_cobalt.ign.fr
+consultation;babylone3.ign.fr
+contrôle_mnt;SMLPRGALTIBD1.ign.fr
+contrôle_mnt;SMLPRGALTIBD1.ign.fr
+demandes de prestations;kriek2.ign.fr
+demandes de prestations;kriek2.ign.fr
+Dérivation (+ éditions);PG-SDC1 (PROD)
+Dérivation (+ éditions);PG-SDC1 (PROD)
+Dérivation (+ éditions);PG-SDC1 (PROD)
+Dérivation (+ éditions);PG-SDC1 (DEV)
+Dérivation (+ éditions);PG-SDC2
+Dérivation (+ éditions);PG-SDC2
+Dérivation (+ éditions);PG-SDC2
+Dérivation (+ éditions);PG-SDC2
+Dérivation (+ territoires + éditions);PG-SDC1 (PROD)
+Dérivation (+ territoires + éditions);PG-SDC1 (PROD)
+Dérivation (+ territoires + éditions);PG-SDC1 (PROD)
+diffusion;kriek2.ign.fr
+diffusion;kriek2.ign.fr
+diffusion;babylone3.ign.fr
+diffusion;altesse2
+dryadesdb;dryades.ign.fr
+ebm;el1907w092.ign.fr
+efdac;eforest.ign.fr
+egm;kriek2.ign.fr
+egm;kriek2.ign.fr
+egm;el1907w092.ign.fr
+erm;el1907w092.ign.fr
+exploitation;inv-exp.ign.fr
+exploitation;PG-SDC1 (PROD)
+exploitation;cadillac2
+exploitation;cadillac2
+exploitation;devsgn-admin
+gpao;ortho-gpao
+gpao;ortho-gpaov2-postgres
+gpao;
+gpao;
+gpao_gbv2;vmbdsis.ign.fr
+gpao_geosocle;vmbdsis.ign.fr
+gpao_gs2;vmbdsis.ign.fr
+gpao_lpa;vmbdsis.ign.fr
+gpao_orthohis;vmbdsis.ign.fr
+gpao_srp;egon.toulouse.ign.fr
+Intranet;ws1-nancy.ign.fr
+Intranet;chlpsiteintft2.ign.fr
+inv_pi;papi.ign.fr
+inventaires;ifn-cotedivoire.ign.fr
+métadonnées de diffusion;kriek2.ign.fr
+métadonnées de diffusion;kriek2.ign.fr
+nualid;SMLPRGALTIBD1.ign.fr
+nualid;SMLPRGALTIBD1.ign.fr
+ocre;ocre.ign.fr
+ocs_historiquedb;dryades.ign.fr
+ocsge;octopus.ign.fr
+ocsge2;octopus.ign.fr
+ocsge3;octopus.ign.fr
+ocsge4;octopus.ign.fr
+oukile_prod;rpg-qual-20.ign.fr
+oukile_prod;rpg-qual-21.ign.fr
+packo;smlppacko1bd1
+pomme;pomme.ign.fr
+pommier;pommier.ign.fr
+postgis;rpcu-p-data1
+postgis;rpcu-p-data2
+production;inv-prod.ign.fr
+production;patafix3.ign,fr
+production;sga.ign.fr
+production;PG-PLAN-IGN
+production;PG-PROD-SCAN
+production;PG-PROD-SCAN
+production;cadillac2
+production;coruscante
+production;coruscante
+production;anesidora2
+production;bd-doris
+production;Store-sgn
+production;Store-sgn
+Production (+ éditions);SERVEUR-SDC1
+Production (+ éditions);PG-SDC1 (PROD)
+Production (+ éditions);PG-SDC1 (PROD)
+Production (+ éditions);PG-SDC1 (PROD)
+Production (+ éditions);PG-SDC1 (PROD)
+Production (+ territoires);PG-SDC1 (PROD)
+Qualification;PG-INCA
+Qualification;PG-INCA
+Qualification;PG-INCA
+rgealti;SMLPRGALTIBD1.ign.fr
+rgealti;SMLPRGALTIBD1.ign.fr
+RPG;figue.ign.fr
+secours;babylone3.ign.fr
+soif;soif.ign.fr
+SP_IGNE;gestion-sp.ign.fr
+suivi_prod_sia;vmbdsia
+tickets;kriek2.ign.fr
+tickets;kriek2.ign.fr
+typologie_stations;Inventaire-forestier-admin.ign.fr
+visu;Inventaire-forestier-admin.ign.fr
+website;Inventaire-forestier-admin.ign.fr
+;PG-SDC3

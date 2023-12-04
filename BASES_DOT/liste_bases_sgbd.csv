@@ -1,0 +1,112 @@
+Base de données;SGBDR
+??;MySQL
+??;MySQL
+articles spip;MySQL
+badas2;PostgreSQL
+bd_gpao_actualisation;PostgreSQL
+bd_gpao_actualisation;PostgreSQL
+bd_gv_*;PostgreSQL
+BDU_Metadata;PostgreSQL
+cartoifnv2;PostgreSQL
+cobalt;PostgreSQL
+cobalt;PostgreSQL
+cobalt;PostgreSQL
+cobalt;PostgreSQL
+consultation;PostgreSQL
+contrôle_mnt;PostgreSQL
+contrôle_mnt;PostgreSQL
+demandes de prestations;PostgreSQL
+demandes de prestations;PostgreSQL
+Dérivation (+ éditions);PostgreSQL
+Dérivation (+ éditions);PostgreSQL
+Dérivation (+ éditions);PostgreSQL
+Dérivation (+ éditions);PostgreSQL
+Dérivation (+ éditions);PostgreSQL
+Dérivation (+ éditions);PostgreSQL
+Dérivation (+ éditions);PostgreSQL
+Dérivation (+ éditions);PostgreSQL
+Dérivation (+ territoires + éditions);PostgreSQL
+Dérivation (+ territoires + éditions);PostgreSQL
+Dérivation (+ territoires + éditions);PostgreSQL
+diffusion;PostgreSQL
+diffusion;PostgreSQL
+diffusion;PostgreSQL
+diffusion;PostgreSQL
+dryadesdb;PostgreSQL
+ebm;PostgreSQL
+efdac;PostgreSQL
+egm;PostgreSQL
+egm;PostgreSQL
+egm;PostgreSQL
+erm;PostgreSQL
+exploitation;PostgreSQL
+exploitation;PostgreSQL
+exploitation;MySQL
+exploitation;MySQL
+exploitation;PostgreSQL
+gpao;PostgreSQL
+gpao;PostgreSQL
+gpao;PostgreSQL
+gpao;PostgreSQL
+gpao_gbv2;PostgreSQL
+gpao_geosocle;PostgreSQL
+gpao_gs2;PostgreSQL
+gpao_lpa;PostgreSQL
+gpao_orthohis;PostgreSQL
+gpao_srp;PostgreSQL
+Intranet;MySQL
+Intranet;inconnu
+inv_pi;PostgreSQL
+inventaires;PostgreSQL
+métadonnées de diffusion;PostgreSQL
+métadonnées de diffusion;PostgreSQL
+nualid;PostgreSQL
+nualid;PostgreSQL
+ocre;PostgreSQL
+ocs_historiquedb;PostgreSQL
+ocsge;PostgreSQL
+ocsge2;PostgreSQL
+ocsge3;PostgreSQL
+ocsge4;PostgreSQL
+oukile_prod;PostgreSQL
+oukile_prod;PostgreSQL
+packo;PostgreSQL
+pomme;MariaDB
+pommier;PostgreSQL
+postgis;PostgreSQL
+postgis;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;PostgreSQL
+production;Microsoft Access
+production;Microsoft Access
+Production (+ éditions);PostgreSQL
+Production (+ éditions);PostgreSQL
+Production (+ éditions);PostgreSQL
+Production (+ éditions);PostgreSQL
+Production (+ éditions);PostgreSQL
+Production (+ territoires);PostgreSQL
+Qualification;PostgreSQL
+Qualification;PostgreSQL
+Qualification;PostgreSQL
+rgealti;PostgreSQL
+rgealti;PostgreSQL
+RPG;PostgreSQL
+secours;PostgreSQL
+soif;PostgreSQL
+SP_IGNE;MySQL
+suivi_prod_sia;PostgreSQL
+tickets;PostgreSQL
+tickets;PostgreSQL
+typologie_stations;PostgreSQL
+visu;PostgreSQL
+website;PostgreSQL
+;PostgreSQL

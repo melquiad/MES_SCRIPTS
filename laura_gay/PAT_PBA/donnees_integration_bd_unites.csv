@@ -1,0 +1,26 @@
+u_pba_dplct;Déplacement du piquet repère;
+modalite;libelle;definition
+0;Placette de levers non déplacée et complète;Placette de levers non déplacée et complète
+1;Placette de levers déplacée et complète;Placette de levers déplacée et complète
+2;Placette de levers non déplacée mais incomplète (mesure de DLIM en remarque);Placette de levers non déplacée mais incomplète (mesure de DLIM en remarque)
+3;Placette de levers déplacée et incomplète (mesure de DLIM en remarque);Placette de levers déplacée et incomplète (mesure de DLIM en remarque)
+4;Placette non réalisée (inaccessible);Placette non réalisée (inaccessible)
+;;
+u_pba_strate;Strate cartographique pour le PAT Pays Basque;
+modalite;libelle;definition
+CHE_H1;FEU_CHE_0-16_TOT;Peuplements de chêne de hauteur faible
+CHE_H2;FEU_CHE_16-Inf_TOT;Peuplements de chêne de hauteur forte
+HET_H1;FEU_HET_0-17_TOT;Peuplements de hêtre de hauteur faible
+HET_H2;FEU_HET_17-Inf_TOT;Peuplements de hêtre de hauteur forte
+FEU_H1;FEU_TOT_0-14_TOT;Peuplements de feuillus de hauteur faible
+FEU_H2;FEU_TOT_14-18_TOT;Peuplements de feuillus de hauteur moyenne
+FEU_H3;FEU_TOT_18-Inf_TOT;Peuplements de feuillus de hauteur forte
+RES_TT;RES_TOT_0-Inf_TOT;Peuplements de résineux
+F_COUV;Foret_ouverte;Peuplements à faible couvert arboré
+PEUPLE;Peupleraie;Peupleraie
+HORPAT;Hors_PAT;Forêts exclues du PAT
+;;
+u_pba_zone;Zone d'étude du PAT Pays Basque;
+modalite;libelle;definition
+1;Dans zone PAT;Dans zone PAT
+0;Hors zone PAT;Hors zone PAT

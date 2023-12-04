@@ -1,0 +1,112 @@
+IP du serveur;Nom du serveur;Prénom DBA;Nom DBA
+10.137.1.2;lnv1812w069.ign.fr;Jean-François;BURILLIER
+192.168.113.54;ws1-nancy.ign.fr;Thierry;LECLAIRE
+192.168.113.40;chlpsiteintft2.ign.fr;Thierry;LECLAIRE
+172.27.5.211;inv-prod.ign.fr;Cédric;DUPREZ
+172.27.5.210;inv-exp.ign.fr;Cédric;DUPREZ
+192.134.133.56;soif.ign.fr;Jérôme;VERSAVEL
+172.27.0.33;ifn-cotedivoire.ign.fr;Cédric;DUPREZ
+10.6.0.92;eforest.ign.fr;Benoit;PESTY
+192.134.132.10;Inventaire-forestier-admin.ign.fr;Benoit;PESTY
+192.134.132.10;Inventaire-forestier-admin.ign.fr;Benoit;PESTY
+192.134.132.10;Inventaire-forestier-admin.ign.fr;Benoit;PESTY
+192.134.132.10;Inventaire-forestier-admin.ign.fr;Benoit;PESTY
+172.26.1.232;ocre.ign.fr;Benoit;PESTY
+172.26.1.114;papi.ign.fr;Marianne;DUPREZ
+172.27.5.213;pommier.ign.fr;Benoit;PESTY
+192.134.132.10;Inventaire-forestier-admin.ign.fr;Benoit;PESTY
+172.26.0.72;kriek2.ign.fr;Christophe;Roux
+172.26.0.72;kriek2.ign.fr;Sonia;BARROCA
+172.26.0.72;kriek2.ign.fr;Christophe;Roux
+172.26.0.72;kriek2.ign.fr;Sonia;BARROCA
+172.26.0.72;kriek2.ign.fr;Christophe;Roux
+172.26.0.72;kriek2.ign.fr;Sonia;BARROCA
+172.26.0.72;kriek2.ign.fr;Christophe;Roux
+172.26.0.72;kriek2.ign.fr;Sonia;BARROCA
+172.26.0.72;kriek2.ign.fr;Christophe;Roux
+172.26.0.72;kriek2.ign.fr;Sonia;BARROCA
+;el1907w092.ign.fr;Vincent;BEAUCE
+;el1907w092.ign.fr;Vincent;BEAUCE
+;el1907w092.ign.fr;Vincent;BEAUCE
+172.26.1.211;dryades.ign.fr;Béatrice;Burlin
+172.26.1.211;dryades.ign.fr;Béatrice;Burlin
+172.26.0.25;octopus.ign.fr;Béatrice;Burlin
+172.26.0.25;octopus.ign.fr;Béatrice;Burlin
+172.26.0.25;octopus.ign.fr;Béatrice;Burlin
+172.26.0.25;octopus.ign.fr;Béatrice;Burlin
+10.128.64.4;rpg-qual-20.ign.fr;Régis;Portrait
+10.128.64.5;rpg-qual-21.ign.fr;Régis;Portrait
+172.26.1.148;figue.ign.fr;Jean;Péné
+172.26.1.48;patafix3.ign,fr;Jean;Péné
+172.26.1.50;babylone3.ign.fr;Jean;Péné
+172.26.1.50;babylone3.ign.fr;Jean;Péné
+172.26.1.50;babylone3.ign.fr;Jean;Péné
+10.128.38.68;sga.ign.fr;Jean;Péné
+172.26.1.42;pomme.ign.fr;Guillain;SEUILLOT
+10.128.38.74;rgealti_sandbox.ign.fr;Mattia;Bunel
+10.128.38.74;rgealti_sandbox.ign.fr;Régis;Bellot
+10.128.38.73;rgealti_cobalt.ign.fr;Mattia;Bunel
+10.128.38.73;rgealti_cobalt.ign.fr;Régis;Bellot
+10.128.38.71;SMLPRGALTIBD1.ign.fr;Mattia;Bunel
+10.128.38.71;SMLPRGALTIBD1.ign.fr;Régis;Bellot
+10.128.38.71;SMLPRGALTIBD1.ign.fr;Mattia;Bunel
+10.128.38.71;SMLPRGALTIBD1.ign.fr;Régis;Bellot
+10.128.38.71;SMLPRGALTIBD1.ign.fr;Mattia;Bunel
+10.128.38.71;SMLPRGALTIBD1.ign.fr;Régis;Bellot
+10.128.38.71;SMLPRGALTIBD1.ign.fr;Mattia;Bunel
+10.128.38.71;SMLPRGALTIBD1.ign.fr;Régis;Bellot
+172.18.0.88;RKS1409W140.ign.fr;Mattia;Bunel
+172.18.0.88;RKS1409W140.ign.fr;Régis;Bellot
+172.26.2.43;rpcu-p-data1;Jérémie;Le Jollec
+172.26.2.54;rpcu-p-data2;Jérémie;Le Jollec
+172.21.1.34;SERVEUR-SDC1;Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (PROD);Christophe;Roux
+172.26.0.235;PG-SDC1 (DEV);Christophe;Roux
+172.26.1.82;PG-SDC2;Christophe;Roux
+172.26.1.82;PG-SDC2;Christophe;Roux
+172.26.1.82;PG-SDC2;Christophe;Roux
+172.26.1.82;PG-SDC2;Christophe;Roux
+172.26.1.87;PG-SDC3;Christophe;Roux
+172.26.1.141;PG-INCA;Christophe;Roux
+172.26.1.141;PG-INCA;Christophe;Roux
+172.26.1.141;PG-INCA;Christophe;Roux
+172.26.0.92;PG-PLAN-IGN;Christophe;Roux
+172.26.0.131;PG-PROD-SCAN;Christophe;Roux
+172.26.0.131;PG-PROD-SCAN;Christophe;Roux
+172.24.0.29;egon.toulouse.ign.fr;Pierre;Michael-Beau
+172.24.0.29;egon.toulouse.ign.fr;Pierre;Michael-Beau
+172.26.2.32;vmbdsis.ign.fr;Pierre;Michael-Beau
+172.26.2.32;vmbdsis.ign.fr;Pierre;Michael-Beau
+172.26.2.32;vmbdsis.ign.fr;Pierre;Michael-Beau
+172.26.2.32;vmbdsis.ign.fr;Pierre;Michael-Beau
+172.26.2.32;vmbdsis.ign.fr;Pierre;Michael-Beau
+172.26.2.32;vmbdsis.ign.fr;Sandrine;Ouradou
+172.24.0.40;gestion-sp.ign.fr;Guy;Saint-Martin
+172.26.2.100;ortho-gpao;SDM;SDM
+10.128.38.197;ortho-gpaov2-postgres;SDM;SDM
+10.128.35.43;smlppacko1bd1;SDM;SDM
+172.26.2.63;vmbdsia;Anthony;Wiart
+;;Cedric;Paholik
+;;Cedric;Paholik
+172.26.1.97;cadillac2;Armelle;COGENT
+192.134.134.40;altesse2;Armelle;COGENT
+172.26.1.97;cadillac2;Sylvain;GONNET
+172.26.1.97;cadillac2;Sylvain;GONNET
+172.26.0.112;coruscante;Kevin;EYERMANN
+172.26.0.112;coruscante;Kevin;EYERMANN
+172.26.0.140;anesidora2;Victor;SANNICOLO
+10.128.37.199;bd-doris;Jérome;SAUNIER
+192.134.132.32;devsgn-admin;Armelle;COGENT
+172.26.0.105;Store-sgn;Jean-Claude;POYARD
+172.26.0.105;Store-sgn;José;DE OLIVEIRA PINHEIRO

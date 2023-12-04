@@ -1,0 +1,181 @@
+Donnee;Type;used Rap.Valid.;used Memento;used TS;Used Groupes_OCRE PRO & GP
+ABG;Variable;;;;ONF_PRO
+AFFROC;Donnée levée;;;;DSF_PRO
+ANPYR;Donnée levée;;;;DSF+, DSF_PRO
+ASPERITE_0X;Donnée calculée;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+BILAN_F_FP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, FIBOIS
+BILAN_F_FPHP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, FIBOIS
+BILAN_F_P;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, FIBOIS
+BILANEW_FP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, GRAND_PUBLIC, FIBOIS, ONF_DT
+BILANEW_FPHP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, GRAND_PUBLIC, FIBOIS, ONF_DT
+BILANEW_P;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, GRAND_PUBLIC, FIBOIS, ONF_DT
+CAC;Donnée calculée;oui;;;DSF+, MAA-DGPE_PRO, ONF_PRO
+CL_PENT2;Donnée calculée;;;oui;
+CLAC;Donnée calculée;;;;DSF+, ONF_DT, ONF_PRO
+CLAD;Donnée calculée;oui;oui;oui;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+CLALTI;Donnée calculée;oui;;oui;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+CLDM;Donnée calculée;oui;oui;oui;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+CLG_AM;Donnée calculée;;;;GRAND_PUBLIC
+CLG_NM;Donnée calculée;oui;;;
+CLPCALC;Donnée calculée;;;;DSF_PRO
+CLPCALF;Donnée calculée;;;;DSF_PRO
+CLPGLEY;Donnée calculée;;;;DSF_PRO
+CLPOX;Donnée calculée;;;;DSF_PRO
+CLPPSEUDO;Donnée calculée;;;;DSF_PRO
+CODESP;Donnée levée;;oui;;
+COMP_R;Donnée calculée;oui;oui;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+COMP3;Donnée levée;;;;GRAND_PUBLIC
+COMP3_R;Donnée calculée;oui;oui;oui;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, GRAND_PUBLIC, MAA-SSP_PRO, DSF+, FIBOIS, ONF_DT
+CSP1;Donnée calculée;;oui;;
+CSP2;Donnée calculée;oui;;;DSF_PRO, MAA-DGPE_PRO, MAA-SSP_PRO
+DATEMORT;Donnée levée;oui;oui;;DRAAF_PRO, DSF+, DSF_PRO, FIBOIS, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_DT, ONF_PRO
+DCA;Donnée calculée;oui;;;
+DECOMP;Donnée levée;oui;oui;oui;DRAAF_PRO, DSF+, DSF_PRO, FIBOIS, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_DT, ONF_PRO
+DIST;Donnée levée;oui;;;DRAAF_PRO, DSF+, DSF_PRO, FIBOIS, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_DT, ONF_PRO
+DIV_R;Donnée calculée;oui;oui;oui;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+DPYR;Donnée levée;;;;DSF+, DSF_PRO
+ESPAR;Donnée levée;;;;DSF+, DSF_PRO
+ESS;Donnée levée;oui;oui;oui;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, MAA-SSP_PRO, DSF+, FIBOIS, ONF_DT
+ESS_AGE_1;Donnée calculée;;;;ONF_PRO, MAA-DGPE_PRO
+ESSPRE;Donnée calculée;oui;oui;oui;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+ESSPRE_FR;Donnée calculée;;;;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, DSF+, ONF_DT
+EXP5;Donnée calculée;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO
+EXPL;Donnée calculée;oui;;oui;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+EXPN;Donnée calculée;;;;GRAND_PUBLIC
+FR;Donnée calculée;;oui;;ONF_DT
+GCHAB_AN;Variable;oui;;;
+GEST;Donnée levée;;;;DSF+, DSF_PRO, FIBOIS, ONF+
+GMORT_AN;Variable;oui;;;
+GPR_AN_ACT;Variable;oui;;;
+GRECO;Donnée géographique;oui;;oui;ONF_PRO, MAA-SSP_PRO, ONF_DT
+GTOT;Variable;oui;;;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+HUMUS;Donnée levée;oui;;;DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+HYDR;Donnée calculée;oui;;;DSF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+INCID;Donnée levée;oui;;;
+INDIC_ACID;Donnée calculée;;;;DSF_PRO
+INDIC_CAIL;Donnée calculée;;;;DSF_PRO
+INDIC_HYDRO;Donnée calculée;;;;DSF_PRO, MAA-DGPE_PRO
+INDIC_RAYO;Donnée calculée;;;;DSF_PRO
+INDIC_TEXT;Donnée calculée;;;;DSF_PRO
+INDIC_TOPO;Donnée calculée;;;;DSF_PRO
+INSENSE;Donnée calculée;;;;DRAAF_PRO, GRAND_PUBLIC, FIBOIS
+INSENSE_CA;Donnée calculée;;;;DRAAF_PRO, GRAND_PUBLIC, FIBOIS
+INSENSE_K;Donnée calculée;;;;DRAAF_PRO, GRAND_PUBLIC, FIBOIS
+INSENSE_MG;Donnée calculée;;;;DRAAF_PRO, GRAND_PUBLIC, FIBOIS
+INSENSE_N;Donnée calculée;;;;DRAAF_PRO, GRAND_PUBLIC, FIBOIS
+INSENSE_P;Donnée calculée;;;;DRAAF_PRO, GRAND_PUBLIC, FIBOIS
+ITI;Donnée levée;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_DT
+LEVE;Donnée calculée;;;;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, MAA-SSP_PRO, ONF_DT
+LIB;Donnée levée;;;;ONF_DT
+MDEB;Donnée calculée;;;;ONF_PRO
+MORTAN_FP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_PRO, FIBOIS, ONF_DT
+MORTAN_FPHP;Variable virtuelle;;;;DSF_PRO, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_PRO, DRAAF_PRO, FIBOIS, ONF_DT
+MORTAN_P;Variable virtuelle;;;;DSF_PRO, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_PRO, DRAAF_PRO, FIBOIS, ONF_DT
+MORTB;Donnée levée;;;;DSF+, DSF_PRO
+MORTB5;Donnée levée;;;;DSF+
+NATURA2000;Donnée géographique;;;;ONF+
+NT;Variable;oui;;;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+NT_5;Variable;;;;GRAND_PUBLIC, DSF+
+NTCHAB_AN;Variable;oui;;;
+NTMORT_AN;Variable;oui;;;
+ORI;Donnée levée;;;;DSF+, GRAND_PUBLIC
+ORIG;Donnée calculée;;;;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, FIBOIS, ONF_DT
+PARC_NAT;Donnée géographique;;;;ONF+
+PBUIS;Donnée levée;;;;DSF_PRO
+PENTEXP_0X;Donnée calculée;oui;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+PG;Variable;oui;;;ONF_PRO, ONF_DT
+PGCHAB;Variable;;;;ONF_DT
+PGPR;Variable;;;;ONF_DT
+PNR;Donnée géographique;;;oui;ONF+
+PORTANCE_2X;Donnée calculée;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+PORTN;Donnée levée;;;;DRAAF_PRO, DSF+, DSF_PRO, FIBOIS, GRAND_PUBLIC, MAA-DGPE_PRO
+PRO_NM;Donnée géographique;oui;oui;oui;DRAAF_PRO, DSF+, DSF_PRO, FIBOIS, GRAND_PUBLIC, MAA-DGPE_PRO, MAA-SSP_PRO, ONF_DT, ONF_PRO
+PRO_PSG;Donnée géographique;;;;DRAAF_PRO, DSF+, DSF_PRO, MAA-DGPE_PRO, MAA-SSP_PRO
+PROD_2_FP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, GRAND_PUBLIC, ONF_PRO, MAA-DGPE_PRO, FIBOIS, ONF_DT
+PROD_2_FPHP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_PRO, FIBOIS, ONF_DT
+PROD_2_P;Variable virtuelle;;;;DSF_PRO, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_PRO, DRAAF_PRO, FIBOIS, ONF_DT
+PROD_FP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, FIBOIS
+PROD_FPHP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, FIBOIS
+PROD_P;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, FIBOIS
+PROF1;Donnée levée;;;;ONF_PRO
+PROF2;Donnée levée;;;;ONF_PRO
+PRON;Donnée géographique;;;;ONF_PRO, GRAND_PUBLIC, FIBOIS
+PV;Variable;oui;;;ONF_PRO, MAA-DGPE_PRO, ONF_DT
+PVCHAB;Variable;;;;MAA-DGPE_PRO, ONF_DT
+PVPR;Variable;;;;ONF_PRO, MAA-DGPE_PRO, ONF_DT
+QAGE;Donnée calculée;;;;ONF_PRO, MAA-DGPE_PRO
+QUALITE;Donnée levée;;;;DRAAF_PRO, DSF_PRO, ONF_PRO
+RA;Donnée géographique;oui;oui;oui;MAA-SSP_PRO
+RAD13;Donnée géographique;oui;;;MAA-SSP_PRO
+RAKVEGET;Donnée calculée;;oui;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, FIBOIS, ONF_DT
+RBI;Donnée géographique;;;;ONF+
+RECENS;Donnée calculée;;;;DSF_PRO, ONF_PRO, ONF_DT
+REGD2;Donnée géographique;;;;GRAND_PUBLIC, DSF+, FIBOIS
+REGN;Donnée géographique;;;;ONF_PRO, ONF_DT
+RG;Variable;;;;ONF_PRO
+ROCHE;Donnée levée;oui;;;DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+RT5;Donnée calculée;;;;
+SER_86;Donnée géographique;oui;oui;oui;DRAAF_PRO, ONF_DT, ONF_PRO
+SER_ALLUV;Donnée géographique;;;;ONF_PRO, ONF_DT
+SFDORGE;Donnée levée;;;;DSF+, DSF_PRO
+SFGELIV;Donnée levée;;;;DSF+, DSF_PRO
+SFGUI;Donnée levée;;;;DSF+, DSF_PRO
+SFO_NM;Donnée calculée;;;;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO
+SFON;Donnée calculée;;;;GRAND_PUBLIC, FIBOIS
+SFPIED;Donnée levée;;;;DSF+, DSF_PRO
+ST;Variable;oui;;;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, MAA-SSP_PRO, DSF+, FIBOIS, ONF_DT
+SVER;Donnée levée;;;oui;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO
+TEXT1;Donnée levée;;;;ONF_PRO
+TEXT2;Donnée levée;;;;ONF_PRO
+TN;Donnée levée;;;;DSF+
+TOPO;Donnée levée;oui;;;DSF+, DSF_PRO, FIBOIS, GRAND_PUBLIC, ONF_DT
+TPESPAR1;Donnée levée;;;;DSF_PRO
+TPESPAR2;Donnée levée;;;;DSF_PRO
+TPLANTR;Donnée calculée;;;oui;DSF_PRO
+TROPH;Donnée calculée;oui;;;DSF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+TSOL;Donnée levée;oui;;;DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, DSF+, FIBOIS, ONF_DT
+TYP;Donnée levée;;;;GRAND_PUBLIC, DSF+, FIBOIS
+U_APB;Donnée géographique;;;;DSF+
+U_BIOG_ONF;Donnée géographique;;;;ONF_PRO
+U_BIOGEO2002;Donnée géographique;;;;DSF+
+U_CEN_PRO;Donnée géographique;;;;DSF+
+U_CFT;Donnée géographique;;;;DSF+
+U_COLITT;Donnée géographique;;;;DSF+
+U_EXP_PRFB;Donnée calculée;;;;DRAAF_PRO
+U_FOREUR;Donnée géographique;;;;DSF+
+U_MORTBG;Donnée calculée;oui;;;DSF_PRO, ONF_PRO, MAA-DGPE_PRO, DSF+
+U_PDM;Donnée géographique;;;;DSF+
+U_PH;Donnée calculée;;;;DSF_PRO
+U_PPRDF;Donnée géographique;;;;DSF+
+U_RAMSAR;Donnée géographique;;;;DSF+
+U_RB;Donnée géographique;;;;DSF+
+U_RES_BIO;Donnée géographique;;;;DSF+, ONF+
+U_RNC;Donnée géographique;;;;DSF+
+U_RNCFS;Donnée géographique;;;;DSF+
+U_RNN;Donnée géographique;;;;DSF+
+U_RNR;Donnée géographique;;;;DSF+
+U_RUT_AF;Donnée calculée;;;;DSF_PRO, ONF_PRO
+U_SITE_CLAS;Donnée géographique;;;;DSF+
+U_SITE_INSC;Donnée géographique;;;;DSF+
+U_STRN_ONF;Donnée géographique;;;;ONF_PRO
+U_ZICO;Donnée géographique;;;;DSF+
+US_NM;Donnée calculée;oui;oui;oui;DRAAF_PRO, DSF_PRO, ONF_PRO, MAA-DGPE_PRO, GRAND_PUBLIC, MAA-SSP_PRO, DSF+, FIBOIS, ONF_DT
+USA;Donnée levée;;;;GRAND_PUBLIC, DSF+, FIBOIS
+V;Variable;oui;;;DRAAF_PRO, DSF+, DSF_PRO, FIBOIS, GRAND_PUBLIC, MAA-DGPE_PRO, MAA-SSP_PRO, ONF_DT, ONF_PRO
+V1;Variable;;;;DRAAF_PRO, DSF_PRO, ONF_PRO, GRAND_PUBLIC, ONF_DT
+V2;Variable;;;;DRAAF_PRO, DSF_PRO, ONF_PRO, GRAND_PUBLIC, ONF_DT
+V3;Variable;;;;DRAAF_PRO, DSF_PRO, ONF_PRO, GRAND_PUBLIC, ONF_DT
+VBO;Variable;;;;DRAAF_PRO, DSF_PRO, ONF_PRO, ONF_DT
+VCHAB_AN;Variable;oui;;;
+VEGET;Donnée levée;;;;DRAAF_PRO, DSF_PRO, MAA-DGPE_PRO, ONF_PRO
+VEGETM;Donnée calculée;oui;oui;oui;DRAAF_PRO, DSF+, DSF_PRO, MAA-DGPE_PRO, ONF_PRO, GRAND_PUBLIC, FIBOIS, ONF_DT
+VMORT_AN;Variable;oui;;;DRAAF_PRO, MAA-DGPE_PRO
+VPR_AN_ACT;Variable;oui;;;DRAAF_PRO, MAA-DGPE_PRO, MAA-SSP_PRO
+VPRELEV_FP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_PRO, FIBOIS
+VPRELEV_FPHP;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_PRO, FIBOIS
+VPRELEV_P;Variable virtuelle;;;;DRAAF_PRO, DSF_PRO, GRAND_PUBLIC, MAA-DGPE_PRO, ONF_PRO, FIBOIS
+VR;Variable;;;;ONF_PRO
+XG_NM;Variable;;;;ONF_DT
+XT_NM;Variable;;;;DSF+
+XV_NM;Variable;;;;MAA-DGPE_PRO, DRAAF_PRO, DSF_PRO, ONF_PRO, DSF+, FIBOIS, ONF_DT
+ZNIEFF;Donnée géographique;;;;ONF+

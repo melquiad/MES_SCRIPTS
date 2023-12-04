@@ -1,0 +1,181 @@
+"donnee";"operation";"libelle";"famille";"an_deb";"an_fin";"nb_unites"
+ABG;CC;Accroissement brut de surface terriere;INV_EXP_NM;2005;NULL;1
+AFFROC;LT;Indice d'affleurement rocheux;INV_EXP_NM;2005;NULL;1
+ANPYR;CT;Année de défoliation des buis;INV_EXP_NM;2018;2022;1
+ASPERITE_0X;CC;Aspérité du terrain;INV_EXP_NM;2008;NULL;1
+BILANEW_FP;FO;Bilan des flux en forêt de production;NULL;NULL;NULL;1
+BILANEW_FPHP;FO;Bilan des flux en forêt de production hors peupleraie;NULL;NULL;NULL;1
+BILANEW_P;FO;Bilan des flux en peupleraie;NULL;NULL;NULL;1
+BILAN_F_FP;FO;Bilan des flux en forêt de production;NULL;NULL;NULL;1
+BILAN_F_FPHP;FO;Bilan des flux en forêt de production hors peupleraie;NULL;NULL;NULL;1
+BILAN_F_P;FO;Bilan des flux en peupleraie;NULL;NULL;NULL;1
+CAC;CC;Classe d'âge calculé;INV_EXP_NM;2005;NULL;1
+CLAC;CC;Classes de circonférence (1 cm);INV_EXP_NM;2005;NULL;1
+CLAD;CC;Classes de diamètre à 1,30 m;INV_EXP_NM;2005;NULL;1
+CLALTI;CC;Classe d'altitude;INV_EXP_NM;2005;NULL;1
+CLDM;CC;Classes de diamètre du bois mort au sol;INV_EXP_NM;2008;NULL;1
+CLG_AM;DI;Classe de pente du sol;NULL;NULL;NULL;1
+CLG_NM;CC;Classe de pente du sol;INV_EXP_NM;2005;NULL;1
+CLPCALC;CC;Profondeur d'apparition de la carbonatation (11 cl.);INV_EXP_NM;2005;NULL;1
+CLPCALF;CC;Profondeur d'apparition de la carbonatation forte (11 cl.);INV_EXP_NM;2005;NULL;1
+CL_PENT2;CC;Classes de pente écologique (5 cm);INV_EXP_NM;2005;NULL;1
+CLPGLEY;CC;Profondeur d'apparition du gley (11 cl.);INV_EXP_NM;2005;NULL;1
+CLPOX;CC;Profondeur d'apparition des taches d'oxydation (11 cl.);INV_EXP_NM;2005;NULL;1
+CLPPSEUDO;CC;Profondeur d'apparition du pseudogley (11 cl.);INV_EXP_NM;2005;NULL;1
+CODESP;LT;espèce végétale;INV_EXP_NM;2005;2013;1
+COMP3;LT;Composition de phase 3;INV_EXP_NM;2005;2006;1
+COMP3_R;CC;Composition de phase 3 du peuplement recensable;INV_EXP_NM;2005;NULL;1
+COMP_R;CC;Composition détaillée du peuplement recensable;INV_EXP_NM;2005;NULL;1
+CSP1;CC;Couverture du sol de phase 1;INV_EXP_NM;2005;NULL;1
+CSP2;CC;Couverture du sol;INV_EXP_NM;2005;NULL;1
+DATEMORT;LT;Date de mort estimée;INV_EXP_NM;2008;NULL;1
+DCA;CC;Détail de coupe (aménagé);INV_EXP_NM;2005;NULL;1
+DECOMP;LT;État de décomposition du bois mort au sol;INV_EXP_NM;2008;NULL;1
+DIST;LT;Distance de débardage;INV_EXP_NM;2005;NULL;1
+DIV_R;CC;Diversité du peuplement recensable;INV_EXP_NM;2005;NULL;1
+DPYR;LT;Dégâts liés à la pyrale;INV_EXP_NM;2018;2022;1
+ESPAR;LT;Espèce arborée;INV_EXP_NM;2005;2013;3
+ESS;LT;Essence de l'arbre;INV_EXP_NM;2005;2007;1
+ESS_AGE_1;CC;Essence sur laquelle est calculé l'âge;INV_EXP_NM;2005;NULL;1
+ESSPRE;LT;Essence principale;INV_EXP_NM;2005;NULL;1
+ESSPRE_FR;CC;Essence principale feuillue ou conifère;INV_EXP_NM;2005;NULL;1
+EXP5;CC;Exploitabilité du point (5 classes);INV_EXP_NM;2005;2014;1
+EXPL;CC;Exploitabilité du point;INV_EXP_NM;2008;NULL;1
+EXPN;CC;Exploitabilité du point;INV_EXP_NM;2005;2014;1
+FR;CC;Essence feuillue ou conifère;INV_EXP_NM;2005;NULL;1
+GCHAB_AN;CC;Surface terrière annualisée de chablis (m²/an);INV_EXP_NM;2010;NULL;1
+GEST;LT;Traces de gestion;INV_EXP_NM;2008;NULL;1
+GMORT_AN;CC;Surface terrière annualisée de bois mort (m²/an);INV_EXP_NM;2010;NULL;1
+GPR_AN_ACT;CC;Surface terrière prélevée annualisée (actualisée);INV_EXP_NM;2005;NULL;1
+GRECO;CC;Grandes régions écologiques;INV_EXP_NM;2005;NULL;1
+GTOT;CC;Surface terrière;INV_EXP_NM;2005;NULL;1
+HUMUS;LT;Type d'humus;INV_EXP_NM;2005;NULL;2
+HYDR;CC;Niveau hydrique;INV_EXP_NM;2005;NULL;1
+INCID;LT;Intensité de l'incident;INV_EXP_NM;2008;NULL;2
+INDIC_ACID;CC;Indice d'acidité du sol;INV_EXP_NM;2005;NULL;1
+INDIC_CAIL;CC;Charge en cailloux et profondeur du sol;INV_EXP_NM;2005;NULL;1
+INDIC_HYDRO;CC;Indice d'hydromorphie du sol;INV_EXP_NM;2005;NULL;1
+INDIC_RAYO;CC;Indice de rayonnement;INV_EXP_NM;2005;NULL;1
+INDIC_TEXT;CC;Indice de texture du sol;INV_EXP_NM;2005;NULL;1
+INDIC_TOPO;CC;Indice topographique;INV_EXP_NM;2005;NULL;1
+INSENSE;CC;Indicateur de sensibilité du sol à l'export de biomasse;INV_EXP_NM;2005;NULL;1
+INSENSE_CA;CC;Indicateur de sensibilité du sol à l'export du calcium;INV_EXP_NM;2005;NULL;1
+INSENSE_K;CC;Indicateur de sensibilité du sol à l'export du potassium;INV_EXP_NM;2005;NULL;1
+INSENSE_MG;CC;Indicateur de sensibilité du sol à l'export du magnésium;INV_EXP_NM;2005;NULL;1
+INSENSE_N;CC;Indicateur de sensibilité du sol à l'export de l'azote;INV_EXP_NM;2005;NULL;1
+INSENSE_P;CC;Indicateur de sensibilité du sol à l'export du phosphore;INV_EXP_NM;2005;NULL;1
+ITI;LT;Itinéraire de débardage;INV_EXP_NM;2008;NULL;1
+LEVE;CC;Indicateur de levé terrain;INV_EXP_NM;2005;NULL;1
+LIB;LT;Taux de couvert libre de l'arbre;INV_EXP_NM;2005;NULL;1
+MDEB;CC;Indicateur du caractère momentanément déboisé du point;INV_EXP_NM;2005;NULL;1
+MORTAN_FP;FO;Mortalité en forêt de production (sans chablis);NULL;NULL;NULL;1
+MORTAN_FPHP;FO;Mortalité en forêt de production HP (sans chablis);NULL;NULL;NULL;1
+MORTAN_P;FO;Mortalité en peupleraie (sans chablis);NULL;NULL;NULL;1
+MORTB;LT;Présence de mortalité de branches;INV_EXP_NM;2006;NULL;3
+MORTB5;LT;mortalité de branches (LT2);NULL;NULL;NULL;3
+NATURA2000;CT;Zonage Natura 2000;INV_EXP_NM;2005;NULL;1
+NT;CC;Effectif;INV_EXP_NM;2005;NULL;1
+NT_5;CC;Nombre de tiges total disparu (moins de 5 ans);INV_EXP_NM;2005;NULL;1
+NTCHAB_AN;CC;Effectif annualisé de chablis;INV_EXP_NM;2010;NULL;1
+NTMORT_AN;CC;Effectif annualisé de bois mort;INV_EXP_NM;2010;NULL;1
+ORI;LT;Origine de l'arbre;INV_EXP_NM;2005;2007;2
+ORIG;CC;Origine de l'arbre (regroupement);INV_EXP_NM;2005;NULL;1
+PARC_NAT;CT;Parcs nationaux;INV_EXP_NM;2005;NULL;1
+PBUIS;LT;Présence de buis;INV_EXP_NM;2018;NULL;1
+PENTEXP_0X;CC;Pente de débusquage;INV_EXP_NM;2008;NULL;1
+PG;CC;Production de surface terrière;INV_EXP_NM;2005;NULL;1
+PGCHAB;CC;Production annuelle des chablis en surface terrière;INV_EXP_NM;2008;NULL;1
+PGPR;CC;Actualisation de la surface terrière prélevée;INV_EXP_NM;2005;NULL;1
+PNR;CT;Parc naturel régional;INV_EXP_NM;2005;NULL;1
+PORTANCE_2X;CC;Portance du terrain;INV_EXP_NM;2008;NULL;1
+PORTN;LT;Portance du sol;INV_EXP_NM;2005;2007;1
+PROD_2_FP;FO;Production biologique en forêt de production (2 composantes);NULL;NULL;NULL;1
+PROD_2_FPHP;FO;Production biologique en forêt de prod. HP (2 composantes);NULL;NULL;NULL;1
+PROD_2_P;FO;Production biologique en peupleraie (2 composantes);NULL;NULL;NULL;1
+PROD_FP;FO;Production biologique en forêt de production (3 composantes);NULL;NULL;NULL;1
+PROD_FPHP;FO;Production biologique en forêt de prod. HP (3 composantes);NULL;NULL;NULL;1
+PROD_P;FO;Production biologique en peupleraie (3 composantes);NULL;NULL;NULL;1
+PROF1;LT;Profondeur de l'horizon supérieur (en dm);INV_EXP_NM;2005;NULL;1
+PROF2;LT;Profondeur de sondage (en dm);INV_EXP_NM;2005;NULL;1
+PRON;CC;Classe nationale de proprieté;NULL;NULL;NULL;1
+PRO_NM;CC;Classe de propriété;INV_EXP_NM;2005;NULL;1
+PRO_PSG;CC;Croisement PSG x PRO_NM;INV_EXP_NM;2005;NULL;1
+PV;CC;Production annuelle en volume des arbres vivants;INV_EXP_NM;2005;NULL;1
+PVCHAB;CC;Production annuelle des chablis ;INV_EXP_NM;2005;2018;1
+PVPR;CC;Actualisation du volume prélevé;INV_EXP_NM;2005;NULL;1
+QAGE;CC;Mode de calcul de l'âge;INV_EXP_NM;2005;NULL;1
+QUALITE;LT;Qualité du tronc;INV_EXP_NM;2014;2019;1
+RA;DI;Région administrative;INV_EXP_NM;2005;NULL;1
+RAD13;CC;"13 Régions administratives";INV_EXP_NM;2005;NULL;1
+RAKVEGET;CC;Etat de végétation dans/hors zone Klaus;INV_EXP_NM;2008;NULL;1
+RBI;CC;Réserve biologique intégrale;NULL;NULL;NULL;1
+RECENS;CC;Indicateur de peuplement recensable;INV_EXP_NM;2005;NULL;1
+REGD2;CT;Région forestière départementale de phase 2;NULL;NULL;NULL;0
+REGN;CC;Region forestiere nationale;INV_EXP_NM;2005;NULL;1
+RG;CC;Recrutement de surface terrière;INV_EXP_NM;2005;NULL;1
+ROCHE;LT;Type de roche-mère;INV_EXP_NM;2005;NULL;1
+RT5;CC;Indicateur de recensement;INV_EXP_NM;2005;NULL;1
+SER_86;CC;Sylvoécorégions;INV_EXP_NM;2005;NULL;1
+SER_ALLUV;CC;Sylvoécorégions d'alluvions récentes;INV_EXP_NM;2005;NULL;1
+SFDORGE;LT;Présence de dorge sur sapin;INV_EXP_NM;2008;2019;1
+SFGELIV;LT;Présence de gélivure;INV_EXP_NM;2008;2019;1
+SFGUI;LT;Présence de gui;INV_EXP_NM;2008;NULL;1
+SFON;CC;Structure forestière nationale;NULL;NULL;NULL;1
+SFO_NM;CC;Structure forestière (nouvelle méthode);INV_EXP_NM;2005;2013;1
+SFPIED;LT;Présence de blessure ou pourriture de pied;INV_EXP_NM;2008;2013;1
+ST;CC;Superficie;NULL;NULL;NULL;1
+SVER;LT;Structure verticale;INV_EXP_NM;2014;NULL;1
+TEXT1;LT;Texture de l'horizon supérieur;INV_EXP_NM;2005;NULL;2
+TEXT2;LT;Texture de l'horizon inférieur;INV_EXP_NM;2005;NULL;2
+TN;LT;Nature de terrain;INV_EXP_NM;2005;2013;1
+TOPO;LT;Situation topographique;INV_EXP_NM;2005;NULL;1
+TPESPAR1;LT;Espèce plantée principale;INV_EXP_NM;2008;2015;3
+TPESPAR2;LT;Espèce plantée secondaire;INV_EXP_NM;2008;2015;3
+TPLANTR;CC;Indicateur de plantation (régulière ou autre) homogénéisé;INV_EXP_NM;2005;NULL;1
+TROPH;CC;Niveau trophique;INV_EXP_NM;2005;NULL;1
+TSOL;LT;Type de sol;INV_EXP_NM;2005;NULL;2
+TYP;EC;Type départemental regroupé de formation végétale;NULL;NULL;NULL;0
+U_APB;CC;Arrêtés de protection de biotope;INV_EXP_NM;2005;NULL;1
+U_BIOGEO2002;CC;Domaines biogéographiques (sens UE);INV_EXP_NM;2005;NULL;1
+U_BIOG_ONF;CT;Ensembles biogéographiques pour l'ONF;INV_EXP_NM;2005;NULL;1
+U_CEN_PRO;CT;Propriétés des CEN;INV_EXP_NM;2005;NULL;1
+U_CFT;CC;Point en Charte Forestiere de Territoire (o/n);NULL;NULL;NULL;0
+U_COLITT;CT;Conservatoire du littoral;INV_EXP_NM;2005;NULL;1
+U_EXP_PRFB;CC;Exploitabilité kit PRFB, critères selon région admin;INV_EXP_NM;2008;NULL;1
+U_FOREUR;CC;Classification zonages environnementaux;NULL;NULL;NULL;1
+U_MORTBG;CC;Mortalité de branches homogénéisée;INV_EXP_NM;2006;NULL;1
+U_PDM;CC;Point en Plan de développement de massif(o/n);NULL;NULL;NULL;1
+U_PH;CC;Classe de pH bioindiqué;INV_EXP_NM;2005;NULL;1
+U_PPRDF;CT;Découpages géographiques utilisés pour le projet PPRDF;NULL;NULL;NULL;1
+U_RAMSAR;CT;Zones humides protégées par la convention de Ramsar;INV_EXP_NM;2005;NULL;1
+U_RB;CC;Réserves biologiques;INV_EXP_NM;2005;NULL;1
+U_RES_BIO;CC;Point en réserve de biosphére;INV_EXP_NM;2005;NULL;1
+U_RNC;CC;Réserves naturelles de Corse;INV_EXP_NM;2005;NULL;1
+U_RNCFS;CC;Réserves nationales de chasse et de faune sauvage;INV_EXP_NM;2005;NULL;1
+U_RNN;CC;Réserves naturelles nationales;INV_EXP_NM;2005;NULL;1
+U_RNR;CC;Réserves naturelles régionales;INV_EXP_NM;2005;NULL;1
+U_RUT_AF;CC;Réserve utile avec affleurement rocheux;INV_EXP_NM;2005;NULL;1
+USA;CT;Usage du sol;NULL;NULL;NULL;0
+U_SITE_CLAS;CC;Points en sites classés (couche janvier 2015);INV_EXP_NM;2005;NULL;1
+U_SITE_INSC;CC;Points en sites inscrits (couche janvier 2015);INV_EXP_NM;2005;NULL;1
+US_NM;CC;Croisement couverture x utilisation x taille massif;INV_EXP_NM;2005;NULL;1
+U_STRN_ONF;CT;Structure verticale (source ONF);INV_EXP_NM;2005;NULL;1
+U_ZICO;CC;Point en Zone importance pr la conservation des oiseaux;INV_EXP_NM;2005;NULL;1
+V;CC;Volume;INV_EXP_NM;2005;2007;1
+V1;CC;Volume de qualité 1;INV_EXP_NM;2005;2013;1
+V2;CC;Volume de qualité 2;INV_EXP_NM;2005;2013;1
+V3;CC;Volume de qualité 3;INV_EXP_NM;2005;2013;1
+VBO;CC;Volume de bois d'oeuvre;INV_EXP_NM;2005;2013;1
+VCHAB_AN;CC;Volume annualisé de chablis (m³/an);INV_EXP_NM;2010;NULL;1
+VEGET;LT;État de végétation de l'arbre (1e visite);INV_EXP_NM;2005;2007;4
+VEGETM;CC;Etat de végétation de l'arbre mort ou chablis;INV_EXP_NM;2005;NULL;1
+VMORT_AN;CC;Volume annualisé de bois mort (m³/an);INV_EXP_NM;2010;NULL;1
+VPR_AN_ACT;CC;Volume prélevé annualisé (actualisé);INV_EXP_NM;2005;NULL;1
+VPRELEV_FP;FO;Prélèvements en forêt de production;NULL;NULL;NULL;1
+VPRELEV_FPHP;FO;Prélèvements en forêt de production hors peupleraie;NULL;NULL;NULL;1
+VPRELEV_P;FO;Prélèvements en peupleraie;NULL;NULL;NULL;1
+VR;CC;Volume de rebut;INV_EXP_NM;2005;NULL;1
+XG_NM;CC;Disparition annuelle de surface terrière;INV_EXP_NM;2008;2018;1
+XT_NM;CC;Disparition annuelle de nombre de tiges;INV_EXP_NM;2005;2018;1
+XV_NM;CC;Mortalité annuelle moyenne (en volume);INV_EXP_NM;2005;2018;1
+ZNIEFF;CT;ZNIEFF continentales de types 1 et 2;INV_EXP_NM;2005;NULL;1
