@@ -170,7 +170,7 @@ LEFT JOIN metaifn.aiunite i ON d.unite = i.unite AND i.usite = 'P' -- AND i.incr
 WHERE d.donnee ~~* 'veget'
 ORDER BY incref;
 
--- année début et fin de sunités
+-- année début et fin des unités
 SELECT d.donnee, COALESCE(i.dcunite, d.unite) AS unite
 , COALESCE(min(i.incref + 2005), 2020) AS debut, COALESCE(max(i.incref + 2005), 2022) AS fin
 FROM metaifn.addonnee d
