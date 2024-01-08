@@ -18,3 +18,7 @@ SHOW shared_buffers;
 --------------------------------------------------------------------
 ALTER DATABASE travail SET search_path = "$user", work, public;
 SHOW SEARCH_PATH;
+
+SELECT postgis_proj_version();
+SELECT postgis_full_version();
+SELECT postgis_version();

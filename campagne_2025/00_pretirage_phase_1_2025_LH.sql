@@ -354,7 +354,7 @@ WHERE ABS(xl - ST_X(ST_Transform(n.geom, 27572))) > 500
 OR ABS(yl - ST_Y(ST_Transform(n.geom, 27572))) > 500;
 -- => pas de points hors maille
 
--- correction manuelle --> pasde points en campagne 2025
+-- correction manuelle --> pas de points en campagne 2025
 UPDATE pts_new SET xl = 570767,  yl = 1824842 WHERE npp = '24-31-210-1-260T';
 UPDATE pts_new SET xl = 557752,  yl = 2615580 WHERE npp = '24-62-127-1-024T';
 UPDATE pts_new SET xl = 919731,  yl = 2272010 WHERE npp = '24-25-270-1-091T';
