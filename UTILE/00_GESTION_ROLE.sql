@@ -73,7 +73,7 @@ REVOKE coord_datareader FROM "cbastik";
 SHOW ROLE;
 RESET ROLE;
 
---------------- Attribution de droits en lecture sur g3arbre et p3arbre pour Laura Gay --------------------
+--------------- Attribution de droits en lecture sur g3arbre et p3arbre pour Laura --------------------
 
 SET ROLE = exploitation_admin;
 SHOW ROLE;
@@ -83,5 +83,23 @@ RESET ROLE;
 GRANT SELECT ON TABLE inv_exp_nm.g3arbre TO "LGay";
 GRANT SELECT ON TABLE inv_exp_nm.p3arbre TO "LGay";
 */
+
+--------------- Attribution de droits en écriture sur famille_echantillon, s5stratif et famille_stratification  pour Laura --------------------
+SET ROLE = "LHaugomat";
+SHOW ROLE;
+
+GRANT INSERT,SELECT ON TABLE inv_exp_nm.famille_echantillon TO "LGay";
+GRANT INSERT, SELECT ON TABLE inv_exp_nm.famille_stratification TO "LGay";
+GRANT INSERT, SELECT ON TABLE inv_exp_nm.s5stratif TO "LGay";
+GRANT INSERT, SELECT ON TABLE inv_exp_nm.s5var TO "LGay";
+GRANT INSERT,SELECT ON TABLE inv_exp_nm.echantillon TO "LGay";
+
+REVOKE INSERT,SELECT ON TABLE inv_exp_nm.famille_echantillon FROM "LGay";
+REVOKE INSERT,SELECT ON TABLE inv_exp_nm.famille_stratification FROM "LGay";
+REVOKE INSERT,SELECT ON TABLE inv_exp_nm.s5stratif FROM "LGay";
+
+
+
+
 
 

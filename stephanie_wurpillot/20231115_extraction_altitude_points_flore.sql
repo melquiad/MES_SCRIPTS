@@ -3,9 +3,10 @@ FROM inv_exp_nm.e1point ep
 --INNER JOIN inv_exp_nm.e1coord ec ON ep.npp = ec.npp 
 INNER JOIN inv_exp_nm.g3flore gf ON ep.npp = gf.npp
 WHERE ep.incref = 17
-ORDER BY idp;
+ORDER BY idp; --> 6007 points , il en manque 228 
 
 ------------- version 08/01/2024 suite à remarque de Cédric (en base de  production) -------------------
+
 SET enable_nestloop = FALSE;
 
 SELECT DISTINCT p.idp, vl1.annee, pe.zp
@@ -28,4 +29,4 @@ INNER JOIN point_ech pe USING (id_ech, id_point)
 INNER JOIN flore f USING (id_ech, id_point)
 INNER JOIN point p ON vlp.npp = p.npp
 WHERE annee = 2022
-ORDER BY idp;
+ORDER BY idp; --> 6235 points
