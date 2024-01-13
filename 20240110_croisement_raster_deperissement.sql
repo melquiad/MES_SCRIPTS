@@ -49,7 +49,7 @@ ALTER DATABASE inventaire SET postgis.gdal_enabled_drivers TO 'ENABLE_ALL';
 
 raster2pgsql -s 2154 -I -C -M -t 256x256 ~/Documents/DATA_SIG/RECONFORT/2019_2classes_2y_CR.tif -F public.2019_rec | psql -d inventaire -p 5433
 -- ou
-raster2pgsql -s 2154 -I -C -R -M -t 256x256 2018_2classes_2y_CR.tif -F public.2018_rec | psql -d inventaire -p 5433
+raster2pgsql -s 2154 -I -C -R -M -t 256x256 ~/Documents/DATA_SIG/RECONFORT/2018_2classes_2y_CR.tif -F public.2018_rec | psql -d inventaire -p 5433
 --> option -R pour stockage externe mais perte des valeurs pixel d'origine et pas d'affichage dans QGIS
 
 
@@ -59,16 +59,16 @@ FROM (
 	FROM inv_exp_nm.g3foret g
 	INNER JOIN inv_exp_nm.e2point e USING (npp)
 	INNER JOIN sig_ign.deps_2002 d ON ST_Intersects(st_transform(d.geom,2154),st_transform(e.geom,2154))
-	INNER JOIN public."2017_rec" r ON ST_Intersects(r.rast,st_transform(e.geom,2154))
+	INNER JOIN public."2018_rec" r ON ST_Intersects(r.rast,st_transform(e.geom,2154))
 	WHERE e.leve = 1, g.incref = 12 AND d.dep IN ('45','18','41','37','28','36')
 	) foo --> alias obligatoire pour sous-requête
 ORDER BY 1;
 
 SELECT rid, st_valuecount(rast)
-FROM public."2017_rec"
+FROM public."2019_rec"
 GROUP BY rid;
 
-SELECT st_valuecount(st_union(rast)) FROM public."2017_rec";
+SELECT st_valuecount(st_union(rast)) FROM public."2019_rec";
 
 
 
