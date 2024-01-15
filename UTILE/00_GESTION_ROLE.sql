@@ -91,8 +91,12 @@ SHOW ROLE;
 GRANT INSERT,SELECT ON TABLE inv_exp_nm.famille_echantillon TO "LGay";
 GRANT INSERT, SELECT ON TABLE inv_exp_nm.famille_stratification TO "LGay";
 GRANT INSERT, SELECT ON TABLE inv_exp_nm.s5stratif TO "LGay";
+GRANT INSERT, SELECT ON TABLE inv_exp_nm.s5strate TO "LGay";
 GRANT INSERT, SELECT ON TABLE inv_exp_nm.s5var TO "LGay";
 GRANT INSERT,SELECT ON TABLE inv_exp_nm.echantillon TO "LGay";
+
+GRANT SELECT, UPDATE, USAGE ON SEQUENCE inv_exp_nm.echantillon_id_ech_seq TO "LGay";
+GRANT SELECT, UPDATE, USAGE ON SEQUENCE inv_exp_nm.s5strate_n_str_seq TO "LGay";
 
 REVOKE INSERT,SELECT ON TABLE inv_exp_nm.famille_echantillon FROM "LGay";
 REVOKE INSERT,SELECT ON TABLE inv_exp_nm.famille_stratification FROM "LGay";

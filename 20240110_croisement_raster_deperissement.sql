@@ -52,8 +52,8 @@ raster2pgsql -s 2154 -I -C -M -t 256x256 ~/Documents/DATA_SIG/RECONFORT/2019_2cl
 raster2pgsql -s 2154 -I -C -R -M -t 256x256 ~/Documents/DATA_SIG/RECONFORT/2018_2classes_2y_CR.tif -F public.2018_rec | psql -d inventaire -p 5433
 --> option -R pour stockage externe mais perte des valeurs pixel d'origine et pas d'affichage dans QGIS
 
-
-SELECT npp, deper25, deper50, (gv).val AS val_tif
+-- en base d'exploitation
+SELECT npp, deper25, deper50, (gv).val AS val_tif 
 FROM (
 	SELECT r.rid, g.npp, g.deper25, g.deper50, ST_Intersection(r.rast,st_transform(e.geom,2154)) AS gv
 	FROM inv_exp_nm.g3foret g
@@ -64,11 +64,32 @@ FROM (
 	) foo --> alias obligatoire pour sous-requête
 ORDER BY 1;
 
+/*
 SELECT rid, st_valuecount(rast)
 FROM public."2019_rec"
 GROUP BY rid;
 
 SELECT st_valuecount(st_union(rast)) FROM public."2019_rec";
+*/
+
+-- en base de production ------------------------------------------------------------------
+SELECT idp, npp, nincid, incid, (gv).val AS val_tif
+FROM (
+	SELECT p.idp, p.npp, d.nincid, d.incid, ST_Intersection(r.rast,st_transform(p.geom,2154)) AS gv
+	FROM description d
+	INNER JOIN echantillon e USING (id_ech)
+	INNER JOIN campagne c ON e.id_campagne = c.id_campagne
+	INNER JOIN point_ech pe USING (id_ech,id_point)
+	INNER JOIN point p USING (id_point)
+	INNER JOIN public."2020_rec" r ON ST_Intersects(r.rast,st_transform(p.geom,2154))
+	WHERE c.millesime  = 2020 AND pe.dep IN ('45','18','41','37','28','36')
+	) foo
+ORDER BY 1;
+
+
+
+
+
 
 
 
