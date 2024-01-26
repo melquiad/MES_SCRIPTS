@@ -1,0 +1,22 @@
+
+--- GREP ---
+grep -rnw 'dossier de recherche' -e 'expression à rechercher'
+
+#ou
+
+grep -rnw 'expression à rechercher' 'dossier de recherche'
+
+grep --include=*.sql -rnw 'dossier de recherche' -e 'expression à rechercher'
+#Recherche uniquement dans les fichiers .sql , à l'inverse --exclude=*.sql
+
+--- FIND ---
+find . -name <fichier>
+find ~ -name <fichier>
+find / -name <fichier>
+
+# avec -iname pour ignorer la casse
+
+find . -type f -iname "*.jpeg" -or -iname "*.jpg"
+find . -type d       --> pour les répertoires
+find . -size +400M -and -size -500M
+find . -size +700M
