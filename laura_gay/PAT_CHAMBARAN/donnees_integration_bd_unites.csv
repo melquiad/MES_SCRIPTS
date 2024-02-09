@@ -1,0 +1,25 @@
+u_cha_dplct;Déplacement du piquet repère;
+modalite;libelle;definition
+0;Placette de levers non déplacée et complète;Placette de levers non déplacée et complète
+1;Placette de levers déplacée et complète;Placette de levers déplacée et complète
+2;Placette de levers non déplacée mais incomplète (mesure de DLIM en remarque);Placette de levers non déplacée mais incomplète (mesure de DLIM en remarque)
+3;Placette de levers déplacée et incomplète (mesure de DLIM en remarque);Placette de levers déplacée et incomplète (mesure de DLIM en remarque)
+4;Placette non réalisée (inaccessible);Placette non réalisée (inaccessible)
+;;
+u_cha_strate;Strate cartographique pour le PAT Chambaran;
+modalite;libelle;definition
+CHT_TT;FEU_CHT_0-Inf_TOT;Peuplements de châtaignier, toutes hauteurs
+FEU_H1;FEU_TOT_0-10_TOT;Peuplements de feuillus de hauteur faible
+FEU_H2;FEU_TOT_10-13_TOT;Peuplements de feuillus de hauteur moyenne
+FEU_H3;FEU_TOT_13-15_TOT;Peuplements de feuillus de hauteur forte
+FEU_H4;FEU_TOT_15-Inf_TOT;Peuplements de feuillus de hauteur très forte
+MIX_TT;MIX_TOT_0-Inf_TOT;Peuplements mélangés
+RES_TT;RES_TOT_0-Inf_TOT;Peuplements de résineux
+F_COUV;Foret_ouverte;Peuplements à faible couvert arboré
+PEUPLE;Peupleraie;Peupleraie
+HORPAT;Hors_PAT;Forêts exclues du PAT
+;;
+u_cha_zone;Zone d'étude du PAT Chambaran;
+modalite;libelle;definition
+1;Dans zone PAT;Dans zone PAT
+0;Hors zone PAT;Hors zone PAT
