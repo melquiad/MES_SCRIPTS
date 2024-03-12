@@ -1,8 +1,0 @@
-raster2pgsql -s 2154 -I -C -M /home/lhaugomat/Images/le_chat.png -F -t 100x100 rasters.le_chat | psql -h inv-dev.ign.fr -p 5432 -U haugomat -d neosig
-
-ou
-
-raster2pgsql -s 2154 -I -C -M /home/lhaugomat/Images/le_chat.png -F -t 100x100 rasters.le_chat > le_chat.sql
-psql -h inv-dev.ign.fr -p 5432 -U haugomat -d neosig -f /home/lhaugomat/Images/le_chat.sql
-
-NB : option -R --> stockage externe à plat

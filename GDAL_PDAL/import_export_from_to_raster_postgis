@@ -6,3 +6,33 @@ raster2pgsql -s 2154 -I -C -M /home/lhaugomat/Images/le_chat.png -F -t 100x100 r
 psql -h inv-dev.ign.fr -p 5432 -U haugomat -d neosig -f /home/lhaugomat/Images/le_chat.sql
 
 NB : option -R --> stockage externe à plat
+--------------------------------------------------------------------------------------------------------------------------------------
+/*
+EXEMPLE 1
+
+# -s use srid 4326
+# -I create spatial index
+# -C use standard raster constraints
+# -M vacuum analyze after load
+# *.tif load all these files
+# -F include a filename column in the raster table
+# -t tile the output 100x100
+# public.demelevation load into this table
+raster2pgsql -s 4326 -I -C -M -F -t 100x100 *.tif public.demelevation > elev.sql
+#suivi de
+psql -d gisdb -f elev.SQL
+# -d connect to this database
+# -f read this file after connecting
+
+# en une seule fois
+raster2pgsql -s 4326 -I -C -M -F -t 100x100 *.tif public.demelevation | psql -d gisdb
+---------------------------------------------------------------------------------------
+EXEMPLE 2 : création BDA ALTI 20211
+
+raster2pgsql -s 910001 -I -C -M *.asc -F -t 50x50 bdalti2011.mnt > bdalti.sql
+psql -h inv-exp.ign.fr -d exploitation -f bdalti.sql -U duprez
+
+ou
+
+raster2pgsql -s 910001 -I -C -M *.asc -F -t 50x50 bdalti2011.mn | psql -h inv-exp.ign.fr -d exploitation -U duprez
+*/

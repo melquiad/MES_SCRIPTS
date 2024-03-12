@@ -1,8 +1,0 @@
-sudo mount -t nfs4 store.ign.fr:/store-SRVP /mnt/archivage
-
-sudo mount -t cifs //store.ign.fr/store-SVRP /mnt/archivage -o vers=3.0,username=CDuprez,domain=IGN,iocharset=utf8,file_mode=0777,dir_mode=0777
-
-sudo mount -t cifs //store.ign.fr/store-SVRP/arch-diff/zone_echange/producteurs /mnt/archivage -o vers=3.0,username=LHaugomat,domain=IGN,iocharset=utf8,file_mode=0777,dir_mode=0777
-
-
-

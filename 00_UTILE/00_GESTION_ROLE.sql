@@ -2,7 +2,7 @@
 SET ROLE = "LHaugomat";
 SET ROLE = exploitation_admin;
 GRANT exploitation_u_datawriter TO "LHaugomat";
-GRANT exploitation_datareader TO "LHaugomat";
+GRANT exploitation_datareader TO "WMarchand";
 GRANT carto_datareader TO "SDelhaye";
 GRANT carto_datareader TO "LGay";
 GRANT SELECT ON TABLE carto_inpn.apg_2023 TO carto_datareader;
@@ -99,6 +99,8 @@ GRANT prod_exp_datawriter TO "LGay";
 
 GRANT SELECT, UPDATE, USAGE ON SEQUENCE inv_exp_nm.echantillon_id_ech_seq TO "LGay";
 GRANT SELECT, UPDATE, USAGE ON SEQUENCE inv_exp_nm.s5strate_n_str_seq TO "LGay";
+
+GRANT SELECT ON ALL TABLES IN SCHEMA carto_exo TO exploitation_datareader;
 
 
 

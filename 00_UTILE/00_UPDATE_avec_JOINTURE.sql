@@ -1,4 +1,12 @@
 
+-- Update evec jointures multiples
+UPDATE t_facture AS tau
+SET boutique_adresse_ligne_1 = taj2.ligne_1, boutique_adresse_ligne_2 = taj2.ligne_2
+FROM tl_adresse_boutique AS taj1
+JOIN t_adresse AS taj2 ON taj2.id = taj1.id_adresse
+WHERE taj1.id_boutique = tau.id_boutique;
+
+
 --AUTRE VERSION
 -- correction AZDCOI_GD pour le point 22-21-233-1-119T
 WITH t AS

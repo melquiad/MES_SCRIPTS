@@ -10,6 +10,8 @@ CREATE TEMPORARY TABLE ages (
 	age_2 FLOAT, 
 	espar_age_2 CHAR(4), 
 	qage CHAR(3),
+	age13_c FLOAT, --> donnée intermédiaire
+	age13_i FLOAT, --> donnée intermédiaire
 	CONSTRAINT ages_pkey PRIMARY KEY (npp)
 )
 WITH (
@@ -66,6 +68,7 @@ CREATE TEMPORARY TABLE calcul_age (
 	espar CHAR(4), 
 	age SMALLINT,
 	age13_c SMALLINT, --> donnée intermédiaire
+	age13_i SMALLINT, --> donnée intermédiaire
 	longcar SMALLINT, 
 	ncerncar SMALLINT, 
 	auteurlt CHAR(5), 
@@ -90,7 +93,7 @@ ORDER BY g3f.npp, g3a.a;
 
 TABLE calcul_age;
 
----> 1. Si le couple (NCERNCAR ; LONCAR) est mesuré, on recalcule AGE13_C d'après (NCERNCAR ; LONCAR)  
+---> 1. Si le couple (NCERNCAR ; LONCAR) est mesuré, on recalcule AGE13_C d'après (NCERNCAR ; LONCAR)  ---> 1 OK
 -- reconstitution des âges partiels manquants
 UPDATE calcul_age
 SET age13_c = CASE WHEN c13 * 100 / (2 * PI() * longcar / 10) > 1 THEN ROUND((ncerncar * c13 * 100 / (2 * PI() * longcar / 10))::NUMERIC, 0)
@@ -98,7 +101,7 @@ SET age13_c = CASE WHEN c13 * 100 / (2 * PI() * longcar / 10) > 1 THEN ROUND((nc
 WHERE age IS NULL;
 
 ---> 2. Si le couple (NCERNCAR ; LONCAR) est aberrant, on supprime AGE13_C  
--- suppression de l'âge calculé des arbres dont le rapport LONGCAR / R13 < 33% ou > 160% (12 arbres)
+-- suppression de l'âge calculé des arbres dont le rapport LONGCAR / R13 < 33% ou > 160% (12 arbres) ---> 2 OK
 UPDATE calcul_age
 SET age13_c = NULL
 WHERE CAST(longcar AS REAL) * 2 * PI() * 100 / (c13 * 1000) NOT BETWEEN 33 AND 160;
