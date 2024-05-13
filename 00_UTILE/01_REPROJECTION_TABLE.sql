@@ -9,3 +9,6 @@ SELECT UpdateGeometrySRID('public', 'pts_new', 'geom93', 2154);
 SELECT Populate_Geometry_Columns('pts_new'::regclass);
 -------------------------------------------------------------------------------------------------------
 ALTER TABLE inv_prod_new.transect ALTER COLUMN geom TYPE  geometry(LineString, 2154) USING public.ST_SetSRID(geom,2154);
+-------------------------------------------------------------------------------------------------------------------------
+SELECT ST_SRID(rast) As srid
+FROM dist_210 WHERE rid=1;

@@ -4,10 +4,13 @@ ALTER DATABASE neosig SET postgis.gdal_enabled_drivers = 'ENABLE_ALL';
 SELECT ST_GDALDrivers();
 SELECT * FROM spatial_ref_sys;
 
-select updategeometrysrid('su_44','dep_44','geom',27582);
-select updategeometrysrid('su_44','for_44','geom',27582);
-select updategeometrysrid('su_44','pro_44','geom',27582);
-select updategeometrysrid('su_44','psg_44','geom',27582);
+SELECT updategeometrysrid('su_44','dep_44','geom',27582);
+SELECT updategeometrysrid('su_44','for_44','geom',27582);
+SELECT updategeometrysrid('su_44','pro_44','geom',27582);
+SELECT updategeometrysrid('su_44','psg_44','geom',27582);
+
+SELECT ST_SRID(rast) As srid
+FROM su_44 WHERE rid=1;
 
 CREATE TABLE su_44.depraster_44_1500 AS
 	SELECT ST_AsRaster(d.geom,1500,1500) rast

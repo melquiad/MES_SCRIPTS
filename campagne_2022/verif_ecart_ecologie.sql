@@ -1,7 +1,7 @@
 SELECT count(*)
 FROM v_liste_points_lt1 v
 INNER JOIN ecologie e USING (id_ech, id_point)
-WHERE annee = 2022
+WHERE annee = 2023
 AND e.affroc = 'X'; --> 4155 = 140 + 4015
 
 SELECT count(*)
