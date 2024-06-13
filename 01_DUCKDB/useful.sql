@@ -1,3 +1,7 @@
+-- EXTENSION POSTGRES
+INSTALL postgres;
+
+
 -- IMPORT CSV
 CREATE TABLE pdsa AS SELECT * FROM read_csv('/home/lhaugomat/Documents/GITLAB/exploitation/inv_exp_nm/Incref18/donnees/Poids_Arbres_Incref18.csv');
 -- ou
