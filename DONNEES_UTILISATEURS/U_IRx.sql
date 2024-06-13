@@ -19,7 +19,7 @@ CREATE TEMPORARY TABLE irs (
 
 \COPY irs FROM 'C:/Documents and Settings/cduprez/Mes documents/Inventaire/Eclipse/workspace36/SQL/inv_exp_nm/Utilisateurs/COLIN/ir.txt' with delimiter ';' null as 'NULL'
 
-ALTER TABLE inv_exp_nm.g3arbre
+ALTER TABLE inv_exp_nm.u_g3arbre
 ADD COLUMN u_ai1 REAL,
 ADD COLUMN u_ai2 REAL,
 ADD COLUMN u_ai3 REAL,
@@ -320,6 +320,53 @@ CREATE TEMPORARY TABLE public.accroiss
 
 	--depuis un psql local
 \COPY public.accroiss FROM '/home/lhaugomat/Documents/EXPORTS_DIVERS/accroiss.csv' WITH CSV HEADER DELIMITER ';' NULL AS 'NULL'
+
+
+UPDATE inv_exp_nm.u_g3arbre ua
+SET u_ai1 = a.ir1
+, u_ai2 = a.ir2
+, u_ai3 = a.ir3
+, u_ai4 = a.ir4
+FROM accroiss a
+WHERE ua.npp = a.npp
+AND ua.a = a.a;
+
+
+-- mise à jour sur campagne 2023
+
+	-- dans inv-dev on exporte cette selection dans un fichier accroiss.csv
+DROP TABLE public.accroiss;
+
+\COPY (SELECT p.npp, a1.a, ac1.irn_1_10_mm / 10000.0 AS ir1, ac2.irn_1_10_mm / 10000.0 AS ir2
+    , ac3.irn_1_10_mm / 10000.0 AS ir3
+    , ac4.irn_1_10_mm / 10000.0 AS ir4
+    FROM campagne c
+    INNER JOIN echantillon e USING (id_campagne)
+    INNER JOIN arbre_m1 a1 USING (id_ech)
+    INNER JOIN point p USING (id_point)
+    INNER JOIN reconnaissance r USING (id_ech, id_point)
+    LEFT JOIN accroissement ac1 ON a1.id_ech = ac1.id_ech AND a1.id_point = ac1.id_point AND a1.a = ac1.a AND ac1.nir = 1
+    LEFT JOIN accroissement ac2 ON a1.id_ech = ac2.id_ech AND a1.id_point = ac2.id_point AND a1.a = ac2.a AND ac2.nir = 2
+    LEFT JOIN accroissement ac3 ON a1.id_ech = ac3.id_ech AND a1.id_point = ac3.id_point AND a1.a = ac3.a AND ac3.nir = 3
+    LEFT JOIN accroissement ac4 ON a1.id_ech = ac4.id_ech AND a1.id_point = ac4.id_point AND a1.a = ac4.a AND ac4.nir = 4
+    WHERE r.csa != '5'
+    AND c.millesime = 2023
+    AND COALESCE(ac1.a, ac2.a, ac3.a, ac4.a) IS NOT NULL) TO '/home/lhaugomat/Documents/EXPORTS/accroiss_2023.csv' WITH CSV HEADER DELIMITER ';' NULL AS '';
+
+	-- dans test-inv-exp : on crée une table temporaire accroiss puis on y copie le fichier accroiss.csv
+CREATE UNLOGGED TABLE public.accroiss
+(
+	npp CHAR(16),
+	a SMALLINT,
+	ir1 REAL,
+	ir2 REAL,
+	ir3 REAL,
+	ir4 REAL,
+	CONSTRAINT pkaccroiss PRIMARY KEY (npp, a)
+) WITHOUT OIDS;
+
+	--depuis un psql local
+\COPY public.accroiss FROM '/home/lhaugomat/Documents/EXPORTS/accroiss_2023.csv' WITH CSV HEADER DELIMITER ';' NULL AS 'NULL';
 
 
 UPDATE inv_exp_nm.u_g3arbre ua
