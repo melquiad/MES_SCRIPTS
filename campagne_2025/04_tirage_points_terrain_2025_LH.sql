@@ -128,7 +128,7 @@ WITH echants AS (
     , e.nom_ech, et1.nom_ech, et1.*
     FROM echantillon e
     INNER JOIN campagne c USING (id_campagne)
-    INNER JOIN echantillon et1 ON e.ech_parent = et1.id_ech AND et1.type_ue = 'P' AND et1.type_ech = 'IFN' AND et1.phase_stat = 2
+    INNER JOIN echantillon et1 ON e.ech_parent = et1.id_ech --AND et1.type_ue = 'P' AND et1.type_ech = 'IFN' AND et1.phase_stat = 2
     --INNER JOIN echantillon et1 ON et1.type_ue = 'P' AND et1.type_ech = 'IFN' AND et1.phase_stat = 2 --AND et1.ech_parent_stat = ep2.ech_parent AND et1.ech_parent IS NULL
     WHERE e.type_ue = 'P'
     AND e.type_ech = 'IFN'
@@ -147,7 +147,7 @@ WITH echants AS (
     INNER JOIN point_lt pl ON e.ech_terr_prec = pl.id_ech
     LEFT JOIN reconnaissance r ON pl.id_ech = r.id_ech AND pl.id_point = r.id_point 
     LEFT JOIN reco_2015 r5 ON pl.id_ech = r5.id_ech AND pl.id_point = r5.id_point
---    LEFT JOIN reco_m1 r1 ON pl.id_ech = r1.id_ech AND pl.id_point = r1.id_point
+--    LEFT JOIN reco_m1 r1 ON pl.id_ech = r1.id_ech AND pl.id_point = r1.id_point --> reco_m1 n'existe plus !
 )
 , plhf AS (
     SELECT p.id_point
@@ -164,10 +164,10 @@ SELECT pt.ech_actuel, pt.id_point
     WHEN coalesce(pt.reco, '0') != '1' THEN '0' --> ok
     WHEN pt.csa IN ('7', '8', '9') THEN '0' --> ok
     WHEN pt.csa IN ('6A') AND pt.obscsa IN ('0', '6') AND l.id_point IS NULL THEN '0'   -- Attention, à partir de la prochaine campagne, ON garde les 6H --> ok    
-    WHEN pt.csa IN ('1', '3', '5') AND pt.leve != '1' THEN '0'
-    WHEN pt.csa IN ('1', '3', '5') AND pt.utip NOT IN ('X', 'A')  THEN '0'               -- Attention, à partir de la prochaine campagne, ON revisite tous les LEVE = 1, quels que soient UTIP et BOIS, sauf sur landes 4L (on garde UTIP = X seulement)
+    WHEN pt.csa IN ('1', '3', '5') AND COALESCE(pt.leve, '0') != '1' THEN '0'                          -- Attention, à partir de la prochaine campagne, ON revisite tous les LEVE = 1, quels que soient UTIP et BOIS, sauf sur landes 4L (on garde UTIP = X seulement)
+    WHEN pt.csa IN ('1', '3', '5') AND pt.utip NOT IN ('X', 'A')  THEN '0'              -- Attention, à partir de la prochaine campagne, ON revisite tous les LEVE = 1, quels que soient UTIP et BOIS, sauf sur landes 4L (on garde UTIP = X seulement) 
     WHEN pt.csa ='4L' AND pt.utip != 'X' THEN '0'
-    WHEN pt.csa IN ('1', '3', '5') AND pt.bois NOT IN ('1', '0') THEN '0'                       -- Attention, à partir de la prochaine campagne, ON revisite tous les LEVE = 1, quels que soient UTIP et BOIS, sauf sur landes 4L (on garde UTIP = X seulement)
+    WHEN pt.csa IN ('1', '3', '5') AND pt.bois NOT IN ('1', '0') THEN '0'                       
     WHEN l.id_point IS NOT NULL AND pt.csa NOT IN ('1', '3', '5', '4L', '6H') AND pp.cso NOT IN ('1', '3', '5', '4L', '6H') AND pt.obscsa IN ('0', '6') THEN '0' -- Attention, à partir de la prochaine campagne, ON garde les 6H
     ELSE '1'
   END AS tir5
@@ -175,7 +175,7 @@ SELECT pt.ech_actuel, pt.id_point
     WHEN coalesce(pt.reco, '0') != '1' THEN '1_RECO != 1'
     WHEN pt.csa IN ('7', '8', '9') THEN '2_CSA improductif'    
     WHEN pt.csa IN ('6A') AND pt.obscsa IN ('0', '6') AND l.id_point IS NULL THEN '3_OBSCSA 0/6 sans LHF' -- Attention, à partir de la prochaine campagne, ON garde les 6H
-    WHEN pt.csa IN ('1', '3', '5') AND pt.leve != '1' THEN '6_LEVE != 1'
+    WHEN pt.csa IN ('1', '3', '5') AND COALESCE(pt.leve, '0') != '1' THEN '6_LEVE != 1' --> COALESCE car il y a des points avec leve à NULL
     WHEN pt.csa IN ('1', '3', '5') AND pt.utip NOT IN ('X', 'A') THEN '4_UTIP != X AND A'                             -- Attention, à partir de la prochaine campagne, ON revisite tous les LEVE = 1, quels que soient UTIP et BOIS, sauf sur landes 4L (on garde UTIP = X seulement)
     WHEN pt.csa ='4L' AND pt.utip != 'X' THEN '8_UTIP != X'
     WHEN pt.csa IN ('1', '3', '5') AND pt.bois NOT IN ('1', '0') THEN '5_BOIS != 1 et != 0'                   -- Attention, à partir de la prochaine campagne, ON revisite tous les LEVE = 1, quels que soient UTIP et BOIS, sauf sur landes 4L (on garde UTIP = X seulement)    
@@ -187,26 +187,18 @@ INNER JOIN pts_pi pp USING (id_point)
 LEFT JOIN plhf l USING (id_point)
 ORDER BY id_point;
 
-DROP TABLE pts_retour;
+/*
 SELECT count(*) FROM pts_retour WHERE tir5 = '1';
 SELECT * FROM pts_retour WHERE tir5 = '1';
 
-SELECT pr.ech_actuel, pr.id_point, r.csa, r.obscsa, r2.utip, r2.bois, r2.leve--, pr.cause
-FROM pts_retour pr
-LEFT JOIN reconnaissance r ON pr.id_point = r.id_point 
-LEFT JOIN reco_2015 r2 ON pr.id_point = r2.id_point
-WHERE tir5 = '1'
-ORDER BY id_point;-- AND csa = '6A'; 
 
-
-/*
 -- REQUÊTES DE CONTRÔLES MULTIPLES
 -- nombre de points tirés
 SELECT tir5, cause, COUNT(*)
 FROM pts_retour
 GROUP BY 1, 2
 ORDER BY 1, 2;
-*/
+
 -- nombre de points tirés par campagne
 SELECT c.millesime AS campagne, count(*) AS nb_pts
 FROM echantillon e
@@ -225,7 +217,7 @@ AND EXISTS (
 GROUP BY 1
 ORDER BY 1 DESC;
 
-/*
+
 SELECT c.millesime AS campagne, count(*) AS nb_pts
 FROM echantillon e
 INNER JOIN campagne c USING (id_campagne)
@@ -261,7 +253,7 @@ INNER JOIN point p USING (id_point)
 WHERE tir5 = '1'
 ORDER BY id_point;
 
--- nombre de points tirés par DIR (initiale)
+-- nombre de points tirés par DIR (initiale) -->  /!\ à jouer après INSERTION dans point_lt
 SELECT 
   CASE 
     WHEN pl.echelon_init = '01' THEN 'DIRSO'
@@ -280,7 +272,7 @@ WHERE e.type_ue = 'P'
 AND e.type_ech = 'IFN'
 AND e.phase_stat = 2
 AND e.ech_parent IS NOT NULL
-AND c.millesime = 2024
+AND c.millesime = 2025
 AND EXISTS (
     SELECT 1
     FROM point_lt pl2
@@ -303,7 +295,7 @@ SELECT
 , count(*) AS nb_pts_terrain
 FROM pts_retour p
 INNER JOIN point pt USING (id_point)
-INNER JOIN sig_inventaire.dir_2023 d ON ST_Intersects(d.geom, pt.geom)
+INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, pt.geom)
 WHERE tir5 = '1'
 GROUP BY 1
 ORDER BY 1;
@@ -315,7 +307,7 @@ INSERT INTO point_lt (id_ech, id_point, echelon_init)
 SELECT ech_actuel, id_point, d.ex
 FROM pts_retour p
 INNER JOIN point pt USING (id_point)
-INNER JOIN sig_inventaire.dir_2023 d ON ST_Intersects(d.geom, pt.geom)
+INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, pt.geom)
 WHERE tir5 = '1'
 ORDER BY 1, 2;
 
@@ -327,7 +319,7 @@ CREATE UNLOGGED TABLE public.declinaison2 (
     decli FLOAT8
 );
 
-\COPY public.declinaison2 FROM '/home/lhaugomat/Documents/GITLAB/production/Incref19/donnees/decli_revPI_2024.csv' WITH CSV DELIMITER ';' NULL AS ''
+\COPY public.declinaison2 FROM '/home/lhaugomat/Documents/GITLAB/production/Campagne_2025/donnees/decli_revPI_2025.csv' WITH CSV DELIMITER ';' NULL AS ''
 
 UPDATE point_lt pl
 SET decli_pt = d.decli
@@ -335,7 +327,7 @@ FROM public.declinaison2 d
 INNER JOIN point USING (id_transect)
 INNER JOIN v_liste_points_lt2 v USING (id_point)
 WHERE pl.id_ech = v.id_ech AND pl.id_point = v.id_point
-AND v.annee = 2024;
+AND v.annee = 2025;
 
 DROP TABLE public.declinaison2;
 
@@ -348,7 +340,9 @@ VACUUM ANALYZE point_lt;
 -- TIRAGE DES POINTS PASSÉS À LA FORÊT
 
 -- /!\ En 2025, il faut tirer les points passés à la forêt sur l'échantillon PI 2024 sur campagne 2020 dans les départements suivants :
--- '01', '02', '03', '04', '05', '08', '09', '10', '11', '12', '15', '17', '22', '24', '27', '29', '2A', '2B', '30', '31', '32', '33', '34', '38', '40', '42', '43', '44', '46', '47', '49', '50', '51', '52', '53', '54', '55', '56', '57', '59', '60', '62', '63', '64', '65', '66', '67', '68', '72', '73', '75', '76', '77', '78', '80', '81', '82', '84', '85', '91', '92', '93', '94', '95'
+-- '01', '02', '03', '04', '05', '08', '09', '10', '11', '12', '15', '17', '22', '24', '27', '29', '2A', '2B', '30', '31', '32', '33'
+--, '34', '38', '40', '42', '43', '44', '46', '47', '49', '50', '51', '52', '53', '54', '55', '56', '57', '59', '60', '62', '63', '64'
+--, '65', '66', '67', '68', '72', '73', '75', '76', '77', '78', '80', '81', '82', '84', '85', '91', '92', '93', '94', '95'
 
 
 BEGIN;
@@ -359,79 +353,143 @@ CREATE UNLOGGED TABLE public.declinaison2 (
     decli FLOAT8
 );
 
-\COPY public.declinaison2 FROM '/home/lhaugomat/Documents/GITLAB/production/Incref19/donnees/decli_revPI_2024.csv' WITH CSV DELIMITER ';' NULL AS ''
+\COPY public.declinaison2 FROM '/home/lhaugomat/Documents/GITLAB/production/Campagne_2025/donnees/decli_revPI_2025.csv' WITH CSV DELIMITER ';' NULL AS ''
 
+/*--contrôles
+SELECT count(*)
+FROM point_pi
+INNER JOIN point_ech pe USING (id_ech, id_point)
+WHERE id_ech = 135; --AND dep NOT IN ('06','07','13','14','16','18','19','20','21','23','25','26','28'
+--,'35','36','37','39','41','45','48','58','61','69','70','71','74','79','83','86','87','88','89');
+
+SELECT count(*)
+FROM point_pi
+INNER JOIN point_ech pe USING (id_ech, id_point)
+WHERE id_ech = 110 --AND dep NOT IN ('01', '02', '03', '04', '05', '08', '09', '10', '11', '12', '15', '17', '22', '24', '27', '29', '2A', '2B', '30', '31', '32', '33'
+--, '34', '38', '40', '42', '43', '44', '46', '47', '49', '50','51', '52', '53', '54', '55', '56', '57', '59', '60', '62', '63', '64', '65', '66'
+--, '67', '68', '72', '73', '75', '76', '77', '78', '80', '81', '82', '84', '85', '91', '92', '93', '94', '95');
+*/
+----------------------------- ZONE DE TEST ---------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 SET enable_nestloop = FALSE;
+	        
+-- à poursuivre
+	        
+--> Version Cédric de la récupération des 2 écahntillons
+/*	        
+SELECT c.id_campagne, e.id_ech, e.nom_ech, e.ech_parent
+FROM echantillon e
+INNER JOIN campagne c ON e.id_campagne = c.id_campagne
+INNER JOIN echantillon ep ON e.ech_parent = ep.id_ech
+INNER JOIN campagne cp ON ep.id_campagne = cp.id_campagne
+WHERE e.type_ech = 'IFN' AND e.type_ue = 'P' AND e.phase_stat = 1 AND e.passage > 1
+AND cp.millesime = 2025 - 5;
+*/
+	             
+CREATE TEMPORARY TABLE echants AS (
+--WITH echants AS (
+				SELECT c.id_campagne, c.millesime, e.id_ech, e.nom_ech, e.ech_parent, e.type_ue, e.type_ech, e.phase_stat --> récupération des 2 échantillons
+				FROM echantillon e
+				INNER JOIN campagne c USING(id_campagne)
+				INNER JOIN (
+						SELECT e.id_campagne, e.id_ech, e.nom_ech, e.ech_parent
+						FROM echantillon e
+						INNER JOIN campagne c USING(id_campagne)
+						INNER JOIN echantillon e1 ON e.ech_parent  = e1.id_ech AND e1.phase_stat = 1 AND e1.type_ue = 'P' AND e1.type_ech = 'IFN'
+						WHERE c.millesime = 2025) e2 ON e.ech_parent = e2.ech_parent
+				);
+CREATE TEMPORARY TABLE echant_pts AS (
+--echant_pts AS (
+		SELECT DISTINCT pen.id_ech, pen.id_point, en.ech_parent, pen.dep
+    	FROM echants en
+    	INNER JOIN campagne c ON en.id_campagne = c.id_campagne
+    	INNER JOIN point_ech pen ON en.id_ech = pen.id_ech
+    	INNER JOIN point_pi ppo ON pen.id_ech = ppo.id_ech AND pen.id_point = ppo.id_point 
+    	INNER JOIN point po ON ppo.id_point = po.id_point
+    	WHERE en.type_ue = 'P'
+	    AND en.type_ech = 'IFN'
+	    AND en.phase_stat = 1
+	    AND (ppo.id_point) NOT IN (
+	    				SELECT pp.id_point
+	    				FROM point_pi pp 
+	    				INNER JOIN echants e USING (id_ech)
+	    				INNER JOIN campagne c1 ON e.id_campagne = c1.id_campagne
+	    				WHERE c1.millesime = 2025
+	    				)
+		UNION
+	    SELECT pen.id_ech, pen.id_point, en.ech_parent, pen.dep
+    	FROM echants en
+    	INNER JOIN campagne c ON en.id_campagne = c.id_campagne
+    	INNER JOIN point_ech pen ON en.id_ech = pen.id_ech
+    	INNER JOIN point_pi ppo ON pen.id_ech = ppo.id_ech AND pen.id_point = ppo.id_point 
+    	INNER JOIN point po ON ppo.id_point = po.id_point
+    	WHERE en.type_ue = 'P'
+	    AND en.type_ech = 'IFN'
+	    AND en.phase_stat = 1
+	    AND c.millesime = 2025
+		ORDER BY id_ech, id_point
+			);
 
-WITH pts_potentiels_foret_new AS (                  -- on récupère les points d'il y a 5 ans en PI qui sont "autre végétation" (et eux seulement), donc susceptibles de passer à la forêt
-    SELECT pen.id_ech, pen.id_point
-    FROM point_ech pen
-    INNER JOIN echantillon en ON pen.id_ech = en.id_ech
-    INNER JOIN campagne c ON en.id_campagne = c.id_campagne
-    INNER JOIN echantillon ep ON en.ech_parent = ep.id_ech
-    INNER JOIN campagne cp ON ep.id_campagne = cp.id_campagne
-    INNER JOIN point_ech peo ON en.ech_parent = peo.id_ech AND pen.id_point = peo.id_point
-    INNER JOIN point_pi ppo ON peo.id_ech = ppo.id_ech AND peo.id_point = ppo.id_point
-    INNER JOIN point po ON ppo.id_point = po.id_point
-    WHERE c.millesime = 2024
-    AND cp.millesime = 2024 - 5                     -- pour limiter aux points de l'échantillon t-5 (et ne pas prendre t-4, t-3, t-2 ni t-1)
-    AND en.type_ue = 'P'
-    AND en.type_ech = 'IFN'
-    AND en.phase_stat = 1
-    AND LEFT(ppo.cso, 1) IN ('6', '7') 
-    AND NOT EXISTS (
-        SELECT 1
-        FROM fla_pi fp
-        WHERE fp.id_transect = po.id_transect
-        AND fp.flpi NOT IN ('0', '6')
-        AND ABS(fp.disti) <= 25
-    )
-)
+CREATE TEMPORARY TABLE pts_potentiels_foret_new AS (			
+--pts_potentiels_foret_new AS (
+		SELECT ppo.id_ech, ppo.id_point, ppo.cso
+		FROM point_pi ppo
+		INNER JOIN (SELECT DISTINCT ech_parent FROM echant_pts) ep ON ppo.id_ech = ep.ech_parent
+		INNER JOIN point p ON ppo.id_point = p.id_point
+		WHERE LEFT(ppo.cso, 1) = '6'
+		AND NOT EXISTS (
+		        SELECT 1
+		        FROM fla_pi fp
+		        WHERE fp.id_transect = p.id_transect
+		        AND fp.flpi NOT IN ('0','6')
+		        AND ABS(fp.disti) <= 25)
+		UNION    
+		SELECT ppo.id_ech, ppo.id_point, ppo.cso
+		FROM point_pi ppo
+		INNER JOIN (SELECT DISTINCT ech_parent FROM echant_pts) ep ON ppo.id_ech = ep.ech_parent
+		INNER JOIN point p ON ppo.id_point = p.id_point
+		WHERE ppo.cso = '7'
+		AND ppo.ufpi = '1');
+		
 INSERT INTO point_lt (id_ech, id_point, formation, azpoint, decli_pt, echelon_init)
-SELECT et.id_ech, pp.id_point                       -- on croise ce sous-ensemble de points potentiel (CSO t-5 = 6x ou 7) avec ceux passés forêt, peupleraie ou lande à la nouvelle PI
-, CASE 
+	SELECT DISTINCT t.id_ech, pp.id_point
+	, CASE 
     WHEN pp.cso IN ('1', '3') THEN 14
     WHEN pp.cso = '4L' THEN 16
     WHEN pp.cso = '5' THEN 32
     ELSE 0
-  END AS formation
-, t.aztrans AS azpoint
-, d.decli
-, di.ex
-FROM echantillon et
-INNER JOIN campagne c USING (id_campagne)
-INNER JOIN point_pi pp ON pp.id_ech = et.ech_parent
-INNER JOIN point p USING (id_point)
-INNER JOIN transect t USING (id_transect)
-INNER JOIN public.declinaison2 d USING (id_transect)
-INNER JOIN pts_potentiels_foret_new ppfn ON et.ech_parent = ppfn.id_ech AND pp.id_point = ppfn.id_point
-INNER JOIN sig_inventaire.dir_2023 di ON ST_Intersects(di.geom, p.geom)
-WHERE et.type_ue = 'P'
-AND et.type_ech = 'IFN'
-AND et.phase_stat = 2
-AND et.ech_parent IS NOT NULL
-AND pp.evof IN ('1', '2')
-AND pp.uspi = 'X'
-AND c.millesime = 2024;
+  	END AS formation
+	, tr.aztrans AS azpoint
+	, d.decli
+	, di.ex
+	FROM pts_potentiels_foret_new ppfn
+	INNER JOIN echant_pts ep ON ppfn.id_point = ep.id_point
+	INNER JOIN point_pi pp ON ppfn.id_point = pp.id_point AND ep.id_ech = pp.id_ech
+	INNER JOIN point p ON ppfn.id_point = p.id_point 
+	INNER JOIN transect tr ON p.id_transect = tr.id_transect
+	INNER JOIN public.declinaison2 d ON tr.id_transect = d.id_transect 
+	INNER JOIN sig_inventaire.dir_2024 di ON ST_Intersects(di.geom, p.geom)
+	CROSS JOIN (
+	    SELECT id_ech
+	    FROM echantillon
+	    INNER JOIN campagne USING (id_campagne)
+	    WHERE type_ech = 'IFN'
+	    AND phase_stat = 2
+	    AND type_ue = 'P'
+	    AND passage = 2
+	    AND millesime = 2025
+		) t
+	WHERE pp.evof IN ('1', '2')
+	AND pp.uspi = 'X';
+		
+DROP TABLE echants;
+DROP TABLE echant_pts;
+DROP TABLE pts_potentiels_foret_new;
 
-SET enable_nestloop = TRUE;
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
 
-DROP TABLE public.declinaison2;
-
-ANALYZE point_lt;
-
-COMMIT;
-
-
-/*
--- REQUÊTES DE CONTRÔLES MULTIPLES
--- décompte par campagne
-SELECT annee, count(*) AS nb_pts
-FROM v_liste_points_lt1_pi2 vp
-GROUP BY 1
-ORDER BY 1 DESC;
-
-set enable_nestloop = false;
+SET enable_nestloop = FALSE;
 
 -- répartition par DIR
 SELECT 
@@ -445,14 +503,12 @@ SELECT
     ELSE 'X_Problème' 
   END AS dir_init
 , count(*)
-FROM v_liste_points_lt2 v -->idem avec lt1 et pi2_lt1
+FROM v_liste_points_lt1_pi2 v                             -->idem avec lt1 et lt1_pi2 et lt2
 INNER JOIN point p USING (id_point)
-INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p.geom)
-WHERE v.annee = 2024
+INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p.geom)
+WHERE v.annee = 2025
 GROUP BY 1
 ORDER BY 1;
-*/
-
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -461,7 +517,7 @@ CREATE UNLOGGED TABLE public.declinaison1 (
     id_transect INT4 PRIMARY KEY,
     decli FLOAT8);
 
-\COPY public.declinaison1 FROM '/home/lhaugomat/Documents/GITLAB/production/Incref19/donnees/decli_nouv_2024.csv' WITH CSV DELIMITER ';' NULL AS ''
+\COPY public.declinaison1 FROM '/home/lhaugomat/Documents/GITLAB/production/Campagne_2025/donnees/decli_nouv_2025.csv' WITH CSV DELIMITER ';' NULL AS ''
 
 UPDATE transect t
 SET decli = d.decli
@@ -473,25 +529,24 @@ DROP TABLE public.declinaison1;
 
 -- ajout des zonages de tirage sans allègement
 INSERT INTO inv_prod_new.tirage (id_ech, id_zonage, code_zone, formation, niveau, nvx_alleges)
-VALUES (114, 8, '0', 14, 2, NULL)--'{4, 7}')     -- campagne 2024 (échantillon n°114)
-, (114, 8, '1', 14, 3, NULL)--'{5, 8}')
-, (114, 8, '2', 14, 3, NULL)--'{5, 8}')
-, (114, 8, '3', 14, 3, NULL)--'{5, 8}')
-, (114, 8, '4', 14, 3, NULL)--'{5, 8}')
-, (114, 8, '5', 14, 4, NULL)--'{6, 9}')
-, (114, 8, '6', 14, 2, NULL)--'{4, 7}')
-, (114, 8, '0', 16, 3, NULL)
-, (114, 8, '1', 16, 4, NULL)
-, (114, 8, '2', 16, 4, NULL)
-, (114, 8, '3', 16, 4, NULL)
-, (114, 8, '4', 16, 4, NULL)
-, (114, 8, '5', 16, 4, NULL)
-, (114, 8, '6', 16, 3, NULL)
-, (114, 1, 'F', 32, 1, NULL)
-, (114, 1, 'F', 897, 4, NULL);
+VALUES (138, 8, '0', 14, 2, NULL)--'{4, 7}')     -- campagne 2025 (échantillon n°138)
+, (138, 8, '1', 14, 3, NULL)--'{5, 8}')
+, (138, 8, '2', 14, 3, NULL)--'{5, 8}')
+, (138, 8, '3', 14, 3, NULL)--'{5, 8}')
+, (138, 8, '4', 14, 3, NULL)--'{5, 8}')
+, (138, 8, '5', 14, 4, NULL)--'{6, 9}')
+, (138, 8, '6', 14, 2, NULL)--'{4, 7}')
+, (138, 8, '0', 16, 3, NULL)
+, (138, 8, '1', 16, 4, NULL)
+, (138, 8, '2', 16, 4, NULL)
+, (138, 8, '3', 16, 4, NULL)
+, (138, 8, '4', 16, 4, NULL)
+, (138, 8, '5', 16, 4, NULL)
+, (138, 8, '6', 16, 3, NULL)
+, (138, 1, 'F', 32, 1, NULL)
+, (138, 1, 'F', 897, 4, NULL);
 
 --TABLE zonage;
-
 
 DROP TABLE IF EXISTS points;
 
@@ -506,7 +561,7 @@ WITH plhf AS (
     INNER JOIN campagne c USING (id_campagne)
     INNER JOIN fla_pi fp USING (id_ech, id_transect)
     WHERE abs(fp.disti) <= 25 AND fp.flpi NOT IN ('0', 'A')
-    AND c.millesime = 2024
+    AND c.millesime = 2025
 )
 SELECT c.millesime, et.id_ech AS id_ech_ph2, epi.id_ech AS id_ech_ph1
 , net.id_noeud, n.tirmax, net.depn, net.zp AS zpn, net.ztir, net.zforifn
@@ -549,7 +604,7 @@ WHERE et.type_ech = 'IFN'
 AND et.type_ue = 'P'
 AND et.phase_stat = 2
 AND et.ech_parent IS NULL
-AND c.millesime = 2024
+AND c.millesime = 2025
 ORDER BY id_point;
 
 TABLE points;
@@ -583,7 +638,7 @@ ALTER TABLE points_tir ADD CONSTRAINT points_tir_pkey PRIMARY KEY (id_ech, id_po
 CREATE TEMPORARY TABLE tirage_17
 AS SELECT *
 FROM tirage
-WHERE id_ech = 114;
+WHERE id_ech = 138;
 
 UPDATE tirage_17
 SET nvx_alleges = 
@@ -631,7 +686,7 @@ DROP TABLE IF EXISTS tirage_14;
 CREATE TEMPORARY TABLE tirage_14
 AS SELECT *
 FROM tirage
-WHERE id_ech = 114;
+WHERE id_ech = 138;
 
 UPDATE tirage_14
 SET nvx_alleges = 
@@ -680,7 +735,7 @@ FROM points_tir_14;
 CREATE TEMPORARY TABLE tirage_10
 AS SELECT *
 FROM tirage
-WHERE id_ech = 114;
+WHERE id_ech = 138;
 
 UPDATE tirage_10
 SET nvx_alleges = 
@@ -729,7 +784,7 @@ FROM points_tir_10;
 CREATE TEMPORARY TABLE tirage_12
 AS SELECT *
 FROM tirage
-WHERE id_ech = 114;
+WHERE id_ech = 138;
 
 UPDATE tirage_12
 SET nvx_alleges = 
@@ -830,7 +885,7 @@ SELECT CASE
             WHEN formation & 960 > 0 THEN '3_LHF'
             ELSE 'X_Problème'
         END AS formation, count(*) AS nb_pts_terrain
-FROM points_tir_final
+FROM points_tir
 GROUP BY 1
 ORDER BY 1;
 
@@ -851,9 +906,9 @@ SELECT  CASE
     ELSE 'X_Problème' 
   END AS dir_init
 , count(*) AS nb_pts_terrain
-FROM points_tir_final p
+FROM points_tir_17 p
 INNER JOIN point p1 USING (id_point)
-LEFT JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p1.geom)
+LEFT JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p1.geom)
 GROUP BY 1, 2
 ORDER BY 1, 2;
 
@@ -867,9 +922,9 @@ SELECT id_ech, id_point, st_x(p1.geom) as xl, st_y(p1.geom) yl
     WHEN d.ex = '06' THEN 'DIRNE'
     ELSE 'X_Problème' 
   END AS dir_init
-FROM points_tir_final p
+FROM points_tir p
 INNER JOIN point p1 USING (id_point)
-LEFT JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p1.geom);
+LEFT JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p1.geom);
 
 
 --ventilation par dept
@@ -881,10 +936,10 @@ SELECT  CASE
             ELSE 'X_Problème'
         END AS formation
 , p1.depn, count(*) AS nb_pts_terrain
-FROM points_tir_final p
+FROM points_tir p
 INNER JOIN points p1 USING (id_point)
 INNER JOIN point p2 USING (id_point)
-INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p2.geom)
+INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p2.geom)
 GROUP BY 1, 2
 ORDER BY 1, 2;
 
@@ -954,7 +1009,7 @@ WITH e AS
 	FROM v_liste_points_lt1 vlp1
 	INNER JOIN point p USING (id_point)
 	INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p.geom)
-	WHERE vlp1.annee = 2024
+	WHERE vlp1.annee = 2025
 	)
 UPDATE point_lt pl
 SET echelon_init = e.echelon_init
@@ -968,7 +1023,7 @@ WITH e AS
 	FROM v_liste_points_lt2 vlp2
 	INNER JOIN point p USING (id_point)
 	INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p.geom)
-	WHERE vlp2.annee = 2024
+	WHERE vlp2.annee = 2025
 	)
 UPDATE point_lt pl
 SET echelon_init = e.echelon_init
@@ -982,7 +1037,7 @@ WITH e AS
 	FROM v_liste_points_lt1_pi2 c
 	INNER JOIN point p USING (id_point)
 	INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p.geom)
-	WHERE c.annee = 2024
+	WHERE c.annee = 2025
 	)
 UPDATE point_lt pl
 SET echelon_init = e.echelon_init
@@ -999,7 +1054,7 @@ WITH e AS
 	FROM v_liste_points_lt1 vlp1
 	INNER JOIN point p USING (id_point)
 	INNER JOIN sig_inventaire.secteurs_cn d ON ST_Intersects(d.geom, p.geom)
-	WHERE vlp1.annee = 2024
+	WHERE vlp1.annee = 2025
 	)
 UPDATE point_lt pl
 SET secteur_cn = e.secteur_cn
@@ -1013,7 +1068,7 @@ WITH e AS
 	FROM v_liste_points_lt2 vlp2
 	INNER JOIN point p USING (id_point)
 	INNER JOIN sig_inventaire.secteurs_cn d ON ST_Intersects(d.geom, p.geom)
-	WHERE vlp2.annee = 2024
+	WHERE vlp2.annee = 2025
 	)
 UPDATE point_lt pl
 SET secteur_cn = e.secteur_cn
@@ -1027,7 +1082,7 @@ WITH e AS
 	FROM v_liste_points_lt1_pi2 vplp 
 	INNER JOIN point p USING (id_point)
 	INNER JOIN sig_inventaire.secteurs_cn d ON ST_Intersects(d.geom, p.geom)
-	WHERE vplp.annee = 2024
+	WHERE vplp.annee = 2025
 	)
 UPDATE point_lt pl
 SET secteur_cn = e.secteur_cn
@@ -1066,7 +1121,7 @@ WITH camp AS (
     SELECT id_campagne, millesime
     FROM inv_prod_new.campagne
     WHERE lib_campagne LIKE 'Campagne annuelle%'
-    AND millesime = 2024
+    AND millesime = 2025
 )
 , ech_pts_1 AS (
     SELECT id_ech, id_campagne, nom_ech
@@ -1106,7 +1161,7 @@ INSERT INTO croisement_carto (id_couche, num_version, id_ech, date_croisement)
 SELECT 9 AS id_couche, 1 AS num_version, e.id_ech, e.date_tirage
 FROM echantillon e 
 INNER JOIN campagne c USING (id_campagne)
-WHERE c.millesime = 2024
+WHERE c.millesime = 2025
 AND e.type_ech = 'IFN'
 AND e.type_ue = 'P'
 AND e.phase_stat = 2
