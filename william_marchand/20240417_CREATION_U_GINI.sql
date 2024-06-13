@@ -28,22 +28,22 @@ ALTER TABLE inv_exp_nm.u_p3point ADD COLUMN u_gini float8;
 COMMIT;
 
 
-
 BEGIN;
 
 WITH prep_table AS (
-	SELECT npp, gtot, row_number() OVER(PARTITION BY ga.npp ORDER BY gtot) * gtot AS num
-	FROM inv_exp_nm.g3arbre ga
+	select npp, gtot * wac as gtotw, row_number() over(partition by ga.npp order by gtot) * gtot * wac as num
+	from inv_exp_nm.g3arbre ga
 	),
-	cc_table AS (
-	SELECT ga.npp, cast(count(*) AS float) AS n
-	FROM inv_exp_nm.g3arbre ga 
-	GROUP BY ga.npp
+	cc_table as (
+	select ga.npp, cast(count(*) as float) as n
+	from inv_exp_nm.g3arbre ga 
+	group by ga.npp
 	),
-	tmp AS (select p.npp, ((2 * sum(p.num)) / (c.n * sum(p.gtot))) - ((c.n + 1) / c.n) as gini
-	FROM prep_table p
-	INNER JOIN cc_table c ON p.npp = c.npp
-	GROUP BY p.npp, c.n
+	tmp AS (
+	select p.npp, ((2 * sum(p.num)) / (c.n * sum(p.gtotw))) - ((c.n + 1) / c.n) as gini
+	from prep_table p
+	inner join cc_table c on p.npp = c.npp
+	group by p.npp, c.n
 	)
 UPDATE inv_exp_nm.u_g3foret gf
 SET u_gini = t.gini
@@ -52,18 +52,19 @@ WHERE gf.npp = t.npp AND incref BETWEEN 0 AND 18;
 
 
 WITH prep_table AS (
-	SELECT npp, gtot, row_number() OVER(PARTITION BY ga.npp ORDER BY gtot) * gtot AS num
-	FROM inv_exp_nm.p3arbre ga
+	select npp, gtot * wac as gtotw, row_number() over(partition by ga.npp order by gtot) * gtot * wac as num
+	from inv_exp_nm.p3point ga
 	),
-	cc_table AS (
-	SELECT ga.npp, cast(count(*) AS float) AS n
-	FROM inv_exp_nm.p3arbre ga 
-	GROUP BY ga.npp
+	cc_table as (
+	select ga.npp, cast(count(*) as float) as n
+	from inv_exp_nm.p3point ga 
+	group by ga.npp
 	),
-	tmp AS (select p.npp, ((2 * sum(p.num)) / (c.n * sum(p.gtot))) - ((c.n + 1) / c.n) as gini
-	FROM prep_table p
-	INNER JOIN cc_table c ON p.npp = c.npp
-	GROUP BY p.npp, c.n
+	tmp AS (
+	select p.npp, ((2 * sum(p.num)) / (c.n * sum(p.gtotw))) - ((c.n + 1) / c.n) as gini
+	from prep_table p
+	inner join cc_table c on p.npp = c.npp
+	group by p.npp, c.n
 	)
 UPDATE inv_exp_nm.u_p3point pp
 SET u_gini = t.gini
@@ -75,7 +76,7 @@ COMMIT;
 
 
 ----------------------------------------------------------------------------------------------
--- Requête fournie par Lionel Hertzog (avec inv_exp-am à l'origine)
+-- Requête initiale fournie par Lionel Hertzog (avec inv_exp-am à l'origine)
 with prep_table as (
 	select npp, gtot, row_number() over(partition by ga.npp order by gtot) * gtot as num
 	from inv_exp_nm.g3arbre ga
@@ -90,3 +91,20 @@ from prep_table p
 inner join cc_table c
 on p.npp = c.npp
 group by p.npp, c.n;
+
+----------------------------------------------------------------------------------------------
+-- Version du 23/05/2024
+with prep_table as (
+	select npp, gtot * wac as gtotw, row_number() over(partition by ga.npp order by gtot) * gtot * wac as num
+	from inv_exp_nm.g3arbre ga
+	),
+	cc_table as (
+	select ga.npp, cast(count(*) as float) as n
+	from inv_exp_nm.g3arbre ga 
+	group by ga.npp
+	)
+select p.npp, ((2 * sum(p.num)) / (c.n * sum(p.gtotw))) - ((c.n + 1) / c.n) as gini
+from prep_table p
+inner join cc_table c
+on p.npp = c.npp
+group by p.npp, c.n

@@ -1,0 +1,3 @@
+-- Chargement du shp
+shp2pgsql.exe -s 931007 -D -i -I -W utf-8 "R:\2_Donnees_Utilisateurs\U_QUAD16_DSF\quadrats.shp" public.quadrat | psql.exe -h test-inv-exp.ign.fr -U **PDrain -d exploitation
+shp2pgsql.exe -s 931007 -D -i -I -W utf-8 "R:\2_Donnees_Utilisateurs\U_QUAD16_DSF\quadrats.shp" public.quadrat | psql.exe -h inv-exp.ign.fr -U **PDrain -d exploitation
