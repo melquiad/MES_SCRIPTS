@@ -321,7 +321,7 @@ CREATE TEMPORARY TABLE public.accroiss
 	--depuis un psql local
 \COPY public.accroiss FROM '/home/lhaugomat/Documents/EXPORTS_DIVERS/accroiss.csv' WITH CSV HEADER DELIMITER ';' NULL AS 'NULL'
 
-
+   
 UPDATE inv_exp_nm.u_g3arbre ua
 SET u_ai1 = a.ir1
 , u_ai2 = a.ir2
@@ -368,7 +368,7 @@ CREATE UNLOGGED TABLE public.accroiss
 	--depuis un psql local
 \COPY public.accroiss FROM '/home/lhaugomat/Documents/EXPORTS/accroiss_2023.csv' WITH CSV HEADER DELIMITER ';' NULL AS 'NULL';
 
-
+   
 UPDATE inv_exp_nm.u_g3arbre ua
 SET u_ai1 = a.ir1
 , u_ai2 = a.ir2
@@ -378,5 +378,19 @@ FROM accroiss a
 WHERE ua.npp = a.npp
 AND ua.a = a.a;
 
+-- désarchivage
+UPDATE metaifn.afchamp
+SET format = 'U_G3ARBRE', famille = 'INV_EXP_NM' 
+WHERE famille = 'ARCHIVE'
+AND format = 'ARCHIVE'
+AND donnee IN ('U_AI1', 'U_AI2', 'U_AI3', 'U_AI4');
+
+
+-- documentation MetaIFN des données
+UPDATE metaifn.afchamp
+SET calcout = 18, validout = 18
+WHERE famille = 'INV_EXP_NM'
+AND format = 'U_G3ARBRE'
+AND donnee IN ('U_AI1', 'U_AI2', 'U_AI3', 'U_AI4');
 
 

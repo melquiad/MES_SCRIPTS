@@ -1,5 +1,9 @@
 BEGIN;
 
+-- suppression de l'ancienne donnée U_ mais pas de son unité qui sera utilisée par la donnée IFN
+DELETE FROM metaifn.afchamp WHERE donnee = 'U_BIOGEO2002';
+DELETE FROM metaifn.addonnee WHERE unite = 'U_BIOGEO2002';
+
 
 -- partie donnee
 SELECT * FROM metaifn.ajoutdonnee('BIOGEO2002', NULL, 'BIOGEO', 'IFN', NULL, 2, 'char(1)', 'CC', TRUE, TRUE, 'Domaines biogéographiques (sens UE)', 'Domaines biogéographiques atlantique, continental, méditérannéen, alpin définis par l UE pour la directive habitat, faune, flore. Couche IG INPN 2017, datée 2002');
@@ -37,7 +41,7 @@ ORDER BY biogeo2002;
 
 ---------------------------------------------------------------
 -- MISE À JOUR CAMPAGNE 2023
--- import de la couche depuis une fenêtre de commandes
+-- import de la couche depuis une fenêtre de commandes linux
 shp2pgsql -s 931007 -D -i -I -W utf-8 /home/lhaugomat/Documents/SIG/regbiofr/regbiofr.shp public.regbiofr | psql -p 5433 -d inventaire -U lhaugomat
 
 BEGIN;
@@ -66,7 +70,6 @@ DROP TABLE public.regbiofr;
 COMMIT;
 
 -- Correction des points NULL
-
 SELECT NPP, BIOGEO2002
 FROM INV_EXP_NM.E2POINT
 WHERE INCREF = 18 AND BIOGEO2002 IS NULL

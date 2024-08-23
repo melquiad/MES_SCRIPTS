@@ -1,16 +1,21 @@
 
+
+-- suppression de l'ancienne donnée U_ mais pas de son unité qui sera utilisée par la donnée IFN
+DELETE FROM metaifn.afchamp WHERE donnee = 'U_APB';
+DELETE FROM metaifn.addonnee WHERE donnee = 'U_APB';
+DELETE FROM metaifn.abmode WHERE unite = 'U_APB';
+DELETE FROM metaifn.abunite WHERE unite = 'U_APB';
+
+
 -- partie unite
 INSERT INTO metaifn.abunite (unite, proprietaire, utype, libelle, definition)
-VALUES ('APB', 'AUTRE', 'NOMINAL', 'Arrêtés de protection de biotope', 'Point d inventaire dans un arrêté de protection de biotope');
+VALUES ('APB', 'IFN', 'NOMINAL', 'Arrêtés de protection de biotope', 'Point d inventaire dans un arrêté de protection de biotope');
+--UPDATE metaifn.abunite SET proprietaire = 'IFN' WHERE unite = 'APB';
 
 INSERT INTO metaifn.abmode (unite, mode, position, classe, etendue, libelle, definition)
 VALUES ('APB', '0', 1, 1, 1, 'HORS arrêté de protection de biotope', 'Point d inventaire situé HORS arrêté de protection de biotope')
 , ('APB', '1', 2, 2, 1, 'Dans arrêté de protection de biotope', 'Point d inventaire situé dans un arrêté de protection de biotope')
 
-DELETE FROM metaifn.afchamp WHERE donnee = 'U_APB';
-DELETE FROM metaifn.addonnee WHERE unite = 'U_APB';
-DELETE FROM metaifn.abmode WHERE unite = 'U_APB';
-DELETE FROM metaifn.abunite WHERE unite = 'U_APB';
 
 -- partie donnee
 SELECT * FROM metaifn.ajoutdonnee('APB', NULL, 'APB', 'IFN', NULL, 2, 'char(1)', 'CC', TRUE, TRUE, $$Arrêtés de protection de biotope$$, $$Point d inventaire dans un arrêté de protection de biotope$$);
