@@ -102,7 +102,28 @@ GRANT SELECT, UPDATE, USAGE ON SEQUENCE inv_exp_nm.s5strate_n_str_seq TO "LGay";
 
 GRANT SELECT ON ALL TABLES IN SCHEMA carto_exo TO exploitation_datareader;
 
+SET ROLE = exploitation_admin;
+GRANT INSERT,SELECT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER ON TABLE utilisateur.autorisation_groupe_donnee TO exploitation_admin;
 
+--------------------- Attribution de droits à Benjamin Detourbet ----------------------------------------------------------------------------------------------------
+SET ROLE = exploitation_admin;
+
+DROP ROLE bdetourbet;
+
+CREATE ROLE BDetourbet WITH 
+	INHERIT
+	LOGIN
+	CONNECTION LIMIT -1
+	VALID UNTIL 'infinity';
+
+GRANT exploitation_u_datawriter TO "bdetourbet";
+GRANT exploitation_datareader TO "bdetourbet";
+
+--------------------- Attribution de droits coord_datareader à Marine Dalmasso en test-exp  --------------------------------------------------------------------
+SET ROLE = exploitation_admin;
+SHOW ROLE;
+
+GRANT coord_datareader TO "MDalmasso";
 
 
 
