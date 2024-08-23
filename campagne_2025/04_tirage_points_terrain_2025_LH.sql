@@ -157,7 +157,7 @@ WITH echants AS (
         SELECT 1
         FROM fla_lt f
         WHERE f.id_transect = p.id_transect
-    )
+    			)
 )
 SELECT pt.ech_actuel, pt.id_point
 , CASE
@@ -311,6 +311,14 @@ INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, pt.geom)
 WHERE tir5 = '1'
 ORDER BY 1, 2;
 
+/*-- requête points retour avec coordonnées pour Thierry:
+SELECT ech_actuel, id_point, npp, round(st_x(geom)), round(st_y(geom))
+FROM pts_retour p
+INNER JOIN point pt USING (id_point)
+WHERE tir5 = '1'
+ORDER BY 1, 2;
+*/
+
 DROP TABLE pts_retour;
 
 -- mise à jour de la déclinaison sur les points
@@ -386,8 +394,8 @@ WHERE e.type_ech = 'IFN' AND e.type_ue = 'P' AND e.phase_stat = 1 AND e.passage 
 AND cp.millesime = 2025 - 5;
 */
 	             
-CREATE TEMPORARY TABLE echants AS (
---WITH echants AS (
+--CREATE TEMPORARY TABLE echants AS (
+WITH echants AS (
 				SELECT c.id_campagne, c.millesime, e.id_ech, e.nom_ech, e.ech_parent, e.type_ue, e.type_ech, e.phase_stat --> récupération des 2 échantillons
 				FROM echantillon e
 				INNER JOIN campagne c USING(id_campagne)
@@ -397,9 +405,9 @@ CREATE TEMPORARY TABLE echants AS (
 						INNER JOIN campagne c USING(id_campagne)
 						INNER JOIN echantillon e1 ON e.ech_parent  = e1.id_ech AND e1.phase_stat = 1 AND e1.type_ue = 'P' AND e1.type_ech = 'IFN'
 						WHERE c.millesime = 2025) e2 ON e.ech_parent = e2.ech_parent
-				);
-CREATE TEMPORARY TABLE echant_pts AS (
---echant_pts AS (
+				)
+--CREATE TEMPORARY TABLE echant_pts AS (
+, echant_pts AS (
 		SELECT DISTINCT pen.id_ech, pen.id_point, en.ech_parent, pen.dep
     	FROM echants en
     	INNER JOIN campagne c ON en.id_campagne = c.id_campagne
@@ -428,11 +436,10 @@ CREATE TEMPORARY TABLE echant_pts AS (
 	    AND en.phase_stat = 1
 	    AND c.millesime = 2025
 		ORDER BY id_ech, id_point
-			);
-
-CREATE TEMPORARY TABLE pts_potentiels_foret_new AS (			
---pts_potentiels_foret_new AS (
-		SELECT ppo.id_ech, ppo.id_point, ppo.cso
+			)
+--CREATE TEMPORARY TABLE pts_potentiels_foret_new AS (			
+, pts_potentiels_foret_new AS (
+		SELECT p.npp, ppo.id_ech, ppo.id_point, ppo.cso
 		FROM point_pi ppo
 		INNER JOIN (SELECT DISTINCT ech_parent FROM echant_pts) ep ON ppo.id_ech = ep.ech_parent
 		INNER JOIN point p ON ppo.id_point = p.id_point
@@ -444,31 +451,32 @@ CREATE TEMPORARY TABLE pts_potentiels_foret_new AS (
 		        AND fp.flpi NOT IN ('0','6')
 		        AND ABS(fp.disti) <= 25)
 		UNION    
-		SELECT ppo.id_ech, ppo.id_point, ppo.cso
+		SELECT p.npp, ppo.id_ech, ppo.id_point, ppo.cso
 		FROM point_pi ppo
 		INNER JOIN (SELECT DISTINCT ech_parent FROM echant_pts) ep ON ppo.id_ech = ep.ech_parent
 		INNER JOIN point p ON ppo.id_point = p.id_point
 		WHERE ppo.cso = '7'
-		AND ppo.ufpi = '1');
-		
-INSERT INTO point_lt (id_ech, id_point, formation, azpoint, decli_pt, echelon_init)
-	SELECT DISTINCT t.id_ech, pp.id_point
+		AND ppo.ufpi = '1')		
+--INSERT INTO point_lt (id_ech, id_point, formation, azpoint, decli_pt, echelon_init)
+	SELECT DISTINCT ppfn.npp, pp.id_point
+	, t.id_ech
 	, CASE 
     WHEN pp.cso IN ('1', '3') THEN 14
     WHEN pp.cso = '4L' THEN 16
     WHEN pp.cso = '5' THEN 32
     ELSE 0
   	END AS formation
-	, tr.aztrans AS azpoint
-	, d.decli
-	, di.ex
+--	, tr.aztrans AS azpoint
+--	, d.decli
+--	, di.ex
+	, round(st_x(p.geom)) AS X, round(st_y(p.geom)) AS Y
 	FROM pts_potentiels_foret_new ppfn
 	INNER JOIN echant_pts ep ON ppfn.id_point = ep.id_point
 	INNER JOIN point_pi pp ON ppfn.id_point = pp.id_point AND ep.id_ech = pp.id_ech
 	INNER JOIN point p ON ppfn.id_point = p.id_point 
-	INNER JOIN transect tr ON p.id_transect = tr.id_transect
-	INNER JOIN public.declinaison2 d ON tr.id_transect = d.id_transect 
-	INNER JOIN sig_inventaire.dir_2024 di ON ST_Intersects(di.geom, p.geom)
+--	INNER JOIN transect tr ON p.id_transect = tr.id_transect
+--	INNER JOIN public.declinaison2 d ON tr.id_transect = d.id_transect 
+--	INNER JOIN sig_inventaire.dir_2024 di ON ST_Intersects(di.geom, p.geom)
 	CROSS JOIN (
 	    SELECT id_ech
 	    FROM echantillon
@@ -618,8 +626,8 @@ DROP TABLE IF EXISTS points_tir;
 
 -- tirage
 CREATE TEMPORARY TABLE points_tir AS 
-SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.id_ech_ph2 AS id_ech, p.id_point, p.formation
-, power(2, t.niveau - 1)::real AS poids, p.st_x, p.st_y
+SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.npp, p.id_ech_ph2 AS id_ech, p.id_point, p.formation
+, power(2, t.niveau - 1)::real AS poids, round(p.st_x) AS X, round(p.st_y) AS Y
 FROM points p
 INNER JOIN tirage t ON p.id_ech_ph2 = t.id_ech
 WHERE p.formation & t.formation > 0
@@ -657,13 +665,13 @@ ORDER BY formation, code_zone;
 DROP TABLE IF EXISTS points_tir_17;
 
 CREATE TEMPORARY TABLE points_tir_17 AS
-SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.id_ech_ph2 AS id_ech, p.id_point, p.formation
+SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.npp, p.id_ech_ph2 AS id_ech, p.id_point, p.formation
 , CASE
     WHEN t.nvx_alleges IS NULL THEN power(2, t.niveau - 1)::REAL
     WHEN array_length(t.nvx_alleges, 1) = 1 THEN power(2.0, t.nvx_alleges[1]) / (power(2.0, t.nvx_alleges[1] - t.niveau + 1) - 1)
     WHEN array_length(t.nvx_alleges, 1) = 2 THEN power(2.0, t.nvx_alleges[2]) / (power(2.0, t.nvx_alleges[2] - t.niveau + 1) - power(2.0, t.nvx_alleges[2] - t.nvx_alleges[1]) - 1)
     WHEN array_length(t.nvx_alleges, 1) = 3 THEN power(2.0, t.nvx_alleges[3]) / (power(2.0, t.nvx_alleges[3] - t.niveau + 1) - power(2.0, t.nvx_alleges[3] - t.nvx_alleges[2]) - power(2.0, t.nvx_alleges[3] - t.nvx_alleges[1]) - 1)
-  END AS poids, p.st_x, p.st_y
+  END AS poids, round(p.st_x) AS X, round(p.st_y) AS Y
 FROM points p
 INNER JOIN tirage_17 t ON p.id_ech_ph2 = t.id_ech
 WHERE p.formation & t.formation > 0
@@ -705,13 +713,13 @@ ORDER BY formation, code_zone;
 DROP TABLE IF EXISTS points_tir_14;
 
 CREATE TEMPORARY TABLE points_tir_14 AS
-SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.id_ech_ph2 AS id_ech, p.id_point, p.formation
+SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.npp, p.id_ech_ph2 AS id_ech, p.id_point, p.formation
 , CASE
     WHEN t.nvx_alleges IS NULL THEN power(2, t.niveau - 1)::REAL
     WHEN array_length(t.nvx_alleges, 1) = 1 THEN power(2.0, t.nvx_alleges[1]) / (power(2.0, t.nvx_alleges[1] - t.niveau + 1) - 1)
     WHEN array_length(t.nvx_alleges, 1) = 2 THEN power(2.0, t.nvx_alleges[2]) / (power(2.0, t.nvx_alleges[2] - t.niveau + 1) - power(2.0, t.nvx_alleges[2] - t.nvx_alleges[1]) - 1)
     WHEN array_length(t.nvx_alleges, 1) = 3 THEN power(2.0, t.nvx_alleges[3]) / (power(2.0, t.nvx_alleges[3] - t.niveau + 1) - power(2.0, t.nvx_alleges[3] - t.nvx_alleges[2]) - power(2.0, t.nvx_alleges[3] - t.nvx_alleges[1]) - 1)
-  END AS poids, p.st_x, p.st_y
+  END AS poids, round(p.st_x) AS X, round(p.st_y) AS Y
 FROM points p
 INNER JOIN tirage_14 t ON p.id_ech_ph2 = t.id_ech
 WHERE p.formation & t.formation > 0
@@ -754,13 +762,13 @@ ORDER BY formation, code_zone;
 DROP TABLE IF EXISTS points_tir_10;
 
 CREATE TEMPORARY TABLE points_tir_10 AS
-SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.id_ech_ph2 AS id_ech, p.id_point, p.formation
+SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.npp, p.id_ech_ph2 AS id_ech, p.id_point, p.formation
 , CASE
     WHEN t.nvx_alleges IS NULL THEN power(2, t.niveau - 1)::REAL
     WHEN array_length(t.nvx_alleges, 1) = 1 THEN power(2.0, t.nvx_alleges[1]) / (power(2.0, t.nvx_alleges[1] - t.niveau + 1) - 1)
     WHEN array_length(t.nvx_alleges, 1) = 2 THEN power(2.0, t.nvx_alleges[2]) / (power(2.0, t.nvx_alleges[2] - t.niveau + 1) - power(2.0, t.nvx_alleges[2] - t.nvx_alleges[1]) - 1)
     WHEN array_length(t.nvx_alleges, 1) = 3 THEN power(2.0, t.nvx_alleges[3]) / (power(2.0, t.nvx_alleges[3] - t.niveau + 1) - power(2.0, t.nvx_alleges[3] - t.nvx_alleges[2]) - power(2.0, t.nvx_alleges[3] - t.nvx_alleges[1]) - 1)
-  END AS poids, p.st_x, p.st_y
+  END AS poids, round(p.st_x) AS X, round(p.st_y) AS Y
 FROM points p
 INNER JOIN tirage_10 t ON p.id_ech_ph2 = t.id_ech
 WHERE p.formation & t.formation > 0
@@ -804,7 +812,7 @@ ORDER BY formation, code_zone;
 DROP TABLE IF EXISTS points_tir_12;
 
 CREATE TEMPORARY TABLE points_tir_12 AS
-SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.id_ech_ph2 AS id_ech, p.id_point, p.formation
+SELECT DISTINCT ON (p.id_ech_ph2, p.id_point) p.npp, p.id_ech_ph2 AS id_ech, p.id_point, p.formation
 , CASE
     WHEN t.nvx_alleges IS NULL THEN power(2, t.niveau - 1)::REAL
     WHEN array_length(t.nvx_alleges, 1) = 1 THEN power(2.0, t.nvx_alleges[1]) / (power(2.0, t.nvx_alleges[1] - t.niveau + 1) - 1)
@@ -830,20 +838,18 @@ FROM points_tir_12;
 
 
 
-
-
-
--- tirage définitif (allègement à 12.5 %)
-
+----------------------------------------------
+-- tirage définitif (allègement à 14 %)
+----------------------------------------------
 UPDATE inv_prod_new.tirage
 SET nvx_alleges = 
     CASE
-        WHEN niveau = 2 THEN array[4]::int2[]
-        WHEN niveau = 3 THEN array[5]::int2[]
-        WHEN niveau = 4 THEN array[6]::int2[]
-    END
+        WHEN niveau = 2 THEN array[4, 7]::int2[]
+        WHEN niveau = 3 THEN array[5, 8]::int2[]
+        WHEN niveau = 4 THEN array[6, 9]::int2[]
+    END 
 WHERE formation = 14
-AND id_ech = 114;
+AND id_ech = 138;
 
 
 TABLE tirage 
@@ -885,7 +891,7 @@ SELECT CASE
             WHEN formation & 960 > 0 THEN '3_LHF'
             ELSE 'X_Problème'
         END AS formation, count(*) AS nb_pts_terrain
-FROM points_tir
+FROM points_tir_final
 GROUP BY 1
 ORDER BY 1;
 
@@ -906,7 +912,7 @@ SELECT  CASE
     ELSE 'X_Problème' 
   END AS dir_init
 , count(*) AS nb_pts_terrain
-FROM points_tir_17 p
+FROM points_tir_final p
 INNER JOIN point p1 USING (id_point)
 LEFT JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p1.geom)
 GROUP BY 1, 2
@@ -922,7 +928,7 @@ SELECT id_ech, id_point, st_x(p1.geom) as xl, st_y(p1.geom) yl
     WHEN d.ex = '06' THEN 'DIRNE'
     ELSE 'X_Problème' 
   END AS dir_init
-FROM points_tir p
+FROM points_tir_final p
 INNER JOIN point p1 USING (id_point)
 LEFT JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p1.geom);
 
@@ -936,7 +942,7 @@ SELECT  CASE
             ELSE 'X_Problème'
         END AS formation
 , p1.depn, count(*) AS nb_pts_terrain
-FROM points_tir p
+FROM points_tir_final p
 INNER JOIN points p1 USING (id_point)
 INNER JOIN point p2 USING (id_point)
 INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p2.geom)
@@ -990,12 +996,12 @@ ORDER BY 1, 2;
 
 INSERT INTO point_lt (id_ech, id_point, formation, azpoint, decli_pt)
 SELECT pt.id_ech, pt.id_point, pt.formation, t.aztrans, t.decli
---, d.ex AS echelon_init
+, d.ex AS echelon_init
 FROM points_tir_final pt
 INNER JOIN point p USING (id_point)
 INNER JOIN transect t USING (id_transect)
 --INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, ST_Transform(p.geom, 910002))  --> les deux géométries sont en 931007 en test, pas besoin de transform
---INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p.geom)
+INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p.geom)
 ORDER BY id_ech, id_point;
 
 -- Mise à jour à posteriori de l'échelon dans point_lt
@@ -1008,7 +1014,7 @@ WITH e AS
 	SELECT vlp1.id_ech, p.id_point, d.ex AS echelon_init
 	FROM v_liste_points_lt1 vlp1
 	INNER JOIN point p USING (id_point)
-	INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p.geom)
+	INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p.geom)
 	WHERE vlp1.annee = 2025
 	)
 UPDATE point_lt pl
@@ -1022,7 +1028,7 @@ WITH e AS
 	SELECT vlp2.id_ech, p.id_point, d.ex AS echelon_init
 	FROM v_liste_points_lt2 vlp2
 	INNER JOIN point p USING (id_point)
-	INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p.geom)
+	INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p.geom)
 	WHERE vlp2.annee = 2025
 	)
 UPDATE point_lt pl
@@ -1036,7 +1042,7 @@ WITH e AS
 	SELECT c.id_ech, p.id_point, d.ex AS echelon_init
 	FROM v_liste_points_lt1_pi2 c
 	INNER JOIN point p USING (id_point)
-	INNER JOIN sig_inventaire.dir d ON ST_Intersects(d.geom, p.geom)
+	INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p.geom)
 	WHERE c.annee = 2025
 	)
 UPDATE point_lt pl

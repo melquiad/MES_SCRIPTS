@@ -233,7 +233,7 @@ CREATE TEMPORARY TABLE date_photo_point (
     dep char(2),
     datephoto date);
 
-\COPY date_photo_point FROM '/home/lhaugomat/Documents/GITLAB/production/Incref19/donnees/pi2024_datepva.csv' WITH CSV DELIMITER ',' NULL AS '' HEADER
+\COPY date_photo_point FROM '/home/lhaugomat/Documents/GITLAB/production/Campagne_2025/donnees/datephoto_pi2025.csv' WITH CSV DELIMITER ',' NULL AS '' HEADER
 
 UPDATE inv_prod_new.point_pi pp
 SET datephoto = a.datephoto
