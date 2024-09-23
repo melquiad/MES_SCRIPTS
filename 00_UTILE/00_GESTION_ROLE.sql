@@ -125,6 +125,13 @@ SHOW ROLE;
 
 GRANT coord_datareader TO "MDalmasso";
 
+-------------------- Attribution droit de lecture sur la table agent_lt  (demande de Julien) --------------------------------------------------------------------
+SET ROLE = production_admin;
+GRANT SELECT ON TABLE inv_prod_new.agent_lt TO production_datareader;
+
+RESET ROLE;
+SHOW ROLE;
+
 
 
 

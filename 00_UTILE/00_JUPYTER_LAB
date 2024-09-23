@@ -1,0 +1,8 @@
+## Lancement de jupyter lab
+
+source jupyterlab/bin/activate
+jupyter lab
+
+## Une fois le notebook fermé et log out
+deactivate
+

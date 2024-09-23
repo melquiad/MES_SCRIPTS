@@ -22,3 +22,4 @@ SHOW SEARCH_PATH;
 SELECT postgis_proj_version();
 SELECT postgis_full_version();
 SELECT postgis_version();
+
