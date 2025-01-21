@@ -1,0 +1,3 @@
+
+
+ldapsearch -x -H ldap://dc-nogent.ign.fr -b "dc=ign,dc=fr" -D ad-consult-pg-sisfe@ign.fr -w "Wa9FJ9XiAn" "(sAMAccountName=tmoreal-de-brevans)"

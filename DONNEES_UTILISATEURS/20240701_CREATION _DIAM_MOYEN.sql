@@ -1,3 +1,9 @@
+
+--contrôle
+SELECT f.incref , count(f.u_diam_moy) 
+FROM inv_exp_nm.u_g3foret f
+GROUP BY incref;
+
 BEGIN;
 
 SELECT * FROM metaifn.ajoutdonnee ('DIAM_MOY', NULL, 'CLAD', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE
@@ -12,6 +18,12 @@ donnee)
 VALUES ('IFN', 'DIAM_MOY');
 
 COMMIT;
+
+-- on recopie les colonnes u_diam_moy de u_g3forêt et u_p3point dans les tables g3forêt et p3point
+
+UPDATE inv_exp_nm.g3foret f
+SET diam_moy = u.u_diam_moy
+FROM inv_exp_nm.u_g3foret u
 
 BEGIN;
 

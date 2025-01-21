@@ -1,0 +1,3 @@
+
+
+update su_44.for_44 set geom = st_makevalid(geom) where not st_isvalid(geom);

@@ -1,0 +1,10 @@
+SELECT VERSION();
+
+CREATE EXTENSION postgis;
+
+SELECT postgis_full_version();
+SELECT POSTGIS_PROJ_VERSION();
+
+
+SHOW ROLE;
+SET ROLE = lhaugomat;

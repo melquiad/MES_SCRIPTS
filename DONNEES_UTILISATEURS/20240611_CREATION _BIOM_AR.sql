@@ -34,7 +34,7 @@ WHERE p.npp = up.npp
 AND p.a = up.a;
 
 
--- On supprime les champs dans u_g3arbre et u_p3arbre
+/*-- On supprime les champs dans u_g3arbre et u_p3arbre
 ALTER TABLE inv_exp_nm.u_g3arbre DROP COLUMN u_biom_ar;
 ALTER TABLE inv_exp_nm.u_p3arbre DROP COLUMN u_biom_ar;
-
+*/

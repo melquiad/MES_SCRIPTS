@@ -1,0 +1,78 @@
+15,L2 forest type,spruce-dominated boreal,1.1 ,1.1 Spruce-dominated boreal forest.,1.1 
+16,L2 forest type,pine-dominated boreal,1.2 ,1.2 Pine-dominated boreal forest.,1.2 
+17,L2 forest type,hemiboreal,2.1 ,2.1 Hemiboreal forest.,2.1 
+18,L2 forest type,nemoral Scots pine,2.2 ,2.2 Nemoral Scots pine forest.,2.2 
+19,L2 forest type,nemoral spruce,2.3 ,2.3 Nemoral spruce forest.,2.3 
+20,L2 forest type,nemoral Black pine,2.4 ,2.4 Nemoral Black pine forest.,2.4 
+21,L2 forest type,mixed Scots pine-birch,2.5 ,2.5 Mixed Scots pine-birch forest.,2.5 
+22,L2 forest type,mixed Scots pine-pedunculate oak,2.6 ,2.6 Mixed Scots pine-pedunculate oak forest.,2.6 
+23,L2 forest type,subalpine larch-arolla pine and dwarf pine,3.1 ,3.1 Subalpine larch-arolla pine and dwarf pine forest.,3.1 
+24,L2 forest type,subalpine and mountainous spruce and mountainous mixed spruce-silver fir,3.2 ,3.2 Subalpine and mountainous spruce and mountainous mixed spruce-silver fir forest.,3.2 
+25,L2 forest type,Alpine Scots pine and Black pine,3.3 ,3.3 Alpine Scots pine and Black pine forest.,3.3 
+26,L2 forest type,acidophylous oakwood,4.1 ,4.1 Acidophylous oakwood.,4.1 
+27,L2 forest type,oak-birch forest,4.2 ,4.2 Oak-birch forest.,4.2 
+28,L2 forest type,pedunculate oak-hornbeam,5.1 ,5.1 Pedunculate oak-hornbeam forest.,5.1 
+29,L2 forest type,sessile oak-hornbeam,5.2 ,5.2 Sessile oak-hornbeam forest.,5.2 
+30,L2 forest type,ashwood and oak-ash,5.3 ,5.3 Ashwood and oak-ash forest.,5.3 
+31,L2 forest type,maple-oak,5.4 ,5.4 Maple-oak forest.,5.4 
+32,L2 forest type,lime-oak,5.5 ,5.5 Lime-oak forest.,5.5 
+33,L2 forest type,maple-lime,5.6 ,5.6 Maple-lime forest.,5.6 
+34,L2 forest type,lime,5.7 ,5.7 Lime forest.,5.7 
+35,L2 forest type,ravine and slope,5.8 ,5.8 Ravine and slope forest.,5.8 
+36,L2 forest type,other mesophytic deciduous,5.9 ,5.9 Other mesophytic deciduous forests.,5.9 
+37,L2 forest type,lowland beech of southern Scandinavia and north central Europe,6.1 ,6.1 Lowland beech forest of southern Scandinavia and north central Europe.,6.1 
+38,L2 forest type,Atlantic and subatlantic lowland beech,6.2 ,6.2 Atlantic and subatlantic lowland beech forest.,6.2 
+39,L2 forest type,subatlantic submountainous beech,6.3 ,6.3 Subatlantic submountainous beech forest.,6.3 
+40,L2 forest type,central European submountainous beech,6.4 ,6.4 Central European submountainous beech forest.,6.4 
+41,L2 forest type,Carpathian submountainous beech,6.5 ,6.5 Carpathian submountainous beech forest.,6.5 
+42,L2 forest type,Illyrian submountainous beech,6.6 ,6.6 Illyrian submountainous beech forest.,6.6 
+43,L2 forest type,Moesian submountainous beech,6.7 ,6.7 Moesian submountainous beech forest.,6.7 
+44,L2 forest type,south western European mountainous beech,7.1 ,"7.1 South western European mountainous beech forest (Cantabrians, Pyrenees, central Massif, south western Alps).",7.1 
+45,L2 forest type,central European mountainous beech,7.2 ,7.2 Central European mountainous beech forest.,7.2 
+46,L2 forest type,Apennine-Corsican mountainous beech,7.3 ,7.3 Apennine-Corsican mountainous beech forest.,7.3 
+47,L2 forest type,Illyrian mountainous beech,7.4 ,7.4 Illyrian mountainous beech forest.,7.4 
+48,L2 forest type,Carpathian mountainous beech,7.5 ,7.5 Carpathian mountainous beech forest.,7.5 
+49,L2 forest type,Moesian mountainous beech,7.6 ,7.6 Moesian mountainous beech forest.,7.6 
+50,L2 forest type,Crimean mountainous beech,7.7 ,7.7 Crimean mountainous beech forest.,7.7 
+51,L2 forest type,oriental beech and hornbeam-oriental beech,7.8 ,7.8 Oriental beech and hornbeam-oriental beech forest.,7.8 
+52,L2 forest type,downy oak,8.1 ,8.1 Downy oak forest.,8.1 
+53,L2 forest type,"Turkey oak, Hungarian oak and Sessile oak",8.2 ,"8.2 Turkey oak, Hungarian oak and Sessile oak forest.",8.2 
+54,L2 forest type,Pyrenean oak,8.3 ,8.3 Pyrenean oak forest.,8.3 
+55,L2 forest type,Portuguese oak and Mirbeck's oak Iberian,8.4 ,8.4 Portuguese oak and Mirbeck's oak Iberian forest.,8.4 
+56,L2 forest type,Macedonian oak,8.5 ,8.5 Macedonian oak forest.,8.5 
+57,L2 forest type,Valonia oak,8.6 ,8.6 Valonia oak forest.,8.6 
+58,L2 forest type,chestnut forest,8.7 ,8.7 Chestnut forest.,8.7 
+59,L2 forest type,other thermophilous deciduous,8.8 ,8.8 Other thermophilous deciduous forests.,8.8 
+60,L2 forest type,"mediterranean evergreen oak, cork oak and holm oak forest Kermes and alder-leaved oak",9.1 ,9.1 Mediterranean evergreen oak forest Cork oak and holm oak forest Kermes and alder-leaved oak forest.,9.1 
+61,L2 forest type,olive-carob,9.2 ,9.2 Olive-carob forest.,9.2 
+62,L2 forest type,palm groves,9.3 ,9.3 Palm groves.,9.3 
+63,L2 forest type,Macaronesian laurisilva,9.4 ,9.4 Macaronesian laurisilva.,9.4 
+64,L2 forest type,other sclerophlyllous,9.5 ,9.5 Other sclerophlyllous forests.,9.5 
+65,L2 forest type,thermophilous pine,10.1,10.1 Thermophilous pine forest.,10.1
+66,L2 forest type,Mediterranean and Anatolian Black pine,10.2,10.2 Mediterranean and Anatolian Black pine forest.,10.2
+67,L2 forest type,Canarian pine,10.3,10.3 Canarian pine forest.,10.3
+68,L2 forest type,Mediterranean and Anatolian Scots pine,10.4,10.4 Mediterranean and Anatolian Scots pine forest.,10.4
+69,L2 forest type,Alti-Mediterranean pine,10.5,10.5 Alti-Mediterranean pine forest.,10.5
+70,L2 forest type,Mediterranean and Anatolian fir,10.6,10.6 Mediterranean and Anatolian fir forest.,10.6
+71,L2 forest type,juniper forest,10.7,10.7 Juniper forest.,10.7
+72,L2 forest type,cypress forest,10.8,10.8 Cypress forest.,10.8
+73,L2 forest type,cedar forest,10.9,10.9 Cedar forest.,10.9
+74,L2 forest type,tetraclinis articulata stands,10.10,10.10 Tetraclinis articulata stands.,10.10
+75,L2 forest type,Mediterranean yew,10.11,10.11 Mediterranean yew stands.,10.11
+76,L2 forest type,conifer dominated or mixed mire,11.1,11.1 Conifer dominated or mixed mire forest.,11.1
+77,L2 forest type,alder swamp,11.2,11.2 Alder swamp forest.,11.2
+78,L2 forest type,birch swamp,11.3,11.3 Birch swamp forest.,11.3
+79,L2 forest type,pedunculate oak swamp,11.4,11.4 Pedunculate oak swamp forest.,11.4
+80,L2 forest type,aspen swamp,11.5,11.5 Aspen swamp forest.,11.5
+81,L2 forest type,riparian forest,12.1,12.1 Riparian forest.,12.1
+82,L2 forest type,fluvial forest,12.2,12.2 Fluvial forest.,12.2
+83,L2 forest type,Mediterranean and Macaronesian riparian,12.3,12.3 Mediterranean and Macaronesian riparian forest.,12.3
+84,L2 forest type,alder forest,13.1,13.1 Alder forest.,13.1
+85,L2 forest type,Italian alder forest,13.2,13.2 Italian alder forest.,13.2
+86,L2 forest type,boreal birch forest,13.3,13.3 Boreal birch forest.,13.3
+87,L2 forest type,southern boreal birch forest,13.4,13.4 Southern boreal birch forest.,13.4
+88,L2 forest type,aspen forest,13.5,13.5 Aspen forest.,13.5
+89,L2 forest type,plantations of site-native species,14.1,14.1 Plantations of site-native species.,14.1
+90,L2 forest type,plantations of not-site-native species and self-sown exotic forest,14.2,14.2 Plantations of not-site-native species and self-sown exotic forest.,14.2
+91,silvicultural intervention,intervention conducted,Silv,Silvicultural intervention was conducted.,Silv
+92,silvicultural intervention,no intervention,Silv,Silvicultural intervention was not conducted.,Silv

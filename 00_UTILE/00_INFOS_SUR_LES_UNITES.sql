@@ -6,7 +6,7 @@ WITH u AS
 	, COALESCE(min(i.incref + 2005), 2020) AS debut, COALESCE(max(i.incref + 2005), 2023) AS fin
 	FROM metaifn.addonnee d
 	LEFT JOIN metaifn.aiunite i ON d.unite = i.unite AND i.usite = 'P' AND i.incref BETWEEN 0 AND 18
-	WHERE d.donnee ~~* 'U_RUT_AF'
+	WHERE d.donnee ~~* 'MA'
 	GROUP BY 1, 2
 	)
 SELECT u.donnee, u.unite, ab."mode", ab.libelle, ab.definition
@@ -18,7 +18,7 @@ INNER JOIN metaifn.abmode ab ON u.unite = ab.unite;
 SELECT d.donnee, d.unite, i.incref, i.dcunite, d.libelle
 FROM metaifn.addonnee d
 LEFT JOIN metaifn.aiunite i ON d.unite = i.unite AND i.usite = 'P'  AND i.incref BETWEEN 0 AND 18
-WHERE d.donnee ~~* 'U_RUT_AF'
+WHERE d.donnee ~~* 'MR'
 ORDER BY incref;
 
 
@@ -27,7 +27,7 @@ SELECT d.donnee, COALESCE(i.dcunite, d.unite) AS unite
 , COALESCE(min(i.incref + 2005), 2020) AS debut, COALESCE(max(i.incref + 2005), 2023) AS fin
 FROM metaifn.addonnee d
 LEFT JOIN metaifn.aiunite i ON d.unite = i.unite AND i.usite = 'P' AND i.incref BETWEEN 0 AND 18
-WHERE d.donnee ~~* 'qleve'
+WHERE d.donnee ~~* 'MR'
 GROUP BY 1, 2
 ORDER BY 3, 4;
 

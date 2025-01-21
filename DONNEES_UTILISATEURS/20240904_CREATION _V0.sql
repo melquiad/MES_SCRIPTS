@@ -10,12 +10,12 @@ ALTER TABLE inv_exp_nm.p3arbre ADD COLUMN v0 float(8);
 -- Documentation metaifn
 
 -- partie donnee
-SELECT * FROM metaifn.ajoutdonnee('PV0', NULL, 'm3', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE, 'Volume aérien total', 'Volume tige (du sol jusqu’à la cime) + branches (tous diamètres).
+SELECT * FROM metaifn.ajoutdonnee('V0', NULL, 'm3', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE, 'Volume aérien total', 'Volume tige (du sol jusqu’à la cime) + branches (tous diamètres).
 Tarifs de cubage issus du projet de recherche national Carbofor. Données de cubage historiques (période allant de 1920 à 1950 environ) organisées en base de données par l’INRA.');
 
 -- partie champ
-SELECT * FROM metaifn.ajoutchamp('PV0', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
-SELECT * FROM metaifn.ajoutchamp('PV0', 'P3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
+SELECT * FROM metaifn.ajoutchamp('V0', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
+SELECT * FROM metaifn.ajoutchamp('V0', 'P3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
 
 -- Calcul de la donnée à partir de U_BIOM_AR
 

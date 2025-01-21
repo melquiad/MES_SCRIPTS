@@ -1,0 +1,77 @@
+unite,mode,position,classe,libelle,definition
+U_EFT,1.1 ,1,1,spruce-dominated boreal,1.1 Spruce-dominated boreal forest.
+U_EFT,1.2 ,2,2,pine-dominated boreal,1.2 Pine-dominated boreal forest.
+U_EFT,2.1 ,3,3,hemiboreal,2.1 Hemiboreal forest.
+U_EFT,2.2 ,4,4,nemoral Scots pine,2.2 Nemoral Scots pine forest.
+U_EFT,2.3 ,5,5,nemoral spruce,2.3 Nemoral spruce forest.
+U_EFT,2.4 ,6,6,nemoral Black pine,2.4 Nemoral Black pine forest.
+U_EFT,2.5 ,7,7,mixed Scots pine-birch,2.5 Mixed Scots pine-birch forest.
+U_EFT,2.6 ,8,8,mixed Scots pine-pedunculate oak,2.6 Mixed Scots pine-pedunculate oak forest.
+U_EFT,3.1 ,9,9,subalpine larch-arolla pine and dwarf pine,3.1 Subalpine larch-arolla pine and dwarf pine forest.
+U_EFT,3.2 ,10,10,subalp. and mount. spruce and mixed spruce-silver fir forest,3.2 Subalpine and mountainous spruce and mountainous mixed spruce-silver fir forest.
+U_EFT,3.3 ,11,11,Alpine Scots pine and Black pine,3.3 Alpine Scots pine and Black pine forest.
+U_EFT,4.1 ,12,12,acidophylous oakwood,4.1 Acidophylous oakwood.
+U_EFT,4.2 ,13,13,oak-birch forest,4.2 Oak-birch forest.
+U_EFT,5.1 ,14,14,pedunculate oak-hornbeam,5.1 Pedunculate oak-hornbeam forest.
+U_EFT,5.2 ,15,15,sessile oak-hornbeam,5.2 Sessile oak-hornbeam forest.
+U_EFT,5.3 ,16,16,ashwood and oak-ash,5.3 Ashwood and oak-ash forest.
+U_EFT,5.4 ,17,17,maple-oak,5.4 Maple-oak forest.
+U_EFT,5.5 ,18,18,lime-oak,5.5 Lime-oak forest.
+U_EFT,5.6 ,19,19,maple-lime,5.6 Maple-lime forest.
+U_EFT,5.7 ,20,20,lime,5.7 Lime forest.
+U_EFT,5.8 ,21,21,ravine and slope,5.8 Ravine and slope forest.
+U_EFT,5.9 ,22,22,other mesophytic deciduous,5.9 Other mesophytic deciduous forests.
+U_EFT,6.1 ,23,23,lowland beech of south Scandinavia and north central Europe,6.1 Lowland beech forest of southern Scandinavia and north central Europe.
+U_EFT,6.2 ,24,24,Atlantic and subatlantic lowland beech,6.2 Atlantic and subatlantic lowland beech forest.
+U_EFT,6.3 ,25,25,subatlantic submountainous beech,6.3 Subatlantic submountainous beech forest.
+U_EFT,6.4 ,26,26,central European submountainous beech,6.4 Central European submountainous beech forest.
+U_EFT,6.5 ,27,27,Carpathian submountainous beech,6.5 Carpathian submountainous beech forest.
+U_EFT,6.6 ,28,28,Illyrian submountainous beech,6.6 Illyrian submountainous beech forest.
+U_EFT,6.7 ,29,29,Moesian submountainous beech,6.7 Moesian submountainous beech forest.
+U_EFT,7.1 ,30,30,south western European mountainous beech,"7.1 South western European mountainous beech forest (Cantabrians, Pyrenees, central Massif, south western Alps)."
+U_EFT,7.2 ,31,31,central European mountainous beech,7.2 Central European mountainous beech forest.
+U_EFT,7.3 ,32,32,Apennine-Corsican mountainous beech,7.3 Apennine-Corsican mountainous beech forest.
+U_EFT,7.4 ,33,33,Illyrian mountainous beech,7.4 Illyrian mountainous beech forest.
+U_EFT,7.5 ,34,34,Carpathian mountainous beech,7.5 Carpathian mountainous beech forest.
+U_EFT,7.6 ,35,35,Moesian mountainous beech,7.6 Moesian mountainous beech forest.
+U_EFT,7.7 ,36,36,Crimean mountainous beech,7.7 Crimean mountainous beech forest.
+U_EFT,7.8 ,37,37,oriental beech and hornbeam-oriental beech,7.8 Oriental beech and hornbeam-oriental beech forest.
+U_EFT,8.1 ,38,38,downy oak,8.1 Downy oak forest.
+U_EFT,8.2 ,39,39,"Turkey oak, Hungarian oak and Sessile oak","8.2 Turkey oak, Hungarian oak and Sessile oak forest."
+U_EFT,8.3 ,40,40,Pyrenean oak,8.3 Pyrenean oak forest.
+U_EFT,8.4 ,41,41,Portuguese oak and Mirbeck's oak Iberian,8.4 Portuguese oak and Mirbeck's oak Iberian forest.
+U_EFT,8.5 ,42,42,Macedonian oak,8.5 Macedonian oak forest.
+U_EFT,8.6 ,43,43,Valonia oak,8.6 Valonia oak forest.
+U_EFT,8.7 ,44,44,chestnut forest,8.7 Chestnut forest.
+U_EFT,8.8 ,45,45,other thermophilous deciduous,8.8 Other thermophilous deciduous forests.
+U_EFT,9.1 ,46,46,Mediterranean evergreen oak forest,9.1 Mediterranean evergreen oak forest Cork oak and holm oak forest Kermes and alder-leaved oak forest.
+U_EFT,9.2 ,47,47,olive-carob,9.2 Olive-carob forest.
+U_EFT,9.3 ,48,48,palm groves,9.3 Palm groves.
+U_EFT,9.4 ,49,49,Macaronesian laurisilva,9.4 Macaronesian laurisilva.
+U_EFT,9.5 ,50,50,other sclerophlyllous,9.5 Other sclerophlyllous forests.
+U_EFT,10.1,51,51,thermophilous pine,10.1 Thermophilous pine forest.
+U_EFT,10.2,52,52,Mediterranean and Anatolian Black pine,10.2 Mediterranean and Anatolian Black pine forest.
+U_EFT,10.3,53,53,Canarian pine,10.3 Canarian pine forest.
+U_EFT,10.4,54,54,Mediterranean and Anatolian Scots pine,10.4 Mediterranean and Anatolian Scots pine forest.
+U_EFT,10.5,55,55,Alti-Mediterranean pine,10.5 Alti-Mediterranean pine forest.
+U_EFT,10.6,56,56,Mediterranean and Anatolian fir,10.6 Mediterranean and Anatolian fir forest.
+U_EFT,10.7,57,57,juniper forest,10.7 Juniper forest.
+U_EFT,10.8,58,58,cypress forest,10.8 Cypress forest.
+U_EFT,10.9,59,59,cedar forest,10.9 Cedar forest.
+U_EFT,10.10,60,60,tetraclinis articulata stands,10.10 Tetraclinis articulata stands.
+U_EFT,10.11,61,61,Mediterranean yew,10.11 Mediterranean yew stands.
+U_EFT,11.1,62,62,conifer dominated or mixed mire,11.1 Conifer dominated or mixed mire forest.
+U_EFT,11.2,63,63,alder swamp,11.2 Alder swamp forest.
+U_EFT,11.3,64,64,birch swamp,11.3 Birch swamp forest.
+U_EFT,11.4,65,65,pedunculate oak swamp,11.4 Pedunculate oak swamp forest.
+U_EFT,11.5,66,66,aspen swamp,11.5 Aspen swamp forest.
+U_EFT,12.1,67,67,riparian forest,12.1 Riparian forest.
+U_EFT,12.2,68,68,fluvial forest,12.2 Fluvial forest.
+U_EFT,12.3,69,69,Mediterranean and Macaronesian riparian,12.3 Mediterranean and Macaronesian riparian forest.
+U_EFT,13.1,70,70,alder forest,13.1 Alder forest.
+U_EFT,13.2,71,71,Italian alder forest,13.2 Italian alder forest.
+U_EFT,13.3,72,72,boreal birch forest,13.3 Boreal birch forest.
+U_EFT,13.4,73,73,southern boreal birch forest,13.4 Southern boreal birch forest.
+U_EFT,13.5,74,74,aspen forest,13.5 Aspen forest.
+U_EFT,14.1,75,75,plantations of site-native species,14.1 Plantations of site-native species.
+U_EFT,14.2,76,76,plant. of not-site-native spec. and self-sown exotic forest,14.2 Plantations of not-site-native species and self-sown exotic forest.

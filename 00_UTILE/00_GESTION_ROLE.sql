@@ -20,7 +20,7 @@ ALTER VIEW metaifn.v_habitats OWNER TO exploitation_admin;
 
 SET ROLE = postgres;
 
-CREATE ROLE lhaugomat WITH 
+CREATE ROLE LHaugomat WITH 
 	SUPERUSER
 	CREATEDB
 	CREATEROLE
@@ -31,10 +31,10 @@ CREATE ROLE lhaugomat WITH
 	CONNECTION LIMIT -1
 	VALID UNTIL 'infinity';
 
-ALTER ROLE lhaugomat WITH ENCRYPTED PASSWORD 'password';
+ALTER ROLE LHaugomat WITH ENCRYPTED PASSWORD 'password';
 
-GRANT pg_read_all_data TO "lhaugomat";
-REVOKE pg_read_all_data FROM "lhaugomat";
+GRANT pg_read_all_data TO "LHaugomat";
+REVOKE pg_read_all_data FROM "LHaugomat";
 
 SHOW ROLE;
 RESET ROLE;
@@ -131,6 +131,46 @@ GRANT SELECT ON TABLE inv_prod_new.agent_lt TO production_datareader;
 
 RESET ROLE;
 SHOW ROLE;
+
+-------------------- Attribution droit de lecture sur la table tarifs  (demande de Amael Le Squin) --------------------------------------------------------------------
+SET ROLE = exploitation_admin;
+GRANT SELECT ON TABLE prod_exp.tarifs TO prod_exp_datareader;
+
+RESET ROLE;
+SHOW ROLE;
+
+--------------------- Attribution de droits à Theophile Moreal de Brevans ----------------------------------------------------------------------------------------------------
+SET ROLE = exploitation_admin;
+SET ROLE = postgres;
+
+DROP ROLE "tmoreal-de-brevans";
+
+CREATE ROLE "tmoreal-de-brevans" WITH 
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
+	INHERIT
+	LOGIN
+	NOREPLICATION
+	NOBYPASSRLS
+	CONNECTION LIMIT -1;
+
+GRANT exploitation_datareader TO "tmoreal-de-brevans";
+GRANT prod_exp_datareader TO "tmoreal-de-brevans";
+GRANT exploitation_u_datawriter TO "tmoreal-de-brevans";
+
+SHOW ROLE;
+RESET ROLE;
+
+----------- Attribution de droits sur les tables renouv et espar_renouv ------------------
+SET ROLE = production_admin;
+GRANT SELECT ON TABLE inv_prod_new.espar_renouv TO production_datareader;
+GRANT SELECT ON TABLE inv_prod_new.renouv TO production_datareader;
+
+RESET ROLE;
+SHOW ROLE;
+
+
 
 
 
