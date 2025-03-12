@@ -20,3 +20,7 @@ find . -type f -iname "*.jpeg" -or -iname "*.jpg"
 find . -type d       --> pour les répertoires
 find . -size +400M -and -size -500M
 find . -size +700M
+
+--- KILL ---
+ps -aux | grep dbeaver
+kill -9 PID

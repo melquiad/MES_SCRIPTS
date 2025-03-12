@@ -4,7 +4,7 @@
 BEGIN;
 
 INSERT INTO metaifn.abunite (unite, proprietaire, utype, libelle, definition)
-VALUES ('QUAD', 'AUTRE', 'NOMINAL', 'Quadrats 16x16 km du DSF', 'Découpage géographique selon les quadrats de 16 km par 16 km du DSF');
+VALUES ('QUAD', 'IFN', 'NOMINAL', 'Quadrats 16x16 km du DSF', 'Découpage géographique selon les quadrats de 16 km par 16 km du DSF');
 
 INSERT INTO metaifn.abmode (unite, mode, position, classe, etendue, libelle, definition)
 VALUES ('QUAD','0055-2412',1,1,1,'OUESSANT','OUESSANT')

@@ -1,8 +1,17 @@
 
+
+--> DONNEE à CREER AUSSI EN PEUPLERAIE : pour l'instant elle n'existe qu'en forêt.
+
+-- on ajoute les colonnes en base
+ALTER TABLE inv_exp_nm.g3foret ADD COLUMN diam_moy FLOAT;
+ALTER TABLE inv_exp_nm.p3point ADD COLUMN diam_moy FLOAT;
+
+/*
 --contrôle
 SELECT f.incref , count(f.u_diam_moy) 
 FROM inv_exp_nm.u_g3foret f
 GROUP BY incref;
+*/
 
 BEGIN;
 
@@ -18,17 +27,9 @@ donnee)
 VALUES ('IFN', 'DIAM_MOY');
 
 COMMIT;
-
--- on recopie les colonnes u_diam_moy de u_g3forêt et u_p3point dans les tables g3forêt et p3point
-
-UPDATE inv_exp_nm.g3foret f
-SET diam_moy = u.u_diam_moy
-FROM inv_exp_nm.u_g3foret u
+------------------------------------------------------------------------------------------------
 
 BEGIN;
-
-ALTER TABLE inv_exp_nm.g3foret ADD COLUMN diam_moy FLOAT;
-ALTER TABLE inv_exp_nm.p3point ADD COLUMN diam_moy FLOAT;
 
 -- mise à jour de g3forêt
 WITH maj as(
@@ -40,7 +41,7 @@ SET diam_moy = m.diam_moy
 FROM maj m
 WHERE g3f.npp = m.npp;
 
--- mise à jour de p3point
+-- mise à jour de p3point où la donnée n'existait pas
 WITH maj as(
 	SELECT npp, LEAST((ROUND(sum(d13 * WAC) / sum(wac)*100)::NUMERIC), 130) as diam_moy
 	FROM inv_exp_nm.p3arbre
@@ -53,32 +54,6 @@ WHERE p3p.npp = m.npp;
 COMMIT;
 
 -----------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------
-
--- MAJ INCREF 16 à 18
-
-BEGIN;
-
--- mise à jour de g3forêt
-WITH maj as(
-	SELECT npp, LEAST((ROUND(sum(d13 * WAC) / sum(wac)*100)::NUMERIC), 130) as diam_moy
-	FROM inv_exp_nm.g3arbre
-	GROUP BY npp)
-UPDATE inv_exp_nm.g3foret g3f
-SET diam_moy = m.diam_moy
-FROM maj m
-WHERE g3f.npp = m.npp AND g3f.incref IN (16, 17, 18);
-
--- mise à jour de p3point
-WITH maj as(
-	SELECT npp, LEAST((ROUND(sum(d13 * WAC) / sum(wac)*100)::NUMERIC), 130) as diam_moy
-	FROM inv_exp_nm.p3arbre
-	GROUP BY npp)
-UPDATE inv_exp_nm.p3point p3p
-SET diam_moy = m.diam_moy
-FROM maj m
-WHERE p3p.npp = m.npp AND p3p.incref IN (16, 17, 18);
-
 
 
 -- Vérification
@@ -99,5 +74,4 @@ SET calcin = 0, calcout = 18, validin = 0, validout = 18
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'DIAM_MOY';
 
-COMMIT;
 

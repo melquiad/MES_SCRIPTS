@@ -9,6 +9,7 @@ SELECT * FROM metaifn.ajoutdonnee('RU_AF', NULL, 'mm', 'IFN', NULL, 0, 'float', 
 
 -- Documentation de la colonne en base
 SELECT * FROM metaifn.ajoutchamp('RU_AF', 'G3FORET', 'INV_EXP_NM', FALSE, 0, 18, 'varchar', 1);
+SELECT * FROM metaifn.ajoutchamp('RU_AF', 'P3POINT', 'INV_EXP_NM', FALSE, 0, 18, 'varchar', 1);
 
 --- RECOPIE de U_RU_AF depuis u_g3foret vers RU_AF dans g3foret
 -- création de la colonne en base
@@ -30,7 +31,7 @@ WHERE p.npp = up.npp;
 
 
 --------------------------------------------------------
--- Mise à jour de RU_AF pour les années à venir
+-- Mise à jour de RU_AF 
 BEGIN;
 
 CREATE TEMPORARY TABLE textu (
@@ -61,7 +62,7 @@ SET enable_nestloop = FALSE;
 
 SELECT incref, COUNT(ru_af)
 FROM inv_exp_nm.g3foret
-WHERE incref BETWEEN 13 AND 18
+--WHERE incref BETWEEN 13 AND 18
 GROUP BY incref
 ORDER BY incref DESC;
 
@@ -124,13 +125,9 @@ COMMIT;
 --- DOCUMENTATION dans METAIFN
 
 -- Documentation de la donnée
-SELECT * FROM metaifn.ajoutdonnee('RUT_AF', NULL, 'RUT', 'IFN', NULL, 0, 'char(1)', 'CC', TRUE, TRUE
+SELECT * FROM metaifn.ajoutdonnee('RUT_AF', NULL, 'RUT', 'IFN', NULL, 0, 'char(2)', 'CC', TRUE, TRUE
 , 'Réserve utile avec affleurement rocheux'
 , 'Ce calcul de la réserve utile prend en compte la proportion des affleurements rocheux présents sur la placette.');
-
-UPDATE metaifn.addonnee
-SET "type" = 'char(2)'
-WHERE donnee = 'RUT_AF';
 
 
 -- Documentation de la colonne en base
@@ -166,14 +163,20 @@ CASE
     WHEN ru_af < 190 THEN '10'
     WHEN ru_af >= 190 THEN '11'
 END
-FROM inv_exp_nm.g3ecologie e
-WHERE f.npp = e.npp;
+FROM inv_exp_nm.u_g3foret ug
+INNER JOIN inv_exp_nm.g3ecologie ge USING (npp)
+WHERE f.npp = ug.npp;
 
+
+SELECT incref, COUNT(rut_af)
+FROM inv_exp_nm.g3foret
+GROUP BY incref ORDER BY incref DESC;
 
 UPDATE metaifn.afchamp
 SET calcout = 18, validout = 18, defout = NULL
 WHERE famille ~~* 'inv_exp_nm'
-AND donnee ~* 'u_rut_af';
+AND donnee ~* 'rut_af'
+AND FORMAT = 'G3FORET';
 
 COMMIT;
 
@@ -184,10 +187,6 @@ COMMIT;
 BEGIN;
 
 --- RECOPIE de U_RUT_AF depuis u_p3point vers RUT_AF dans p3point
-
-SELECT INCREF, COUNT(RUT_AF)
-FROM INV_EXP_NM.P3POINT
-GROUP BY INCREF ORDER BY INCREF DESC;
 
 UPDATE inv_exp_nm.p3point p3p
 SET rut_af = 
@@ -205,14 +204,19 @@ CASE
     WHEN ru_af < 190 THEN '10'
     WHEN ru_af >= 190 THEN '11'
 END
-FROM inv_exp_nm.p3ecologie e
+FROM inv_exp_nm.u_p3point up
+INNER JOIN inv_exp_nm.p3ecologie e USING (npp)
 WHERE p3p.npp = e.npp and p3p.incref >= 11;
+
+SELECT incref, COUNT(rut_af)
+FROM inv_exp_nm.p3point
+GROUP BY incref ORDER BY incref DESC;
 
 
 UPDATE metaifn.afchamp
 SET calcin = 11, calcout = 18, validin = 11, validout = 18, defout = 18
 WHERE famille ~~* 'inv_exp_nm'
 AND donnee ~* 'rut_af'
-AND format = 'P3POINT';
+AND FORMAT = 'P3POINT';
 
 COMMIT;

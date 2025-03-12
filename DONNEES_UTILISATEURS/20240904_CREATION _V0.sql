@@ -17,7 +17,7 @@ Tarifs de cubage issus du projet de recherche national Carbofor. Données de cub
 SELECT * FROM metaifn.ajoutchamp('V0', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
 SELECT * FROM metaifn.ajoutchamp('V0', 'P3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
 
--- Calcul de la donnée à partir de U_BIOM_AR
+-- Copie de la donnée à partir de U_V0
 
 UPDATE inv_exp_nm.g3arbre g
 SET v0 = ug.u_v0
@@ -31,8 +31,8 @@ FROM inv_exp_nm.u_p3arbre up
 WHERE p.npp = up.npp
 AND p.a = up.a;
 
-
+/*
 -- On supprime les champs dans u_g3arbre et u_p3arbre
 ALTER TABLE inv_exp_nm.u_g3arbre DROP COLUMN u_v0;
 ALTER TABLE inv_exp_nm.u_p3arbre DROP COLUMN u_v0;
-
+*/

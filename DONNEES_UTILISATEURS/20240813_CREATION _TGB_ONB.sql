@@ -4,9 +4,9 @@ BEGIN;
 
 ALTER TABLE inv_exp_nm.g3arbre ADD COLUMN tgb_onb CHAR(1);
 
-/*
 SET enable_nestloop = FALSE;
 
+/*
 -- recopie de la donnée U_TGB_ONB depuis la table U_G3ARBRE
 UPDATE inv_exp_nm.g3arbre g
 SET tgb_onb = ua.u_tgb_onb
@@ -62,13 +62,15 @@ WHERE ua.npp = a.npp AND ua.a = a.a AND p2.incref <= 17;
 -- documentation
 
 INSERT INTO metaifn.abunite (unite, proprietaire, utype, libelle, definition)
-VALUES ('TGB_ONB', 'AUTRE', 'NOMINAL', $$Très gros bois selon critères ONB$$, $$Arbre qualifié de très gros bois selon les critères de l'ONB$$);
+VALUES ('TGB_ONB', 'IFN', 'NOMINAL', $$Très gros bois selon critères ONB$$, $$Arbre qualifié de très gros bois selon les critères de l'ONB$$);
 
 INSERT INTO metaifn.abmode (unite, mode, position, classe, etendue, libelle, definition)
 VALUES ('TGB_ONB', '0', 1, 1, 1, $$Arbre non TGB ONB$$, $$Arbre n'étant pas un TGB ONB$$)
 , ('TGB_ONB', '1', 2, 2, 1, $$Arbre TGB ONB$$, $$Arbre TGB ONB$$);
 
-SELECT * FROM metaifn.ajoutdonnee('TGB_ONB', NULL, 'TGB_ONB', 'AUTRE', NULL, 40, 'char(1)', 'CC', TRUE, TRUE, $$Très gros bois selon critères ONB$$, $$Arbre qualifié de très gros bois selon les critères de l'ONB$$);                                                             
+
+SELECT * FROM metaifn.ajoutdonnee('TGB_ONB', NULL, 'TGB_ONB', 'IFN', NULL, 40, 'char(1)', 'CC', TRUE, TRUE, $$Très gros bois selon critères ONB$$, $$Arbre qualifié de très gros bois selon les critères de l ONB$$);                                                             
+
 SELECT * FROM metaifn.ajoutchamp('TGB_ONB', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 17, 'bpchar', 1);
 
 UPDATE metaifn.afchamp
@@ -141,7 +143,7 @@ COMMIT;
 SELECT incref, count(tgb_onb)
 FROM inv_exp_nm.g3arbre
 GROUP BY INCREF
-ORDER BY INCREF;
+ORDER BY INCREF DESC;
 
 
 

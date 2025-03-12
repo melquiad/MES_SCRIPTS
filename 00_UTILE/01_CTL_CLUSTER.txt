@@ -1,0 +1,18 @@
+
+VERSION=$(pg_lsclusters | grep 5432 | cut -d " " -f 1)
+sudo systemctl stop postgresql@$VERSION-main.service
+sudo pg_dropcluster $VERSION main
+sudo pg_createcluster --datadir=/var/data/postgresql/$VERSION/main $VERSION main -- --data-checksums
+sudo systemctl start postgresql@$VERSION-main.service
+--------------------------------------------------------------------------------------------------
+
+
+sudo pg_createcluster --datadir=/var/data/postgresql/17/main 17 main -- --data-checksums
+
+sudo systemctl stop/start/restart/reload postgresql@17-main.service
+ou
+sudo pg_ctlcluster 17 main stop/start/restart/reload
+
+pg_lsclusters
+
+sudo pg_dropcluster 17 main

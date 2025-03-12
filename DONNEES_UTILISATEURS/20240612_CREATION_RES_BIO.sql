@@ -1,7 +1,7 @@
 -- documentation dans MetaIFN
 
 INSERT INTO metaifn.abunite (unite, proprietaire, utype, libelle, definition)
-VALUES ('RES_BIO', 'AUTRE', 'NOMINAL', 'Point en réserve de biosphère (o/n)', 'Point en réserve de biosphère (o/n)');
+VALUES ('RES_BIO', 'IFN', 'NOMINAL', 'Point en réserve de biosphère (o/n)', 'Point en réserve de biosphère (o/n)');
 
 INSERT INTO metaifn.abmode (unite, mode, position, classe, etendue, libelle, definition)
 VALUES ('RES_BIO', '0', 0, 0, 1, 'Point HORS réserve de biosphére', 'Point HORS réserve de biosphère (Zonage INPN 01/2022)')
@@ -34,8 +34,7 @@ ORDER BY position desc;
 */
 
 -- creation du champ dans la table
-ALTER TABLE inv_exp_nm.e2point
-    ADD COLUMN RES_BIO CHAR(1);
+ALTER TABLE inv_exp_nm.e2point ADD COLUMN RES_BIO CHAR(1);
 		
 -- partie utilisateur
 INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee) 
@@ -67,15 +66,14 @@ FROM croise c
 WHERE e2.npp = c.npp AND e2.incref = 18;
 
 
-
-
--- nombre de points dans zone centrale de RES_BIO par incref
+/*
+-- contrôle : nombre de points dans zone centrale de RES_BIO par incref
 SELECT res_bio, count(res_bio), incref
 FROM inv_exp_nm.e2point
 WHERE res_bio = '1'
 GROUP BY incref, res_bio
 ORDER BY incref DESC;
-
+*/
 
 
 

@@ -37,13 +37,12 @@ VALUES ('COMP_IDREG', 'F1.1', 1, 1, 1, 'Chêne pédonculé pur/avec feuillus', $
 , ('COMP_IDREG', 'F0', 30, 30, 1, 'Divers feuillus', $$Divers feuillus$$)
 , ('COMP_IDREG', 'M0', 31, 31, 1, 'Divers mixtes', $$Divers mixtes$$)
 , ('COMP_IDREG', 'R0', 32, 32, 1, 'Divers résineux', $$Divers résineux$$)
-, ('COMP_IDREG', 'I', 33, 33, 1, 'Indéterminée ou marginale', $$Composition indéterminée ou marginale$$)
+, ('COMP_IDREG', 'I', 33, 33, 1, 'Indéterminée ou marginale', $$Composition indéterminée ou marginale$$);
 
 
 --- partie donnee
-SELECT *
-FROM metaifn.ajoutdonnee('COMP_IDREG', NULL, 'COMP_IDREG', 'IFN'
-, NULL, 33, 'char(4)', 'CC', TRUE, TRUE, 'Partition idéalisée et régionalisée de la composition', 'Partition idéalisée et régionalisée de la composition en espèces ligneuses des forêts françaises');
+SELECT * FROM metaifn.ajoutdonnee('COMP_IDREG', NULL, 'COMP_IDREG', 'IFN', NULL, 33, 'char(4)', 'CC', TRUE, TRUE,
+'Partition idéalisée et régionalisée de la composition', 'Partition idéalisée et régionalisée de la composition en espèces ligneuses des forêts françaises');
 
 
 --- partie champ
@@ -66,10 +65,10 @@ SELECT *
 FROM metaifn.afchamp
 WHERE famille='INV_EXP_NM'
 AND format='TG3FORET'
-ORDER BY position DESC;
+ORDER BY POSITION DESC;
 
 
---- controle : la colonne est disponible et vide au debut, completee a la fin
+--- controle : la colonne est disponible et vide au debut, complétée a la fin
 SELECT npp, comp_idreg
 FROM inv_exp_nm.g3foret
 WHERE comp_idreg IS NOT NULL

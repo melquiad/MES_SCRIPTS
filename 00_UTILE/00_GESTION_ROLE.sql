@@ -20,7 +20,7 @@ ALTER VIEW metaifn.v_habitats OWNER TO exploitation_admin;
 
 SET ROLE = postgres;
 
-CREATE ROLE LHaugomat WITH 
+CREATE ROLE "LHaugomat" WITH 
 	SUPERUSER
 	CREATEDB
 	CREATEROLE
@@ -139,8 +139,7 @@ GRANT SELECT ON TABLE prod_exp.tarifs TO prod_exp_datareader;
 RESET ROLE;
 SHOW ROLE;
 
---------------------- Attribution de droits à Theophile Moreal de Brevans ----------------------------------------------------------------------------------------------------
-SET ROLE = exploitation_admin;
+cSET ROLE = exploitation_admin;
 SET ROLE = postgres;
 
 DROP ROLE "tmoreal-de-brevans";
@@ -169,6 +168,35 @@ GRANT SELECT ON TABLE inv_prod_new.renouv TO production_datareader;
 
 RESET ROLE;
 SHOW ROLE;
+
+-------------------- Attribution droit à Emilie Vautier et Luigi Ramirez-Parra --------------------------------------------------------------------
+SET ROLE = exploitation_admin;
+
+DROP ROLE evautier;
+
+CREATE ROLE evautier WITH 
+	INHERIT
+	LOGIN
+	CONNECTION LIMIT -1
+	VALID UNTIL 'infinity';
+
+GRANT exploitation_u_datawriter TO "evautier";
+GRANT prod_exp_datareader TO "evautier";
+GRANT exploitation_datareader TO "evautier";
+
+
+
+DROP ROLE lramirez-parra;
+
+CREATE ROLE "lramirez-parra" WITH 
+	INHERIT
+	LOGIN
+	CONNECTION LIMIT -1
+	VALID UNTIL 'infinity';
+
+GRANT exploitation_u_datawriter TO "lramirez-parra";
+GRANT prod_exp_datareader TO "lramirez-parra";
+GRANT exploitation_datareader TO "lramirez-parra";
 
 
 

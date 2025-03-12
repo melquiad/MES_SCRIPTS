@@ -6,7 +6,7 @@ CREATE TABLE public.date_photo_point_densif (
     npp CHAR(16),
     datephoto date);
 
-\COPY date_photo_point_densif FROM '/home/lhaugomat/Documents/GITLAB/production/Campagne_2025/donnees/pi2024_datepva_densif.csv' WITH CSV DELIMITER '|' NULL AS '' HEADER
+\COPY public.date_photo_point_densif FROM '/home/lhaugomat/Documents/ECHANGES/GIT/base-de-production/Campagne_2025/donnees/pi2024_datepva_densif.csv' WITH CSV DELIMITER '|' NULL AS '' HEADER
 
 
 -- Sélection de spoints dont la datephoto doit être mise à jour

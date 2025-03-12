@@ -6,7 +6,7 @@ WITH u AS
 	, COALESCE(min(i.incref + 2005), 2020) AS debut, COALESCE(max(i.incref + 2005), 2023) AS fin
 	FROM metaifn.addonnee d
 	LEFT JOIN metaifn.aiunite i ON d.unite = i.unite AND i.usite = 'P' AND i.incref BETWEEN 0 AND 18
-	WHERE d.donnee ~~* 'MA'
+	WHERE d.donnee ~~* 'CSO'
 	GROUP BY 1, 2
 	)
 SELECT u.donnee, u.unite, ab."mode", ab.libelle, ab.definition

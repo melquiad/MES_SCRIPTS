@@ -5,4 +5,7 @@ sudo mount -t cifs //store.ign.fr/store-SVRP /mnt/archivage -o vers=3.0,username
 sudo mount -t cifs //store.ign.fr/store-SVRP/arch-diff/zone_echange/producteurs /mnt/archivage -o vers=3.0,username=LHaugomat,domain=IGN,iocharset=utf8,file_mode=0777,dir_mode=0777
 
 
+sudo mount -t cifs //store.ign.fr/store-SVRP/arch-diff/zone_echange/producteurs /stores -o vers=3.0,username=LHaugomat-Admin,domain=IGN,iocharset=utf8,file_mode=0777,dir_mode=0777
+
+
 

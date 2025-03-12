@@ -16,7 +16,7 @@ SELECT * FROM metaifn.ajoutdonnee('PV0PR', NULL, 'm3/an', 'IFN', NULL, 0, 'float
 SELECT * FROM metaifn.ajoutchamp('PV0PR', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
 SELECT * FROM metaifn.ajoutchamp('PV0PR', 'P3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
 
--- Calcul de la donnée à partir de U_BIOM_AR
+-- Copie de la donnée à partir de U_PV0PR
 
 UPDATE inv_exp_nm.g3arbre g
 SET pv0pr = ug.u_pv0pr

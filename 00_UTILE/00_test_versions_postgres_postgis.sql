@@ -5,6 +5,14 @@ CREATE EXTENSION postgis;
 SELECT postgis_full_version();
 SELECT POSTGIS_PROJ_VERSION();
 
+SELECT PostGIS_Extensions_Upgrade();
+
 
 SHOW ROLE;
 SET ROLE = lhaugomat;
+-----------------------------------------------
+
+
+DROP EXTENSION IF EXISTS postgis_topology;
+DROP EXTENSION IF EXISTS postgis_raster;
+DROP EXTENSION IF EXISTS postgis;
