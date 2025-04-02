@@ -9,7 +9,7 @@ SET info = '0', leve = '0'
 FROM inv_exp_nm.e1point p1
 WHERE p2.npp = p1.npp
 AND p1.occ = '0'
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 -- POINTS IMPOSSIBLES A LEVER
 -- on met à jour les points impossible à reconnaître (RECO = 0)
@@ -18,7 +18,7 @@ SET info = '1', leve = '0'
 FROM prod_exp.e2point pe
 WHERE p2.npp = pe.npp
 AND pe.reco = '0'
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 -- on met à jour les points reconnus à distance (RECO = 2)
 UPDATE inv_exp_nm.e2point p2
@@ -26,7 +26,7 @@ SET info = '2', leve = '0'
 FROM prod_exp.e2point pe
 WHERE p2.npp = pe.npp
 AND pe.reco = '2'
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 -- Recopie des données phase 1 des RECO = 0 en phase 2
 UPDATE inv_exp_nm.e2point p2
@@ -37,7 +37,7 @@ SET csa = p1.cso
 FROM inv_exp_nm.e1point p1
 WHERE p1.npp = p2.npp
 AND p2.info = '1'
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 -- POINTS RECLASSES LANDES AU-DESSUS DE 1700
 /*
@@ -46,12 +46,12 @@ FROM inv_exp_nm.e2point p2
 INNER JOIN inv_exp_nm.e1point p1 ON p2.npp = p1.npp
 INNER JOIN inv_exp_nm.e1noeud n ON p1.nppg = n.nppg
 INNER JOIN prod_exp.e2point pe ON p2.npp = pe.npp
-WHERE p1.incref = 18
+WHERE p1.incref = 19
 AND p2.csa = '4L'
-AND n.zp >= 1800
+AND n.zp >= 1900
 ORDER BY pe.reco;
 */
--- 15 points levés sur la campagne 2023
+-- 8 points levés sur la campagne 2024
 
 
 UPDATE inv_exp_nm.e2point
@@ -61,9 +61,9 @@ WHERE npp IN (
 	FROM inv_exp_nm.e2point p2
 	INNER JOIN inv_exp_nm.e1point p1 ON p2.npp = p1.npp
 	INNER JOIN inv_exp_nm.e1noeud n ON p1.nppg = n.nppg
-	WHERE p1.incref = 18
+	WHERE p1.incref = 19
 	AND p2.csa = '4L'
-	AND n.zp >= 1800
+	AND n.zp >= 1900
 );
 
 -- POINTS LEVES NORMALEMENT
@@ -76,7 +76,7 @@ LEFT JOIN inv_exp_nm.p3point p3 ON p1.npp = p3.npp
 WHERE p2.npp = p.npp
 AND p.reco = '1'
 AND p2.info IS NULL
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 -- POINTS NON INVENTORIES
 UPDATE inv_exp_nm.e2point p2
@@ -87,13 +87,13 @@ SET info = '4', leve = '0'
 FROM inv_exp_nm.e1point p1
 WHERE p2.npp = p1.npp
 AND p2.info IS NULL
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 -- calcul de CSP2 --> pour revenir en arrière si problème
 /*
 UPDATE inv_exp_nm.e2point
 SET csp2 = NULL
-WHERE incref = 18;
+WHERE incref = 19;
 */
 
 UPDATE inv_exp_nm.e2point
@@ -107,7 +107,7 @@ CASE
     WHEN csa IN ('6A', '6H') THEN '6'
 	ELSE csa 
 END
-WHERE incref = 18
+WHERE incref = 19
 AND csp2 IS NULL;
 
 /*
@@ -125,12 +125,12 @@ SET corne = '1'
 FROM prod_exp.e2point pp
 WHERE p2.npp = pp.npp
 and pp.qleve='C'
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 UPDATE inv_exp_nm.e2point
 SET corne = '0'
 WHERE corne IS NULL
-AND incref = 18;
+AND incref = 19;
 
 
 -- calcul de US_NM pour les points issus de la PI
@@ -154,7 +154,7 @@ END
 FROM inv_exp_nm.e1point p1
 WHERE p2.npp = p1.npp
 AND p2.info IN ('1', '4')
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 -- calcul de US_NM sur les points reconnus sur le terrain
 UPDATE inv_exp_nm.e2point
@@ -193,13 +193,13 @@ CASE
 	WHEN csa = '8' THEN '7'
 	WHEN csa = '9' THEN '8'
 END
-WHERE incref = 18
+WHERE incref = 19
 AND info IN ('2', '3');
 
 -- US_NM = 0 sur les points restants (occultés)
 UPDATE inv_exp_nm.e2point
 SET us_nm = '0'
-WHERE incref = 18
+WHERE incref = 19
 AND csp2 = '0';
 
 -- calcul de la donnée utilisateur d'analyse : U_US_2015
@@ -219,7 +219,7 @@ FROM inv_exp_nm.e1point p1
 INNER JOIN inv_exp_nm.e2point p2 ON p1.npp = p2.npp
 WHERE u.npp = p1.npp
 AND p2.info IN ('1', '4')
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 UPDATE inv_exp_nm.u_e2point u
 SET u_us_2015 =
@@ -258,7 +258,7 @@ CASE
 END
 FROM inv_exp_nm.e2point p2
 WHERE u.npp = p2.npp
-AND p2.incref = 18
+AND p2.incref = 19
 AND info IN ('2', '3');
 
 /* MULTIPLES CONTRÔLES
@@ -278,6 +278,7 @@ SELECT p2.incref + 2005 as campagne, COALESCE(p2.us_nm, 'X') AS us_nm, ROUND(SUM
 FROM inv_exp_nm.e2point p2
 INNER JOIN inv_exp_nm.unite_ech ue ON p2.id_unite = ue.id_unite
 INNER JOIN inv_exp_nm.echantillon e ON ue.id_ech = e.id_ech AND e.usite = 'P' AND e.format = 'TE2POINT'
+WHERE p2.incref >= 10
 GROUP BY p2.incref, us_nm
 ORDER BY p2.incref DESC, us_nm
 \crosstabview us_nm campagne;
@@ -285,7 +286,7 @@ ORDER BY p2.incref DESC, us_nm
 SELECT csp2, csa, tform, tfpi, uspi, us_nm, info, COUNT(*)
 FROM inv_exp_nm.e2point
 INNER JOIN inv_exp_nm.e1point USING (incref, npp)
-WHERE incref = 18
+WHERE incref = 19
 AND us_nm IN ('3', 'A')
 GROUP BY csp2, csa, tform, tfpi, uspi, us_nm, info
 ORDER BY csp2, csa, tform, tfpi, uspi, us_nm, info;
@@ -293,14 +294,14 @@ ORDER BY csp2, csa, tform, tfpi, uspi, us_nm, info;
 SELECT us_nm, u_us_2015,  ROUND(sum(poids)::NUMERIC, 1) AS surf_ha
 FROM inv_exp_nm.e2point p2
 INNER JOIN inv_exp_nm.u_e2point u2 USING (npp)
-WHERE p2.incref = 18
+WHERE p2.incref = 19
 GROUP BY us_nm, u_us_2015
 ORDER BY us_nm, u_us_2015;
 
 SELECT npp, info, csa, tform, csp2, utip, indisp, bois, us_nm, u_us_2015
 FROM inv_exp_nm.e2point p2
 INNER JOIN inv_exp_nm.u_e2point u2 USING (npp)
-WHERE p2.incref = 18
+WHERE p2.incref = 19
 AND us_nm = 'A'
 AND u_us_2015 = '4'
 ORDER BY npp;
@@ -314,7 +315,7 @@ WHERE p2.incref >= 10
 GROUP BY p2.incref, us_nm, u_us_2015
 ORDER BY us_nm, u_us_2015, p2.incref;
 
-SELECT p2.incref, indisp, sum(poids) AS surf_ha
+SELECT p2.incref, indisp, sum(poids) AS surf_ha --> INDISP n'est plus prise sur le terrain
 FROM inv_exp_nm.e2point p2
 INNER JOIN inv_exp_nm.u_e2point u2 USING (npp)
 WHERE p2.incref >= 10
@@ -346,7 +347,7 @@ SET dep = p1.dep
 FROM inv_exp_nm.e1point p1
 WHERE p2.npp = p1.npp
 AND p2.dep != p1.dep
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 -- regroupements des départements en RA, RAD2, RAD3 et RAD13
 UPDATE inv_exp_nm.e2point p
@@ -355,7 +356,7 @@ FROM metaifn.abgroupe b
 WHERE p.dep = b.mode
 AND b.unite = 'DP'
 AND b.gunite = 'RA'
-AND p.incref = 18;
+AND p.incref = 19;
 
 UPDATE inv_exp_nm.e2point p
 SET rad2 = b.gmode
@@ -363,7 +364,7 @@ FROM metaifn.abgroupe b
 WHERE p.ra = b.mode
 AND b.unite = 'RA'
 AND b.gunite = 'RAD2'
-AND p.incref = 18;
+AND p.incref = 19;
 
 UPDATE inv_exp_nm.e2point p
 SET rad3 = b.gmode
@@ -371,7 +372,7 @@ FROM metaifn.abgroupe b
 WHERE p.ra = b.mode
 AND b.unite = 'RA'
 AND b.gunite = 'RAD3'
-AND p.incref = 18;
+AND p.incref = 19;
 
 UPDATE inv_exp_nm.e2point p
 SET rad13 = b.gmode
@@ -379,7 +380,7 @@ FROM metaifn.abgroupe b
 WHERE p.ra = b.mode
 AND b.unite = 'RA'
 AND b.gunite = 'RAD13'
-AND p.incref = 18;
+AND p.incref = 19;
 
 -- regroupements dans E2POINT
 -- CLZ et CLALTI (classes d'altitude du point)
@@ -394,7 +395,7 @@ SET clz = CASE 	WHEN c.zp < 200 THEN '1'
 , clalti = LEAST(FLOOR(c.zp::NUMERIC / 50::NUMERIC) * 50, 2000)
 FROM inv_exp_nm.e1coord c
 WHERE c.npp = e2point.npp
-AND e2point.incref = 18;
+AND e2point.incref = 19;
 
 -- AQUIT
 UPDATE inv_exp_nm.e2point
@@ -403,11 +404,11 @@ CASE
 	WHEN regn IN ('330', '334', '401', '404') THEN '1' 
 	ELSE '0' 
 END
-WHERE incref = 18;
+WHERE incref = 19;
 
 UPDATE inv_exp_nm.e2point
 SET ser_alluv = 'HS'
-WHERE incref = 18
+WHERE incref = 19
 AND ser_alluv IS NULL;
 
 --/*
@@ -422,7 +423,7 @@ UPDATE inv_exp_nm.e2point p2
 SET rak = g.gmode
 FROM metaifn.abgroupe g
 WHERE g.gunite = 'RAK' AND g.unite = 'DPD4' AND g.mode = p2.dep
-AND p2.incref = 18;
+AND p2.incref = 19;
 
 COMMIT;
 

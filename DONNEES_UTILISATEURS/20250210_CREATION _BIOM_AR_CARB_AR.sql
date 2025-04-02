@@ -10,31 +10,41 @@ DELETE FROM metaifn.addonnee WHERE donnee = 'U_CARB_AR';
 -- On crée les champs dans g3arbre et p3arbre pour BIOM_AR
 ALTER TABLE inv_exp_nm.g3arbre ADD COLUMN biom_ar float(8);
 ALTER TABLE inv_exp_nm.p3arbre ADD COLUMN biom_ar float(8);
+	--> en base de production
+ALTER FOREIGN TABLE inv_exp_nm.g3arbre ADD COLUMN biom_ar float(8);
+ALTER FOREIGN TABLE inv_exp_nm.p3arbre ADD COLUMN biom_ar float(8);
 
 -- Documentation metaifn
 -- ajout unité
 INSERT INTO metaifn.abunite (unite, proprietaire, utype, libelle, definition)
-VALUES ('MMS', 'IFN', 'CONTINU', 'Masse de matière sèche', 'Masse de matière sèche');
+VALUES ('UTMS', 'IFN', 'CONTINU', 'Tonne de matière sèche', 'Tonne de matière sèche');
 
 -- partie donnee
-SELECT * FROM metaifn.ajoutdonnee('BIOM_AR', NULL, 'MMS', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE, 'Biomasse aerienne et racinaire', 'Biomasse aerienne et racinaire');
+SELECT * FROM metaifn.ajoutdonnee('BIOM_AR', NULL, 'UTMS', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE, 'Biomasse aerienne et racinaire', 'Biomasse aerienne et racinaire');
 
 -- partie champ
-SELECT * FROM metaifn.ajoutchamp('BIOM_AR', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
+SELECT * FROM metaifn.ajoutchamp('BIOM_AR'::varchar, 'G3ARBRE'::varchar, 'INV_EXP_NM'::varchar, FALSE::boolean, 0, 18, 'float8'::varchar, 1::int4);
 SELECT * FROM metaifn.ajoutchamp('BIOM_AR', 'P3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
 ---------------------------------------------------------------------------------------------------
 
 -- On crée les champs dans g3arbre et p3arbre pour CARB_AR
 ALTER TABLE inv_exp_nm.g3arbre ADD COLUMN carb_ar float(8);
 ALTER TABLE inv_exp_nm.p3arbre ADD COLUMN carb_ar float(8);
+	--> en base de production
+ALTER FOREIGN TABLE inv_exp_nm.g3arbre ADD COLUMN carb_ar float(8);
+ALTER FOREIGN TABLE inv_exp_nm.p3arbre ADD COLUMN carb_ar float(8);
+
+--- partie utilisateur
+INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee) 
+VALUES ('IFN', 'CARB_AR'), ('IFN', 'BIOM_AR');
 
 -- Documentation metaifn
 -- ajout unité
 INSERT INTO metaifn.abunite (unite, proprietaire, utype, libelle, definition)
-VALUES ('NTC', 'IFN', 'CONTINU', 'Tonne de carbone', 'Tonne de carbone');
+VALUES ('UTC', 'IFN', 'CONTINU', 'Tonne de carbone', 'Tonne de carbone');
 
 -- partie donnee
-SELECT * FROM metaifn.ajoutdonnee('CARB_AR', NULL, 'MMS', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE, 'Stock de carbone aerien et racinaire', 'Stock de carbone aerien et racinaire');
+SELECT * FROM metaifn.ajoutdonnee('CARB_AR', NULL, 'UTC', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE, 'Stock de carbone aerien et racinaire', 'Stock de carbone aerien et racinaire');
 
 -- partie champ
 SELECT * FROM metaifn.ajoutchamp('CARB_AR', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
@@ -67,9 +77,29 @@ FROM inv_exp_nm.u_p3arbre up
 WHERE p.npp = up.npp
 AND p.a = up.a;
 
+/*-- Contrôles
+SELECT incref, count(biom_ar)
+FROM inv_exp_nm.g3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, count(biom_ar)
+FROM inv_exp_nm.p3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, count(carb_ar)
+FROM inv_exp_nm.g3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, count(carb_ar)
+FROM inv_exp_nm.p3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+*/
 
 -- mise à jour de BIOM_AR et CARB_AR pour l'incref 18
-
 BEGIN
 
 CREATE TABLE public.facteurs (
@@ -112,17 +142,17 @@ WITH t AS (
 UPDATE inv_exp_nm.p3arbre p
 SET biom_ar = t.biom_ar, carb_ar = t.carb_ar
 FROM t
-WHERE t.npp = a.npp AND t.a = a.a;
+WHERE t.npp = p.npp AND t.a = p.a;
 
 DROP TABLE public.facteurs;
 
 
 UPDATE metaifn.afchamp
- SET calcout = 18, validout = 18
+ SET calcout = 19, validout = 18
  WHERE famille = 'INV_EXP_NM' AND donnee IN ('BIOM_AR', 'CARB_AR');
 
 UPDATE metaifn.afchamp
- SET calcout = 18, validout = 18
+ SET calcout = 19, validout = 18
  WHERE famille = 'INV_EXP_NM' AND donnee IN ('V0');
 
 COMMIT;

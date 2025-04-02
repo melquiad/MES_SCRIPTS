@@ -2388,6 +2388,8 @@ VALUES ('IFN', 'QUAD16_DSF');
 
 -- création de la donnée dans e2point
 ALTER TABLE inv_exp_nm.e2point ADD COLUMN quad16_dsf bpchar(9);
+	--> en base de production
+ALTER FOREIGN TABLE inv_exp_nm.e2point ADD COLUMN quad16_dsf bpchar(9);
 
 -- remplissage du champ dans e2point
 UPDATE inv_exp_nm.e2point e
@@ -2426,20 +2428,22 @@ WHERE p.npp = c.npp
 	AND incref = 18;
 
 
--- contrôle
+/*-- contrôle
 SELECT INCREF, QUAD16_DSF
 FROM INV_EXP_NM.E2POINT
 WHERE QUAD16_DSF IS NULL
-	AND INCREF = 18;
+AND INCREF = 18;
 	
 SELECT incref, count(QUAD16_DSF)
 FROM INV_EXP_NM.E2POINT
-GROUP BY INCREF;
+GROUP BY INCREF
+ORDER BY incref DESC;
 
 SELECT QUAD16_DSF, count(*)
 FROM inv_exp_nm.e2point
+WHERE incref = 18
 GROUP BY QUAD16_DSF;
-
+*/
 COMMIT;
 
 -- suppression de la couche géographique

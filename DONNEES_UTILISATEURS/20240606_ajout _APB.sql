@@ -35,8 +35,9 @@ ORDER BY position desc;
 */
 
 -- creation du champ dans la table
-ALTER TABLE inv_exp_nm.e2point
-    ADD COLUMN APB CHAR(1);
+ALTER TABLE inv_exp_nm.e2point ADD COLUMN APB CHAR(1);
+	--> en base de production
+ALTER FOREIGN TABLE inv_exp_nm.e2point ADD COLUMN APB CHAR(1);
 		
 -- partie utilisateur
 INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee) 

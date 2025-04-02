@@ -3,16 +3,11 @@
 BEGIN;
 
 ALTER TABLE inv_exp_nm.g3arbre ADD COLUMN tgb_onb CHAR(1);
+	--> en base de production
+ALTER FOREIGN TABLE inv_exp_nm.g3arbre ADD COLUMN tgb_onb CHAR(1);
 
 SET enable_nestloop = FALSE;
 
-/*
--- recopie de la donnée U_TGB_ONB depuis la table U_G3ARBRE
-UPDATE inv_exp_nm.g3arbre g
-SET tgb_onb = ua.u_tgb_onb
-FROM inv_exp_nm.u_g3arbre ua
-WHERE g.incref BETWEEN 13 AND 17;
-*/
 
 CREATE TEMPORARY TABLE type_bio
 (
@@ -57,7 +52,7 @@ SET tgb_onb =  CASE
 FROM inv_exp_nm.g3arbre AS a
 INNER JOIN inv_exp_nm.e2point AS p2 ON a.npp = p2.npp
 INNER JOIN type_bio AS tb ON a.espar = tb.espar
-WHERE ua.npp = a.npp AND ua.a = a.a AND p2.incref <= 17;
+WHERE ua.npp = a.npp AND ua.a = a.a AND p2.incref <= 18;
 
 -- documentation
 
@@ -71,10 +66,10 @@ VALUES ('TGB_ONB', '0', 1, 1, 1, $$Arbre non TGB ONB$$, $$Arbre n'étant pas un 
 
 SELECT * FROM metaifn.ajoutdonnee('TGB_ONB', NULL, 'TGB_ONB', 'IFN', NULL, 40, 'char(1)', 'CC', TRUE, TRUE, $$Très gros bois selon critères ONB$$, $$Arbre qualifié de très gros bois selon les critères de l ONB$$);                                                             
 
-SELECT * FROM metaifn.ajoutchamp('TGB_ONB', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 17, 'bpchar', 1);
+SELECT * FROM metaifn.ajoutchamp('TGB_ONB', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 19, 'bpchar', 1);
 
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 17, validin = 0, validout = 17
+SET calcin = 0, calcout = 19, validin = 0, validout = 17
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'TGB_ONB';
 

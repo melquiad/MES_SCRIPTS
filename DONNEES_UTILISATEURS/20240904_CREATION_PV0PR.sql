@@ -6,6 +6,9 @@ DELETE FROM metaifn.addonnee WHERE donnee = 'U_PV0PR';
 -- On crée les champs dans g3arbre et p3arbre
 ALTER TABLE inv_exp_nm.g3arbre ADD COLUMN pv0pr float(8);
 ALTER TABLE inv_exp_nm.p3arbre ADD COLUMN pv0pr float(8);
+	--> en base de production
+ALTER FOREIGN TABLE inv_exp_nm.g3arbre ADD COLUMN pv0pr float(8);
+ALTER FOREIGN TABLE inv_exp_nm.p3arbre ADD COLUMN pv0pr float(8);
 
 -- Documentation metaifn
 
@@ -29,6 +32,18 @@ SET pv0pr = up.u_pv0pr
 FROM inv_exp_nm.u_p3arbre up
 WHERE p.npp = up.npp
 AND p.a = up.a;
+
+/*-- contrôle
+SELECT incref, avg(pv0pr), count(pv0pr)
+FROM inv_exp_nm.g3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, avg(pv0pr), count(pv0pr)
+FROM inv_exp_nm.p3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+*/
 
 
 -- On supprime les champs dans u_g3arbre et u_p3arbre

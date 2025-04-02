@@ -1,0 +1,1 @@
+DELETE FROM recodage WHERE date_recodage = '2025-03-18';

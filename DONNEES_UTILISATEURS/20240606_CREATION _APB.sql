@@ -1,11 +1,9 @@
 
-
 -- suppression de l'ancienne donnée U_ mais pas de son unité qui sera utilisée par la donnée IFN
 DELETE FROM metaifn.afchamp WHERE donnee = 'U_APB';
 DELETE FROM metaifn.addonnee WHERE donnee = 'U_APB';
 DELETE FROM metaifn.abmode WHERE unite = 'U_APB';
 DELETE FROM metaifn.abunite WHERE unite = 'U_APB';
-
 
 -- partie unite
 INSERT INTO metaifn.abunite (unite, proprietaire, utype, libelle, definition)
@@ -40,8 +38,9 @@ ORDER BY position desc;
 */
 
 -- creation du champ dans la table
-ALTER TABLE inv_exp_nm.e2point
-    ADD COLUMN APB CHAR(1);
+ALTER TABLE inv_exp_nm.e2point ADD COLUMN APB CHAR(1);
+--> en base de production
+ALTER FOREIGN TABLE inv_exp_nm.e2point ADD COLUMN APB CHAR(1);
 		
 -- partie utilisateur
 INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee) 

@@ -1,3 +1,8 @@
+
+SET search_path = inv_prod_new, metaifn, inv_exp_nm, public, topology;
+SHOW search_path;
+--------------------------------------------------------------------------------------------
+
 SELECT VERSION();
 
 CREATE EXTENSION postgis;
@@ -11,7 +16,6 @@ SELECT PostGIS_Extensions_Upgrade();
 SHOW ROLE;
 SET ROLE = lhaugomat;
 -----------------------------------------------
-
 
 DROP EXTENSION IF EXISTS postgis_topology;
 DROP EXTENSION IF EXISTS postgis_raster;

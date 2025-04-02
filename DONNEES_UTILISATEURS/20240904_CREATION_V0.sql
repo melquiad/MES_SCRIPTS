@@ -6,6 +6,9 @@ DELETE FROM metaifn.addonnee WHERE donnee = 'U_V0';
 -- On crée les champs dans g3arbre et p3arbre
 ALTER TABLE inv_exp_nm.g3arbre ADD COLUMN v0 float(8);
 ALTER TABLE inv_exp_nm.p3arbre ADD COLUMN v0 float(8);
+	--> en base de producton
+ALTER FOREIGN TABLE inv_exp_nm.g3arbre ADD COLUMN v0 float(8);
+ALTER FOREIGN TABLE inv_exp_nm.p3arbre ADD COLUMN v0 float(8);
 
 -- Documentation metaifn
 
@@ -25,11 +28,23 @@ FROM inv_exp_nm.u_g3arbre ug
 WHERE g.npp = ug.npp
 AND g.a = ug.a;
 
-UPDATE inv_exp_nm.p3arbre p
-SET v0 = up.u_v0
-FROM inv_exp_nm.u_p3arbre up
-WHERE p.npp = up.npp
-AND p.a = up.a;
+UPDATE inv_exp_nm.p3arbre g
+SET v0 = ug.u_v0
+FROM inv_exp_nm.u_p3arbre ug
+WHERE g.npp = ug.npp
+AND g.a = ug.a;
+
+/* -- Contrôle
+SELECT incref, count(v0), avg(v0)
+FROM inv_exp_nm.g3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, count(v0), avg(v0)
+FROM inv_exp_nm.p3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+*/
 
 /*
 -- On supprime les champs dans u_g3arbre et u_p3arbre

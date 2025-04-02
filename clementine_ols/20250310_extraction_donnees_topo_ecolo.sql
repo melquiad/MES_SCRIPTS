@@ -53,8 +53,8 @@ INNER JOIN point p USING (id_point)
 INNER JOIN point_ech pe USING (id_ech, id_point)
 INNER JOIN ecologie e USING (id_ech, id_point)
 INNER JOIN ecologie_2017 e2 USING (id_ech, id_point)
-WHERE v.annee = 2023
---WHERE v.annee BETWEEN 2017 AND 2023
+--WHERE v.annee = 2023
+WHERE v.annee BETWEEN 2017 AND 2023
 ORDER BY annee, npp;
 
 
@@ -93,6 +93,17 @@ WHERE v.npp IN (
 		)
  AND v.annee = 2018;
  --AND v.annee BETWEEN 2012 AND 2017;
+ ------------------------------------------------------------------------------------
+ 
+ 
+ 
+SELECT p.npp
+FROM v_liste_points_lt1_pi2 v
+INNER JOIN point p USING (id_point)
+INNER JOIN point_ech pe USING (id_ech, id_point)
+WHERE v.annee = 2023
+--WHERE v.annee BETWEEN 2017 AND 2023
+ORDER BY annee, npp;
 
 
 

@@ -5,6 +5,9 @@
 -- on ajoute les colonnes en base
 ALTER TABLE inv_exp_nm.g3foret ADD COLUMN diam_moy FLOAT;
 ALTER TABLE inv_exp_nm.p3point ADD COLUMN diam_moy FLOAT;
+	--> en base de production
+ALTER FOREIGN TABLE inv_exp_nm.g3foret ADD COLUMN diam_moy FLOAT;
+ALTER FOREIGN TABLE inv_exp_nm.p3point ADD COLUMN diam_moy FLOAT;
 
 /*
 --contrôle
@@ -22,8 +25,7 @@ SELECT * FROM metaifn.ajoutchamp ('DIAM_MOY', 'G3FORET', 'INV_EXP_NM', FALSE, 0,
 SELECT * FROM metaifn.ajoutchamp ('DIAM_MOY', 'P3POINT', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 8);
 
 
-INSERT INTO utilisateur.autorisation_groupe_donnee(groupe,
-donnee)
+INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee)
 VALUES ('IFN', 'DIAM_MOY');
 
 COMMIT;
@@ -53,9 +55,6 @@ WHERE p3p.npp = m.npp;
 
 COMMIT;
 
------------------------------------------------------------------------------------------------------------
-
-
 -- Vérification
 SELECT incref, count(diam_moy)
 FROM inv_exp_nm.g3foret
@@ -70,7 +69,7 @@ ORDER BY INCREF DESC;
 
 -- MAJ métadonnées
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 18, validin = 0, validout = 18
+SET calcin = 0, calcout = 19, validin = 0, validout = 19
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'DIAM_MOY';
 

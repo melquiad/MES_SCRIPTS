@@ -1,0 +1,3 @@
+Lambert 2 étendu --> 932006 --> 27572 (910002 anciennement)
+Lambert 93 --> 931007 --> 2154 (910001 anciennement)
+WGS84 --> 921048 --> 4326

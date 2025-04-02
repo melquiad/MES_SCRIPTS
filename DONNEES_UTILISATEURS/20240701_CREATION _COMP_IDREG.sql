@@ -53,7 +53,9 @@ SELECT * FROM metaifn.ajoutchamp('COMP_IDREG', 'P3POINT', 'INV_EXP_NM', FALSE, 0
 --- creation du champ dans la table
 ALTER TABLE inv_exp_nm.g3foret ADD COLUMN comp_idreg CHAR(4);
 ALTER TABLE inv_exp_nm.p3point ADD COLUMN comp_idreg CHAR(4);
-   
+	--> en production
+ALTER FOREIGN TABLE inv_exp_nm.g3foret ADD COLUMN comp_idreg CHAR(4);
+ALTER FOREIGN TABLE inv_exp_nm.p3point ADD COLUMN comp_idreg CHAR(4);
    	
 --- partie utilisateur
 INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee) 
@@ -71,11 +73,9 @@ ORDER BY POSITION DESC;
 --- controle : la colonne est disponible et vide au debut, complétée a la fin
 SELECT npp, comp_idreg
 FROM inv_exp_nm.g3foret
-WHERE comp_idreg IS NOT NULL
-;
+WHERE comp_idreg IS NOT NULL;
 
 -- Recopie de la donnée depuis u_g3foret vers g3_foret et depuis u_p3point vers p3point, pour les incref 0 à 17
-
 UPDATE inv_exp_nm.g3foret g
 SET comp_idreg = ug.u_comp_idreg
 FROM inv_exp_nm.u_g3foret ug
@@ -407,7 +407,7 @@ ROLLBACK;
 BEGIN;
 
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 18, validin = 0, validout = 18, defout = 18
+SET calcin = 0, calcout = 19, validin = 0, validout = 18, defout = 19
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'COMP_IDREG';
 

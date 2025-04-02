@@ -18,7 +18,7 @@ SELECT * FROM metaifn.ajoutdonnee('ZICO', NULL, 'ZICO', 'IFN', NULL, 2, 'char(1)
 
 -- partie champ
 SELECT * FROM metaifn.ajoutchamp('ZICO', 'E2POINT', 'INV_EXP_NM', FALSE, 0, 18, 'bpchar', 1);
---              ou
+-- ou
 SELECT * FROM metaifn.ajoutchamp('ZICO'::varchar, 'E2POINT'::varchar, 'INV_EXP_NM'::varchar, FALSE::boolean, 1, 18, 'bpchar'::varchar, 1::int4);
 
 /*
@@ -37,6 +37,8 @@ ORDER BY position desc;
 
 -- creation du champ dans la table
 ALTER TABLE inv_exp_nm.e2point ADD COLUMN ZICO CHAR(1);
+	-- en base de production
+ALTER FOREIGN TABLE inv_exp_nm.e2point ADD COLUMN ZICO CHAR(1);
 		
 -- partie utilisateur
 INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee) 
