@@ -64,7 +64,7 @@ VALUES ('TGB_ONB', '0', 1, 1, 1, $$Arbre non TGB ONB$$, $$Arbre n'étant pas un 
 , ('TGB_ONB', '1', 2, 2, 1, $$Arbre TGB ONB$$, $$Arbre TGB ONB$$);
 
 
-SELECT * FROM metaifn.ajoutdonnee('TGB_ONB', NULL, 'TGB_ONB', 'IFN', NULL, 40, 'char(1)', 'CC', TRUE, TRUE, $$Très gros bois selon critères ONB$$, $$Arbre qualifié de très gros bois selon les critères de l ONB$$);                                                             
+SELECT * FROM metaifn.ajoutdonnee('TGB_ONB', NULL, 'TGB_ONB', 'IFN', NULL, 40, 'char(1)', 'CC', TRUE, TRUE, $$Très gros bois selon critères ONB$$, $$Arbre qualifié de très gros bois selon les critères de l'ONB$$);                                                             
 
 SELECT * FROM metaifn.ajoutchamp('TGB_ONB', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 19, 'bpchar', 1);
 
@@ -128,9 +128,13 @@ INNER JOIN type_bio AS tb ON a.espar = tb.espar
 WHERE ua.npp = a.npp AND ua.a = a.a AND p2.incref = 18;
 
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 18, validin = 0, validout = 18, defout = 18
+SET calcin = 0, calcout = 19, validin = 0, validout = 18, defout = 18
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'TGB_ONB';
+
+UPDATE metaifn.addonnee
+SET definition = $$Arbre qualifié de très gros bois selon les critères de l'ONB$$
+WHERE donnee = 'TGB_ONB';
 
 COMMIT;
 

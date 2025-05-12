@@ -39,7 +39,7 @@ ORDER BY incref DESC;
 ---------------------------------------------------------------
 -- MISE À JOUR CAMPAGNE 2023
 -- import de la couche depuis une fenêtre de commandes linux
-shp2pgsql -s 931007 -D -i -I -W utf-8 /home/lhaugomat/Documents/ECHANGES/SIG/regbiofr/regbiofr.shp public.regbiofr | psql =inv-local
+shp2pgsql -s 931007 -D -i -I -W utf-8 /home/lhaugomat/Documents/ECHANGES/SIG/regbiofr/regbiofr.shp public.regbiofr | psql service=inv-local
 shp2pgsql -s 931007 -D -i -I -W utf-8 /home/lhaugomat/Documents/ECHANGES/SIG/regbiofr/regbiofr.shp public.regbiofr | psql service=test-exp
 
 BEGIN;
@@ -58,7 +58,7 @@ FROM biog b
 WHERE p2.npp = b.npp;
 
 UPDATE metaifn.afchamp
-SET calcout = 18, validout = 18
+SET calcin = 0, calcout = 18, validin = 0, validout = 18, defin = 0, defout = NULL
 WHERE famille = 'INV_EXP_NM'
 AND format = 'TE2POINT'
 AND donnee = 'BIOGEO2002';
@@ -72,5 +72,62 @@ SELECT NPP, BIOGEO2002
 FROM INV_EXP_NM.E2POINT
 WHERE INCREF = 18 AND BIOGEO2002 IS NULL
 
---ROLLBACK;
---COMMIT;
+
+---------------------------------------------------------------
+-- MISE À JOUR CAMPAGNE 2024
+-- import de la couche depuis une fenêtre de commandes linux
+
+SET search_path = inv_prod_new, metaifn, inv_exp_nm, public, topology;
+SHOW search_path;
+
+shp2pgsql -s 2154 -D -i -I -W utf-8 /home/lhaugomat/Documents/ECHANGES/SIG/regbiofr/regbiofr.shp public.regbiofr | psql service=inv-local
+shp2pgsql -s 2154 -D -i -I -W utf-8 /home/lhaugomat/Documents/ECHANGES/SIG/regbiofr/regbiofr.shp public.regbiofr | psql service=inv-bdd
+shp2pgsql -s 931007 -D -i -I -W utf-8 /home/lhaugomat/Documents/ECHANGES/SIG/regbiofr/regbiofr.shp public.regbiofr | psql service=test-exp
+shp2pgsql -s 931007 -D -i -I -W utf-8 /home/lhaugomat/Documents/ECHANGES/SIG/regbiofr/regbiofr.shp public.regbiofr | psql service=exp
+
+BEGIN;
+
+-- réalisation du croisement
+WITH biog AS (
+    SELECT p2.npp, rb.domaine::bpchar AS biog
+    FROM inv_exp_nm.e1coord c1
+    INNER JOIN inv_exp_nm.e2point p2 USING (npp)
+    INNER JOIN public.regbiofr rb ON ST_Intersects(c1.geom, rb.geom)
+    WHERE p2.incref = 19
+)
+UPDATE inv_exp_nm.e2point p2
+SET biogeo2002 = b.biog
+FROM biog b
+WHERE p2.npp = b.npp;
+
+UPDATE metaifn.afchamp
+SET calcin = 0, calcout = 19, validin = 0, validout = 18, defin = 0, defout = NULL
+WHERE famille = 'INV_EXP_NM'
+AND format = 'TE2POINT'
+AND donnee = 'BIOGEO2002';
+
+DROP TABLE public.regbiofr;
+
+COMMIT;
+
+-- Correction des points NULL
+SELECT NPP, BIOGEO2002
+FROM INV_EXP_NM.E2POINT
+WHERE INCREF = 19
+AND BIOGEO2002 IS NULL
+
+--controles
+SELECT count(biogeo2002), biogeo2002, incref
+FROM inv_exp_nm.e2point
+GROUP BY incref, biogeo2002
+ORDER BY incref DESC;
+
+
+
+
+
+
+
+
+
+

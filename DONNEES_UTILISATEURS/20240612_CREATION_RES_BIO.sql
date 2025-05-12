@@ -51,12 +51,16 @@ FROM inv_exp_nm.u_e2point c
 WHERE p.npp = c.npp;
 
 -- Mise à jour campagne 2023 (incref 18)
+SET search_path = 'public', 'topology', 'inv_prod_new', 'inv_exp_nm';
+
 WITH croise AS (
-    SELECT c.npp, SUBSTRING(r.nom_site FROM '\((zone.+)\)') AS zrbios
-    FROM inv_exp_nm.e1coord c
-    INNER JOIN carto_inpn.bios_2022 r ON r.geom && c.geom AND _ST_INTERSECTS(r.geom, c.geom)
+    SELECT p2.npp, SUBSTRING(r.nom_site FROM '\((zone.+)\)') AS zrbios
+    FROM inv_exp_nm.e2point p2
+    INNER JOIN inv_exp_nm.e1coord c USING (npp)
+    LEFT JOIN carto_inpn.bios r ON r.geom && c.geom AND _ST_INTERSECTS(r.geom, c.geom)
+	WHERE p2.incref = 18
 )
-UPDATE inv_exp_nm.e2point e2
+UPDATE inv_exp_nm.e2point p2
 SET res_bio = 
     CASE
         WHEN zrbios = 'zone centrale' THEN '1'
@@ -65,8 +69,52 @@ SET res_bio =
         ELSE '0'
     END
 FROM croise c
-WHERE e2.npp = c.npp AND e2.incref = 18;
+WHERE p2.npp = c.npp;
 
+	-- mise à jour de U_RES_BIO pour 2023
+UPDATE inv_exp_nm.u_e2point u
+SET u_res_bio = c.res_bio
+FROM inv_exp_nm.e2point c
+WHERE u.npp = c.npp AND incref = 18;
+
+
+/*
+-- contrôle : nombre de points dans zone centrale de RES_BIO par incref
+SELECT res_bio, count(res_bio), incref
+FROM inv_exp_nm.e2point
+WHERE res_bio = '1'
+GROUP BY incref, res_bio
+ORDER BY incref DESC;
+
+SELECT u_res_bio, count(u_res_bio), incref
+FROM inv_exp_nm.u_e2point
+WHERE u_res_bio = '1'
+GROUP BY incref, u_res_bio
+ORDER BY incref DESC;
+*/
+
+
+
+-- Mise à jour campagne 2024 (incref 19)
+SET search_path = 'public', 'topology', 'inv_prod_new', 'inv_exp_nm';
+
+WITH croise AS (
+    SELECT p2.npp, SUBSTRING(r.nom_site FROM '\((zone.+)\)') AS zrbios
+    FROM inv_exp_nm.e2point p2
+    INNER JOIN inv_exp_nm.e1coord c USING (npp)
+    LEFT JOIN carto_inpn.bios r ON r.geom && c.geom AND _ST_INTERSECTS(r.geom, c.geom)
+	WHERE p2.incref = 19
+)
+UPDATE inv_exp_nm.e2point p2
+SET res_bio = 
+    CASE
+        WHEN zrbios = 'zone centrale' THEN '1'
+        WHEN zrbios = 'zone tampon' THEN '2'
+        WHEN zrbios = 'zone de transition' THEN '3'
+        ELSE '0'
+    END
+FROM croise c
+WHERE p2.npp = c.npp;
 
 /*
 -- contrôle : nombre de points dans zone centrale de RES_BIO par incref

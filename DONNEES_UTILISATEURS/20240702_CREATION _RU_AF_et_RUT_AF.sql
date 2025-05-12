@@ -57,7 +57,7 @@ VALUES ('0', 0),
 
 
 -- calcul de la réserve utile
--- En forêt
+	-- En forêt
 SET enable_nestloop = FALSE;
 
 SELECT incref, COUNT(ru_af)
@@ -78,13 +78,25 @@ INNER JOIN inv_exp_nm.g3ecologie e ON t.npp = e.npp
 WHERE f.npp = t.npp
 AND e.incref = 18;
 
+UPDATE metaifn.afchamp
+SET calcin = 0, calcout = 19, validin = 0, validout = 18, defin = 0, defout = NULL
+WHERE famille ~~* 'inv_exp_nm'
+AND donnee ~* 'ru_af'
+AND format = 'TG3FORET';
+
+UPDATE metaifn.addonnee
+SET  libelle = 'Réserve utile (avec affleurement rocheux)', definition = $$Indice de réserve utile en eau du sol du point d'inventaire, calculé en tenant compte de la présence d'affleurement rocheux, selon la formule : (10-AFFROC)*(10 - CAILLOUX) * ( (PROF1 * coef associé à TEXT1) + ( (PROF2 - PROF1) * coef associé à TEXT2) )/10$$
+WHERE donnee = 'RU_AF';
+
+
 /*
+ * 
 SELECT npp, ru_af
 FROM inv_exp_nm.g3foret
 WHERE incref = 18 AND ru_af IS NULL;
 */
 
--- En peupleraie
+	-- En peupleraie
 
 SELECT INCREF, COUNT(RU_AF)
 FROM inv_exp_nm.p3point
@@ -113,9 +125,10 @@ WHERE incref = 18 AND ru_af IS NULL;
 DROP TABLE textu;
 
 UPDATE metaifn.afchamp
-SET calcout = 18, validout = 18
+SET calcin = 11, calcout = 19, validin = 11, validout = 18, defin = 11, defout = NULL
 WHERE famille ~~* 'inv_exp_nm'
-AND donnee ~* 'ru_af';
+AND donnee ~* 'ru_af'
+AND format = 'TP3POINT';
 
 COMMIT;
 
@@ -173,10 +186,10 @@ FROM inv_exp_nm.g3foret
 GROUP BY incref ORDER BY incref DESC;
 
 UPDATE metaifn.afchamp
-SET calcout = 18, validout = 18, defout = NULL
+SET calcin = 0, calcout = 19, validin = 0, validout = 18, defin = 0, defout = NULL
 WHERE famille ~~* 'inv_exp_nm'
 AND donnee ~* 'rut_af'
-AND FORMAT = 'G3FORET';
+AND format = 'TG3FORET';
 
 COMMIT;
 
@@ -214,9 +227,37 @@ GROUP BY incref ORDER BY incref DESC;
 
 
 UPDATE metaifn.afchamp
-SET calcin = 11, calcout = 18, validin = 11, validout = 18, defout = 18
+SET calcin = 11, calcout = 19, validin = 11, validout = 18, defin = 11, defout = NULL
 WHERE famille ~~* 'inv_exp_nm'
 AND donnee ~* 'rut_af'
-AND FORMAT = 'P3POINT';
+AND FORMAT = 'TP3POINT';
+
 
 COMMIT;
+
+/*
+UPDATE metaifn.afchamp
+SET calcin = 0, calcout = 19, validin = 0, validout = 18, defin = 0, defout = NULL
+WHERE famille ~~* 'inv_exp_nm'
+AND donnee = 'U_RU_AF'
+AND format = 'U_G3FORET';
+
+UPDATE metaifn.afchamp
+SET calcin = 11, calcout = 19, validin = 11, validout = 18, defin = 11, defout = NULL
+WHERE famille ~~* 'inv_exp_nm'
+AND donnee = 'U_RU_AF'
+AND format = 'U_P3POINT';
+
+
+UPDATE metaifn.afchamp
+SET calcin = 0, calcout = 19, validin = 0, validout = 18, defin = 0, defout = NULL
+WHERE famille ~~* 'inv_exp_nm'
+AND donnee = 'U_RUT_AF'
+AND format = 'U_G3FORET';
+
+UPDATE metaifn.afchamp
+SET calcin = 11, calcout = 19, validin = 11, validout = 18, defin = 11, defout = NULL
+WHERE famille ~~* 'inv_exp_nm'
+AND donnee = 'U_RUT_AF'
+AND FORMAT = 'U_P3POINT';
+*/

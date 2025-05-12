@@ -1,3 +1,10 @@
+/*
+UPDATE metaifn.addonnee
+SET unite = 'UTMS' WHERE donnee = 'BIOM_AR' AND unite = 'MMS';
+
+UPDATE metaifn.addonnee
+SET unite = 'UTC' WHERE donnee = 'CARB_AR' AND unite = 'MMS';
+*/
 
 -- suppression de l'ancienne donnée U_ mais pas de son unité qui sera utilisée par la donnée IFN
 DELETE FROM metaifn.afchamp WHERE donnee = 'U_BIOM_AR';
@@ -148,12 +155,9 @@ DROP TABLE public.facteurs;
 
 
 UPDATE metaifn.afchamp
- SET calcout = 19, validout = 18
- WHERE famille = 'INV_EXP_NM' AND donnee IN ('BIOM_AR', 'CARB_AR');
+SET calcin = 0, calcout = 19, validin = 0, validout = 18
+WHERE famille = 'INV_EXP_NM' AND donnee IN ('BIOM_AR', 'CARB_AR');
 
-UPDATE metaifn.afchamp
- SET calcout = 19, validout = 18
- WHERE famille = 'INV_EXP_NM' AND donnee IN ('V0');
 
 COMMIT;
 

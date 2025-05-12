@@ -16,8 +16,8 @@ ALTER FOREIGN TABLE inv_exp_nm.p3arbre ADD COLUMN pv0 float(8);
 SELECT * FROM metaifn.ajoutdonnee('PV0', NULL, 'm3/an', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE, 'Production annuelle en volume aérien total', 'Production annuelle définie à partir du volume aérien total de l arbre');
 
 -- partie champ
-SELECT * FROM metaifn.ajoutchamp('PV0', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
-SELECT * FROM metaifn.ajoutchamp('PV0', 'P3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
+SELECT * FROM metaifn.ajoutchamp('PV0', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 19, 'float8', 1);
+SELECT * FROM metaifn.ajoutchamp('PV0', 'P3ARBRE', 'INV_EXP_NM', FALSE, 0, 19, 'float8', 1);
 
 -- Calcul de la donnée à partir de U_PV0
 
@@ -32,6 +32,15 @@ SET pv0 = up.u_pv0
 FROM inv_exp_nm.u_p3arbre up
 WHERE p.npp = up.npp
 AND p.a = up.a;
+
+UPDATE metaifn.afchamp
+SET defin = 0, defout = NULL, calcin = 0, calcout = 19, validin = 0, validout = 18
+WHERE donnee = 'PV0';
+
+UPDATE metaifn.addonnee
+SET definition = $$Production annuelle définie à partir du volume aérien total de l'arbre$$
+WHERE donnee = 'PV0';
+
 
 /*-- contrôle
 SELECT incref, avg(pv0), count(pv0)

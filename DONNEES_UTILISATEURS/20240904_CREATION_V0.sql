@@ -34,6 +34,11 @@ FROM inv_exp_nm.u_p3arbre ug
 WHERE g.npp = ug.npp
 AND g.a = ug.a;
 
+UPDATE metaifn.afchamp
+SET defin = 0, defout = NULL, calcin = 0, calcout = 19, validin = 0, validout = 18
+WHERE donnee = 'V0';
+
+
 /* -- Contrôle
 SELECT incref, count(v0), avg(v0)
 FROM inv_exp_nm.g3arbre

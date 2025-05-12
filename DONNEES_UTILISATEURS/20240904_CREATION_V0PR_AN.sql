@@ -16,8 +16,8 @@ ALTER FOREIGN TABLE inv_exp_nm.p3arbre ADD COLUMN v0pr_an float(8);
 SELECT * FROM metaifn.ajoutdonnee('V0PR_AN', NULL, 'm3/an', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE, 'Volume total aérien prélevé annualisé', 'Volume total aérien prélevé annualisé');
 
 -- partie champ
-SELECT * FROM metaifn.ajoutchamp('V0PR_AN', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
-SELECT * FROM metaifn.ajoutchamp('V0PR_AN', 'P3ARBRE', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 1);
+SELECT * FROM metaifn.ajoutchamp('V0PR_AN', 'G3ARBRE', 'INV_EXP_NM', FALSE, 0, 19, 'float8', 1);
+SELECT * FROM metaifn.ajoutchamp('V0PR_AN', 'P3ARBRE', 'INV_EXP_NM', FALSE, 0, 19, 'float8', 1);
 
 -- Calcul de la donnée à partir de U_V0PR_AN
 
@@ -32,6 +32,10 @@ SET v0pr_an = up.u_v0pr_an
 FROM inv_exp_nm.u_p3arbre up
 WHERE p.npp = up.npp
 AND p.a = up.a;
+
+UPDATE metaifn.afchamp
+SET defin = 0, defout = NULL, calcin = 0, calcout = 19, validin = 0, validout = 18
+WHERE donnee = 'V0PR_AN';
 
 /*-- contrôle
 SELECT incref, count(v0pr_an), avg(v0pr_an)

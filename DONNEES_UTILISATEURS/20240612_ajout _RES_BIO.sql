@@ -66,6 +66,14 @@ SET res_bio =
 FROM croise c
 WHERE e2.npp = c.npp AND e2.incref = 18;
 
+UPDATE metaifn.afchamp
+SET defin = 0, defout = NULL, calcin = 0, calcout = 18, validin = 0, validout = 18
+WHERE donnee = 'RES_BIO';
+
+UPDATE metaifn.addonnee
+SET definition = $$Point en réserve de biosphère (o/n) (INPN 07/2022)$$
+WHERE donnee = 'RES_BIO';
+
 
 
 
