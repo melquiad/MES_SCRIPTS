@@ -6,6 +6,8 @@ SHOW search_path;
 SELECT VERSION();
 
 CREATE EXTENSION postgis;
+CREATE EXTENSION postgis_raster;
+CREATE EXTENSION postgis_topology;
 
 SELECT postgis_full_version();
 SELECT POSTGIS_PROJ_VERSION();

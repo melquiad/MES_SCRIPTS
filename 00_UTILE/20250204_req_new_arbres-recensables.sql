@@ -100,7 +100,7 @@ WHERE NOT EXISTS (
 			AND a1.a = a2.a
 				)
 GROUP BY annee
-ORDER BY annee;
+ORDER BY annee DESC;
 
 
 SELECT v2.annee, v2.npp, v2.id_point, a2.a
@@ -114,9 +114,8 @@ WHERE NOT EXISTS (
 			AND v1.id_point = v2.id_point
 			AND a1.a = a2.a
 				)
-AND v2.annee = 2024
---GROUP BY annee
-ORDER BY annee, npp;
+AND v2.annee = 2023
+ORDER BY annee, npp, a;
 
 
 SELECT v2.annee, count(a2.a) AS nb_arbres
@@ -135,7 +134,7 @@ LEFT JOIN arbre a2 ON v2.id_ech = a2.id_ech
     )
 WHERE v2.annee >= 2015
 GROUP BY annee
-ORDER BY annee;
+ORDER BY annee DESC;
 
 
 

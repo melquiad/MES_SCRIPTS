@@ -1,5 +1,0 @@
-
-
-ALTER ROLE "lhaugomat" SET search_path TO inv_prod_new;
-
-ALTER DATABASE inventaire SET search_path = 'inv_prod_new';

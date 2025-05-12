@@ -50,5 +50,38 @@ FROM inv_exp_nm.u_g3foret ug
 WHERE u_tfv_in = 'NA'
 AND incref = 18;
 */
+--------------------------------
+
+
+-- Mise à jour incref 19
+
+-- pour u_dep_bdfor, u_an_bdfor, u_tfv, u_dist_bdfor
+UPDATE pg.inv_exp_nm.u_g3foret ug
+SET (u_dep_bdfor, u_an_bdfor, u_tfv, u_dist_bdfor, u_tfv_in) = (h.depbdv2, h.anrefbdv, h.codeTFVdis, LEFT(h.dist_bdfor,1)
+FROM read_csv('/home/lhaugomat/Documents/ECHANGES/MES_SCRIPTS/marianne_duprez/ptsi19_utfv.csv') AS h
+WHERE ug.npp = h.npp;
+
+UPDATE pg.inv_exp_nm.u_p3point up
+SET (u_dep_bdfor, u_an_bdfor, u_tfv, u_dist_bdfor, u_tfv_in) = (h.depbdv2, h.anrefbdv, h.codeTFVdis, LEFT(h.dist_bdfor,1)
+FROM read_csv('/home/lhaugomat/Documents/ECHANGES/MES_SCRIPTS/marianne_duprez/ptsi19_utfv.csv') AS h
+WHERE up.npp = h.npp;
+
+-- pour tfv_in
+UPDATE pg.inv_exp_nm.g3foret ug
+SET tfv_in = CASE WHEN LEFT(h.dist_bdfor,1)='1' THEN '1' ELSE '0' END
+FROM read_csv('/home/lhaugomat/Documents/ECHANGES/MES_SCRIPTS/marianne_duprez/ptsi19_utfv.csv') AS h
+WHERE ug.npp = h.npp;
+
+UPDATE pg.inv_exp_nm.p3point up
+SET tfv_in = CASE WHEN LEFT(h.dist_bdfor,1)='1' THEN '1' ELSE '0' END
+FROM read_csv('/home/lhaugomat/Documents/ECHANGES/MES_SCRIPTS/marianne_duprez/ptsi19_utfv.csv') AS h
+WHERE up.npp = h.npp;
+
+
+
+
+
+
+
 
 
