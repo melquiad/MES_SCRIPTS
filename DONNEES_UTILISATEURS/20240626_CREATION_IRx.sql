@@ -35,9 +35,8 @@ DROP TABLE public.accroiss;
     LEFT JOIN accroissement ac3 ON a1.id_ech = ac3.id_ech AND a1.id_point = ac3.id_point AND a1.a = ac3.a AND ac3.nir = 3
     LEFT JOIN accroissement ac4 ON a1.id_ech = ac4.id_ech AND a1.id_point = ac4.id_point AND a1.a = ac4.a AND ac4.nir = 4
     WHERE r.csa != '5'
---    AND c.millesime = 2023
-    AND c.millesime BETWEEN 2009 AND 2023
-    AND COALESCE(ac1.a, ac2.a, ac3.a, ac4.a) IS NOT NULL) TO '/home/lhaugomat/Documents/EXPORTS/accroiss_2023.csv' WITH CSV HEADER DELIMITER ';' NULL AS '';
+    AND c.millesime BETWEEN 2009 AND 2024
+    AND COALESCE(ac1.a, ac2.a, ac3.a, ac4.a) IS NOT NULL) TO '/home/lhaugomat/Documents/ECHANGES/EXPORTS_DIVERS/accroiss.csv' WITH CSV HEADER DELIMITER ';' NULL AS '';
 
 	-- dans test-inv-exp : on crée une table temporaire accroiss puis on y copie le fichier accroiss.csv
 CREATE UNLOGGED TABLE public.accroiss
@@ -52,7 +51,7 @@ CREATE UNLOGGED TABLE public.accroiss
 ) WITHOUT OIDS;
 
 	--depuis un psql local
-\COPY public.accroiss FROM '/home/lhaugomat/Documents/EXPORTS/accroiss_2023.csv' WITH CSV HEADER DELIMITER ';' NULL AS 'NULL';
+\COPY public.accroiss FROM '/home/lhaugomat/Documents/ECHANGES/EXPORTS_DIVERS/accroiss.csv' WITH CSV HEADER DELIMITER ';' NULL AS 'NULL';
 
    
 UPDATE inv_exp_nm.g3arbre ua
@@ -60,29 +59,24 @@ SET ai1 = a.ir1
 , ai2 = a.ir2
 , ai3 = a.ir3
 , ai4 = a.ir4
-FROM accroiss a
+FROM public.accroiss a
 WHERE ua.npp = a.npp
 AND ua.a = a.a;
 
 /*-- désarchivage
 UPDATE metaifn.afchamp
-SET format = 'G3ARBRE', famille = 'INV_EXP_NM' 
+SET format = 'TG3ARBRE', famille = 'INV_EXP_NM' 
 WHERE famille = 'ARCHIVE'
 AND format = 'ARCHIVE'
 AND donnee IN ('AI1', 'AI2', 'AI3', 'AI4');
 */
 
--- documentation MetaIFN des données pour 2023
-UPDATE metaifn.afchamp
-SET calcout = 18, validout = 18
-WHERE famille = 'INV_EXP_NM'
-AND format = 'G3ARBRE'
-AND donnee IN ('AI1', 'AI2', 'AI3', 'AI4');
+-- documentation MetaIFN des données pour 2024
 
 UPDATE metaifn.afchamp
-SET calcin = 5, calcout = 18, validin = 5, validout = 18, defin = 5, defout = NULL 
+SET calcin = 5, calcout = 19, validin = 5, validout = 18, defin = 5, defout = NULL 
 WHERE famille = 'INV_EXP_NM'
-AND format = 'G3ARBRE'
+AND format = 'TG3ARBRE'
 AND donnee IN ('AI1', 'AI2', 'AI3', 'AI4');
 
 

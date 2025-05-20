@@ -25,7 +25,7 @@ SELECT * FROM metaifn.ajoutchamp('DEPER50', 'G3FORET', 'INV_EXP_NM', FALSE, 0, 1
 SELECT * FROM metaifn.ajoutchamp('DEPER50', 'P3POINT', 'INV_EXP_NM', FALSE, 0, 17, 'varchar', 1);
 
 UPDATE metaifn.afchamp 
-SET calcin = 12, calcout = 17, validin = 12, validout = 17, defin = 12, defout = NULL  
+SET calcin = 12, calcout = 19, validin = 12, validout = 18, defin = 12, defout = NULL  
 WHERE famille = 'INV_EXP_NM' AND donnee = 'DEPER50';
 
 SELECT *

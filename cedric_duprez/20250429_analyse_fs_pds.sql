@@ -1,11 +1,10 @@
 
-
-/*SELECT g.fs, g.pds
+SELECT g.fs, g.pds
 FROM inv_exp_nm.g3arbre g
-WHERE incref = 19
+WHERE incref = 18
 AND pds != 1
 ORDER BY fs, pds DESC;
-*/
+
 
 -- 14_calculs_arbres ----------------------------------------------------------
 
@@ -399,6 +398,19 @@ GROUP BY p2.incref
 ORDER BY p2.incref DESC;
 
 SELECT p2.incref, SUM(p2.poids * a.v0 * a.w)
+FROM inv_exp_nm.e2point p2
+INNER JOIN inv_exp_nm.p3arbre a ON p2.npp = a.npp
+GROUP BY p2.incref
+ORDER BY p2.incref DESC;
+
+-- V
+SELECT p2.incref, SUM(p2.poids * a.v * a.w)
+FROM inv_exp_nm.e2point p2
+INNER JOIN inv_exp_nm.g3arbre a ON p2.npp = a.npp
+GROUP BY p2.incref
+ORDER BY p2.incref DESC;
+
+SELECT p2.incref, SUM(p2.poids * a.v * a.w)
 FROM inv_exp_nm.e2point p2
 INNER JOIN inv_exp_nm.p3arbre a ON p2.npp = a.npp
 GROUP BY p2.incref
