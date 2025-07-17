@@ -3,19 +3,12 @@ INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALU
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('CAM', 'P', 'F', '5', 'T', 19, 'CAM2');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('CS', 'P', 'F', '5', 'T', 19, 'CSG13');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('CSLISI', 'P', 'F', '5', 'T', 19, 'CSLISI4');
-INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('DC', 'P', 'F', '5', 'T', 19, 'DCG9');
+--INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('DC', 'P', 'F', '5', 'T', 19, 'DCG9');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('DECOUPE', 'P', 'F', '5', 'T', 19, 'DECOUPE1');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('DENIVRIV', 'P', 'F', '5', 'T', 19, 'DENIVRIV2');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('DISTRIV', 'P', 'F', '5', 'T', 19, 'DISTRIV0');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('DOM1', 'P', 'F', '5', 'T', 19, 'DOM1M0');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('DOM8', 'P', 'F', '5', 'T', 19, 'DOM8M2');
-INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('ESPAR', 'P', 'F', '5', 'T', 19, 'ESPAR1');
-INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('ESPAR', 'P', 'F', '5', 'T', 19, 'ESPAR1');
-INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('ESPAR', 'P', 'F', '5', 'T', 19, 'ESPAR1');
-INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('ESPAR', 'P', 'F', '5', 'T', 19, 'ESPAR1');
-INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('ESPAR', 'P', 'F', '5', 'T', 19, 'ESPAR1');
-INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('ESPAR', 'P', 'F', '5', 'T', 19, 'ESPAR1');
-INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('ESPAR', 'P', 'F', '5', 'T', 19, 'ESPAR1');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('ESPAR', 'P', 'F', '5', 'T', 19, 'ESPAR1');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('FP3', 'P', 'F', '5', 'T', 19, 'FP3');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('HUMUS', 'P', 'F', '5', 'T', 19, 'HUMUS22');
@@ -31,6 +24,5 @@ INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALU
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('PLISI', 'P', 'F', '5', 'T', 19, 'PLISI3');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('PORTANCE', 'P', 'F', '5', 'T', 19, 'PORTANCE3');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('STG', 'P', 'F', '5', 'T', 19, 'STG');
-INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('TEXT', 'P', 'F', '5', 'T', 19, 'TEXT1');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('TEXT', 'P', 'F', '5', 'T', 19, 'TEXT1');
 INSERT INTO metaifn.aiunite (unite, usite, site, cyc, inv, incref, dcunite) VALUES ('TSOL', 'P', 'F', '5', 'T', 19, 'TSOL22');
