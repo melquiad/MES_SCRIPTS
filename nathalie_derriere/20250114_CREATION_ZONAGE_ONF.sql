@@ -90,7 +90,7 @@ ADD COLUMN zonage_onf CHAR(4);
 
 -- Mise à jour métadonnées
 UPDATE metaifn.afchamp
-SET defin = 0, defout = 18, calcin = 0, calcout = 18, validin = 0, validout = 18
+SET defin = 0, defout = 19, calcin = 0, calcout = 19, validin = 0, validout = 19
 WHERE famille IN  ('INV_EXP_NM','OCRE')
 AND donnee = 'ZONAGE_ONF';
 
@@ -106,6 +106,7 @@ WITH croise AS (
 		FROM inv_exp_nm.e1coord c1
 		INNER JOIN inv_exp_nm.e2point e ON c1.npp = e.npp
 		LEFT JOIN carto_refifn.onf_l93_2023 i ON ST_Intersects(c1.geom, i.geom)
+		WHERE e.incref = 19
 		)
 UPDATE inv_exp_nm.e2point p
 SET zonage_onf = c.dedans
@@ -113,14 +114,12 @@ FROM croise c
 WHERE p.npp = c.npp;
 
 
-
-
 -- contrôle
 SELECT e.incref, count(zonage_onf)
 FROM inv_exp_nm.e2point e
-WHERE e.zonage_onf 
+WHERE e.zonage_onf IS NOT NULL
 GROUP BY e.incref
-ORDER BY e.incref;
+ORDER BY e.incref DESC;
 
 COMMIT;
 
