@@ -29,11 +29,11 @@ COMMIT;
 
 BEGIN;
 -- Création de la donnée utilisateur
-ALTER TABLE inv_exp_nm.g3arbre
-    ADD COLUMN mortbdeper CHAR(1);
-
-ALTER TABLE inv_exp_nm.p3arbre
-    ADD COLUMN mortbdeper CHAR(1);
+ALTER TABLE inv_exp_nm.g3arbre ADD COLUMN mortbdeper CHAR(1);
+ALTER TABLE inv_exp_nm.p3arbre ADD COLUMN mortbdeper CHAR(1);
+-- en base de production
+ALTER FOREIGN TABLE inv_exp_nm.g3arbre ADD COLUMN mortbdeper CHAR(1);
+ALTER FOREIGN TABLE inv_exp_nm.p3arbre ADD COLUMN mortbdeper CHAR(1);
 	
 -- Mise à jour de la donnée utilisateur
 -- pour campagne 2021 et plus
@@ -72,13 +72,13 @@ WHERE a.npp = ua.npp AND a.a = ua.a AND a.incref >= 16;
 
 -- Mise à jour des métadonnées
 UPDATE metaifn.afchamp
-SET calcin = 16, calcout = 18, validin = 16, validout = 18
+SET calcin = 16, calcout = 19, validin = 16, validout = 18
 WHERE famille ~~* 'inv_exp_nm'
 AND format ~~* 'g3arbre'
 AND donnee ~~* 'MORTBDEPER';
 
 UPDATE metaifn.afchamp
-SET calcin = 16, calcout = 18, validin = 16, validout = 18
+SET calcin = 16, calcout = 19, validin = 16, validout = 18
 WHERE famille ~~* 'inv_exp_nm'
 AND format ~~* 'p3arbre'
 AND donnee ~~* 'MORTBDEPER';
@@ -88,6 +88,26 @@ INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee)
 VALUES ('IFN', 'MORTBDEPER');
 
 COMMIT;
+
+-- Contrôles
+SELECT incref, count(mortbdeper)
+FROM inv_exp_nm.g3arbre ga
+GROUP BY ga.incref
+ORDER BY incref DESC;
+
+SELECT incref, count(mortbdeper)
+FROM inv_exp_nm.p3arbre pa
+GROUP BY pa.incref
+ORDER BY incref DESC;
+
+
+
+
+
+
+
+
+
 
  
 

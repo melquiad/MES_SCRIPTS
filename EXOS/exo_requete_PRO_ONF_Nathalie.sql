@@ -1,14 +1,14 @@
-select distinct on (e1.idp) idp ,e1.npp, e1.pro_nm, m.libelle,  g.gunite, g.gmode as pf_maaf, m1.libelle as lib_pf_maaf
-from e1point e1
-left join metaifn.abmode m on e1.pro_nm = m."mode" and m.unite = 'PRO_2015'
-left join metaifn.abgroupe g on g."mode" = e1.pro_nm and g.gunite = 'PF_MAAF'
-left join metaifn.abmode m1 on g.gunite = m1.unite and g.gmode = m1."mode"
-where incref =14
-order by idp, npp;
+SELECT DISTINCT ON (e1.idp) idp ,e1.npp, e1.pro_nm, m.libelle,  g.gunite, g.gmode AS pf_maaf, m1.libelle AS lib_pf_maaf
+FROM inv_exp_nm.e1point e1
+LEFT JOIN metaifn.abmode m ON e1.pro_nm = m."mode" AND m.unite = 'PRO_2015'
+LEFT JOIN metaifn.abgroupe g ON g."mode" = e1.pro_nm AND g.gunite = 'PF_MAAF'
+LEFT JOIN metaifn.abmode m1 ON g.gunite = m1.unite AND g.gmode = m1."mode"
+WHERE incref = 19
+ORDER BY idp, npp;
 
 
-select count(npp)
-from e1point
-where incref = 10;
+SELECT count(npp)
+FROM inv_exp_nm.e1point
+WHERE incref = 10;
 
 

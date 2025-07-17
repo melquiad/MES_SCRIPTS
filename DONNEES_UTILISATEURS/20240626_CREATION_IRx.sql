@@ -1,4 +1,25 @@
 
+
+------------ Finalement on fait une recopie brutale des U_AIx dans les AIx pour les incref <= 18 --------
+
+UPDATE inv_exp_nm.g3arbre ua
+SET ai1 = a.u_ai1
+, ai2 = a.u_ai2
+, ai3 = a.u_ai3
+, ai4 = a.u_ai4
+FROM inv_exp_nm.u_g3arbre a
+WHERE ua.npp = a.npp
+AND ua.a = a.a
+AND ua.incref <= 18;
+
+-- documentation metaifn
+UPDATE metaifn.afchamp
+SET calcin = 2, calcout = 19, validin = 4, validout = 18, defin = 2, defout = NULL 
+WHERE famille = 'INV_EXP_NM'
+AND format = 'TG3ARBRE'
+AND donnee IN ('AI1', 'AI2', 'AI3', 'AI4');
+
+---------------------------------------
 -- création des colonnes dans g3arbre
 ALTER TABLE inv_exp_nm.g3arbre
 ADD COLUMN ai1 REAL,
@@ -74,9 +95,32 @@ AND donnee IN ('AI1', 'AI2', 'AI3', 'AI4');
 -- documentation MetaIFN des données pour 2024
 
 UPDATE metaifn.afchamp
-SET calcin = 5, calcout = 19, validin = 5, validout = 18, defin = 5, defout = NULL 
+SET calcin = 2, calcout = 19, validin = 4, validout = 18, defin = 2, defout = NULL 
 WHERE famille = 'INV_EXP_NM'
 AND format = 'TG3ARBRE'
 AND donnee IN ('AI1', 'AI2', 'AI3', 'AI4');
+
+UPDATE metaifn.addonnee
+SET libelle = 'Accroissement radial sur 1 an'
+, definition = 'Accroissement radial sur 1 an'
+WHERE donnee = 'AI1';
+
+UPDATE metaifn.addonnee
+SET libelle = 'Accroissement radial sur 2 ans'
+, definition = 'Accroissement radial sur 2 ans'
+WHERE donnee = 'AI2';
+
+UPDATE metaifn.addonnee
+SET libelle = 'Accroissement radial sur 3 ans'
+, definition = 'Accroissement radial sur 3 ans'
+WHERE donnee = 'AI3';
+
+UPDATE metaifn.addonnee
+SET libelle = 'Accroissement radial sur 4 ans'
+, definition = 'Accroissement radial sur 4 ans'
+WHERE donnee = 'AI4';
+
+
+
 
 

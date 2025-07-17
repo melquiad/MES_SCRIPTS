@@ -31,3 +31,14 @@ SELECT AddGeometryColumn ('inv_exp_nm', 'e1coord', 'geom', 2154,'POINT',2);
 
 UPDATE inv_exp_nm.e1coord c
 SET geom = st_transform(st_setsrid(st_point(c.xl, c.yl),27572),2154);
+
+--------------------------------------------------------------------------------------------------------------
+SET search_path TO inv_prod_new, inv_exp_nm, metaifn, public, topology;
+
+CREATE TABLE public.points_tir_2026_geom AS
+	(SELECT npp, x, y , st_makepoint(p.x,p.y) AS geom FROM public.points_tir_2026 p);
+
+SELECT UpdateGeometrySRID('public', 'points_tir_2026_geom', 'geom', 2154);
+ou
+CREATE TABLE public.points_tir_2026_geom AS (SELECT npp, x, y , st_point(p.x, p.y, 2154) AS geom FROM public.points_tir_2026 p);
+

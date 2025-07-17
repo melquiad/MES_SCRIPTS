@@ -22,3 +22,16 @@ SET ROLE = lhaugomat;
 DROP EXTENSION IF EXISTS postgis_topology;
 DROP EXTENSION IF EXISTS postgis_raster;
 DROP EXTENSION IF EXISTS postgis;
+
+----------- Déplacer l'extension postgis vers un autre schéma : ici vers public ------------
+UPDATE pg_extension SET extrelocatable = TRUE WHERE extname = 'postgis';
+
+ALTER EXTENSION postgis SET SCHEMA public;
+
+ALTER ROLE lhaugomat SET search_path = 'public';
+
+SELECT * FROM pg_db_role_setting;
+
+SELECT current_user;
+
+

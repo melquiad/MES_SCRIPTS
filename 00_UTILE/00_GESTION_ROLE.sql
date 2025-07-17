@@ -198,7 +198,10 @@ GRANT exploitation_u_datawriter TO "lramirez-parra";
 GRANT prod_exp_datareader TO "lramirez-parra";
 GRANT exploitation_datareader TO "lramirez-parra";
 
-
+---------------------------------------------------------------------------
+SET ROLE = exploitation_admin;
+GRANT coord_datareader TO "MDassot";
+GRANT exploitation_datareader TO "MDassot";
 
 
 

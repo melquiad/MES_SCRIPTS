@@ -10,6 +10,13 @@ COMMENT ON COLUMN inv_exp_nm.g3morts.deperis IS 'Dépérissement des arbres' ;
 ALTER TABLE inv_exp_nm.p3morts ADD COLUMN deperis character(1); 
 COMMENT ON COLUMN inv_exp_nm.p3morts.deperis IS 'Dépérissement des arbres' ;
 
+-- en base de production
+ALTER FOREIGN TABLE inv_exp_nm.g3morts ADD COLUMN deperis character(1); 
+COMMENT ON COLUMN inv_exp_nm.g3morts.deperis IS 'Dépérissement des arbres' ;
+
+ALTER FOREIGN TABLE inv_exp_nm.p3morts ADD COLUMN deperis character(1); 
+COMMENT ON COLUMN inv_exp_nm.p3morts.deperis IS 'Dépérissement des arbres' ;
+
 
 -- Documentation de l'unité
 INSERT INTO metaifn.abunite (unite, proprietaire, utype, libelle, definition) 
@@ -43,7 +50,7 @@ BEGIN;
 -- Mise à jour de la donnée
 -- pour campagne 2021 et plus
 
-UPDATE inv_exp_nm.g3morts ua
+UPDATE inv_exp_nm.g3arbre ua
 SET deperis = 
 	CASE
 		WHEN ua.mortbdeper = 'X' THEN 'X'		
@@ -60,21 +67,21 @@ SET deperis =
 		WHEN ua.mortbdeper IN ('4', '5') OR (a.mr = '5' OR a.ma = '5')
 			 OR (ua.mortbdeper = '3' AND (a.mr = '4' OR a.ma = '4')) THEN 'F'		
 		ELSE 'X' END
-FROM inv_exp_nm.g3morts a
+FROM inv_exp_nm.g3arbre a
 WHERE a.npp = ua.npp AND a.a = ua.a AND a.incref >= 16;
 
 SELECT incref, deperis, count(*)
-FROM inv_exp_nm.g3morts
+FROM inv_exp_nm.g3arbre
 WHERE incref >= 16
 GROUP BY incref, deperis
 ORDER BY incref, deperis;
 
 SELECT ua.incref, mr, ma, mortbdeper, deperis
-FROM inv_exp_nm.g3morts ua
-WHERE ua.incref >= 16 AND deperis = 'E';
+FROM inv_exp_nm.g3arbre ua
+WHERE ua.incref = 19 AND deperis = 'E';
 
 
-UPDATE inv_exp_nm.p3morts ua
+UPDATE inv_exp_nm.p3arbre ua
 SET deperis = 
 	CASE
 		WHEN ua.mortbdeper = 'X' THEN 'X'	
@@ -91,31 +98,31 @@ SET deperis =
 		WHEN ua.mortbdeper IN ('4', '5') OR (a.mr = '5' OR a.ma = '5')
 			 OR (ua.mortbdeper = '3' AND (a.mr = '4' OR a.ma = '4')) THEN 'F'		
 		ELSE 'X' END
-FROM inv_exp_nm.p3morts a
+FROM inv_exp_nm.p3arbre a
 WHERE a.npp = ua.npp AND a.a = ua.a AND a.incref >= 16;
 
 SELECT incref, deperis, count(*)
-FROM inv_exp_nm.p3morts
+FROM inv_exp_nm.p3arbre
 WHERE incref >= 16
 GROUP BY incref, deperis
 ORDER BY incref, deperis;
 
 SELECT ua.incref, mr, ma, mortbdeper, deperis
-FROM inv_exp_nm.p3morts ua
-WHERE ua.incref >= 16 AND deperis = 'F';
+FROM inv_exp_nm.p3arbre ua
+WHERE ua.incref = 19 AND deperis = 'F';
 
 
 -- Mise à jour des métadonnées
 UPDATE metaifn.afchamp
-SET calcin = 16, calcout = 18, validin = 16, validout = 18
+SET calcin = 16, calcout = 19, validin = 16, validout = 18
 WHERE famille ~~* 'inv_exp_nm'
-AND format ~~* 'g3morts'
+AND format ~~* 'g3arbre'
 AND donnee ~~* 'DEPERIS';
 
 UPDATE metaifn.afchamp
-SET calcin = 16, calcout = 18, validin = 16, validout = 18
+SET calcin = 16, calcout = 19, validin = 16, validout = 18
 WHERE famille ~~* 'inv_exp_nm'
-AND format ~~* 'p3morts'
+AND format ~~* 'p3arbre'
 AND donnee ~~* 'DEPERIS';
 
 -- Affectation à un groupe d'utilisateurs
@@ -129,14 +136,18 @@ COMMIT;
 ------------------------------------------------------------------------------------------------------
 
 -- ajout des colonnes en base
-ALTER TABLE inv_exp_nm.g3morts
-	ADD COLUMN deperis character(1); 
-COMMENT ON COLUMN inv_exp_nm.g3morts.eperis IS 'Dépérissement des arbres' ;
+ALTER TABLE inv_exp_nm.g3morts ADD COLUMN deperis character(1); 
+COMMENT ON COLUMN inv_exp_nm.g3morts.deperis IS 'Dépérissement des arbres' ;
 
-ALTER TABLE inv_exp_nm.p3morts
-	ADD COLUMN deperis character(1); 
+ALTER TABLE inv_exp_nm.p3morts ADD COLUMN deperis character(1); 
 COMMENT ON COLUMN inv_exp_nm.p3morts.deperis IS 'Dépérissement des arbres' ;
 
+-- en base de production
+ALTER FOREIGN TABLE inv_exp_nm.g3morts ADD COLUMN deperis character(1); 
+COMMENT ON COLUMN inv_exp_nm.g3morts.deperis IS 'Dépérissement des arbres' ;
+
+ALTER FOREIGN TABLE inv_exp_nm.p3morts ADD COLUMN deperis character(1); 
+COMMENT ON COLUMN inv_exp_nm.p3morts.deperis IS 'Dépérissement des arbres' ;
 
 -- Mise à jour de la donnée
 -- pour campagne 2021 et plus
@@ -180,7 +191,7 @@ SELECT *
 FROM metaifn.ajoutchamp('DEPERIS', 'P3MORTS', 'INV_EXP_NM', FALSE, 0, 17, 'varchar', 1);
 
 UPDATE metaifn.afchamp 
-SET calcin = 16, calcout = 18, validin = 16, validout = 18, defin = 16, defout = NULL  
+SET calcin = 16, calcout = 19, validin = 16, validout = 18, defin = 16, defout = NULL  
 WHERE famille = 'INV_EXP_NM' AND donnee = 'DEPERIS';
 
 

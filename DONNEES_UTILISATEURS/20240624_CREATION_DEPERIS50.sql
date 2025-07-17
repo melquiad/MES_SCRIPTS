@@ -40,14 +40,18 @@ COMMIT;
 
 
 -- CALCUL DE LA DONNEE EN FORET DE PRODUCTION
--- CREATION DE LA DONNEE UTILISATEUR
-BEGIN;
+-- CREATION DE LA DONNEE 
 
-ALTER TABLE inv_exp_nm.g3foret 
-ADD COLUMN deperis50 character(1); 
-COMMENT ON COLUMN inv_exp_nm.g3foret.deperis50 IS 'Intensité du dépérissement' ;
+ALTER TABLE inv_exp_nm.g3foret ADD COLUMN deperis50 character(1); 
+COMMENT ON COLUMN inv_exp_nm.g3foret.deperis50 IS 'Intensité du dépérissement';
+ALTER TABLE inv_exp_nm.p3point ADD COLUMN deperis50 character(1); 
+COMMENT ON COLUMN inv_exp_nm.p3point.deperis50 IS 'Intensité du dépérissement' ;
+-- en base de production
+ALTER FOREIGN TABLE inv_exp_nm.g3foret ADD COLUMN deperis50 character(1); 
+COMMENT ON COLUMN inv_exp_nm.g3foret.deperis50 IS 'Intensité du dépérissement';
+ALTER FOREIGN TABLE inv_exp_nm.p3point ADD COLUMN deperis50 character(1); 
+COMMENT ON COLUMN inv_exp_nm.p3point.deperis50 IS 'Intensité du dépérissement' ;
 
-COMMIT;
 
 -- arbres morts de moins de 5 ans
 BEGIN;
@@ -59,7 +63,7 @@ WITH MORTS AS
 			AND DATEMORT = '1'
 			AND LIB = '2'
 			AND CAST(G3M.CLAD AS INTEGER) BETWEEN 23 AND 130
-			AND G3M.INCREF BETWEEN 16 AND 18
+			AND G3M.INCREF BETWEEN 16 AND 19
 		GROUP BY G3M.NPP, G3M.INCREF),
 -- Arbres vivants avec déperissement (attention jointure à l'arbre et pas seulement npp, le comptage d'arbres était faux)
 VIVANTS AS
@@ -68,7 +72,7 @@ VIVANTS AS
 --		LEFT JOIN INV_EXP_NM.U_G3ARBRE UG3A ON (G3A.NPP = UG3A.NPP and G3A.A = UG3A.A) --> ne sert plus à rien
 		WHERE VEGET = '0'
 			AND DEPERIS in ('A','B','C','D','E', 'F') 
-			AND G3A.INCREF BETWEEN 16 AND 18
+			AND G3A.INCREF BETWEEN 16 AND 19
 		GROUP BY G3A.NPP, G3A.INCREF),
 -- Arbres vivants avec au moins 50% de déperissement
 DEPERIS50 AS
@@ -77,7 +81,7 @@ DEPERIS50 AS
 --		LEFT JOIN INV_EXP_NM.U_G3ARBRE UG3A ON (G3A.NPP = UG3A.NPP and G3A.A = UG3A.A ) --> ne sert plus à rien
 		WHERE VEGET = '0'
 			AND DEPERIS in ('D','E', 'F') 
-			AND G3A.INCREF BETWEEN 16 AND 18
+			AND G3A.INCREF BETWEEN 16 AND 19
 		GROUP BY G3A.NPP, G3A.INCREF),		
 ---elements intermédiaires pour calculer le ratio : 		
 DENOM AS (                        --calcul dénominateur
@@ -119,27 +123,21 @@ SET DEPERIS50 =
 					ELSE NULL
 	END 
 FROM RESULTAT
-WHERE ug3f.incref BETWEEN 16 AND 18
+WHERE ug3f.incref BETWEEN 16 AND 19
 	AND RESULTAT.NPP = UG3F.NPP 
 	AND RESULTAT.INCREF = UG3F.INCREF;
 
 -- Contrôle
 SELECT NPP, INCREF, DEPERIS50
 FROM inv_exp_nm.g3foret
-WHERE INCREF BETWEEN 16 AND 18
-		--AND DEPERIS50 IS NOT NULL
+WHERE INCREF = 19
+--WHERE INCREF BETWEEN 16 AND 19
+AND DEPERIS50 IS NOT NULL
 ORDER BY INCREF, NPP;
 
 
 -- CALCUL DE LA DONNEE EN PEUPLERAIES
--- CREATION DE LA DONNEE UTILISATEUR
-BEGIN;
-
-ALTER TABLE inv_exp_nm.p3point 
-ADD COLUMN deperis50 character(1); 
-COMMENT ON COLUMN inv_exp_nm.p3point.deperis50 IS 'Intensité du dépérissement' ;
-
-COMMIT;
+-- CREATION DE LA DONNEE
 
 -- arbres morts de moins de 5 ans
 BEGIN;
@@ -151,7 +149,7 @@ WITH MORTS AS
 			AND DATEMORT = '1'
 			AND LIB = '2'
 			AND CAST(P3M.CLAD AS INTEGER) BETWEEN 23 AND 130
-			AND P3M.INCREF BETWEEN 16 AND 18
+			AND P3M.INCREF BETWEEN 16 AND 19
 		GROUP BY P3M.NPP, P3M.INCREF),
 -- Arbres vivants avec déperissement
 VIVANTS AS
@@ -160,7 +158,7 @@ VIVANTS AS
 --		LEFT JOIN INV_EXP_NM.U_P3ARBRE UP3A ON (P3A.NPP = UP3A.NPP AND P3A.A = UP3A.A)
 		WHERE VEGET = '0'
 			AND DEPERIS in ('A','B','C','D','E', 'F')
-			AND P3A.INCREF BETWEEN 16 AND 18
+			AND P3A.INCREF BETWEEN 16 AND 19
 		GROUP BY P3A.NPP, P3A.INCREF),
 -- Arbres vivants avec au moins 50% de déperissement
 DEPERIS50 AS
@@ -169,7 +167,7 @@ DEPERIS50 AS
 --		LEFT JOIN INV_EXP_NM.U_P3ARBRE UP3A ON (P3A.NPP = UP3A.NPP AND P3A.A = UP3A.A)
 		WHERE VEGET = '0'
 			AND DEPERIS in ('D','E', 'F')
-			AND P3A.INCREF BETWEEN 16 AND 18
+			AND P3A.INCREF BETWEEN 16 AND 19
 		GROUP BY P3A.NPP, P3A.INCREF),
 ---elements intermédiaires pour calculer le ratio : 		
 --calcul dénominateur
@@ -213,28 +211,28 @@ SET DEPERIS50 =
 					ELSE NULL
 	END 
 FROM RESULTAT
-WHERE up3p.incref BETWEEN 16 AND 18
+WHERE up3p.incref BETWEEN 16 AND 19
 	AND RESULTAT.NPP = UP3P.NPP 
 	AND RESULTAT.INCREF = UP3P.INCREF;
 
 
 SELECT NPP, INCREF, DEPERIS50
 FROM inv_exp_nm.p3point
-WHERE INCREF BETWEEN 16 AND 18
-		--AND DEPERIS50 IS NOT NULL
+WHERE INCREF = 19
+--WHERE INCREF BETWEEN 16 AND 19
+AND DEPERIS50 IS NOT NULL
 ORDER BY INCREF, NPP;
 
 
-/*
 -- Mise à jour des métadonnées
 UPDATE metaifn.afchamp
-SET calcin = 16, calcout = 18, validin = 16, validout = 18
+SET calcin = 16, calcout = 19, validin = 16, validout = 18
 WHERE famille ~~* 'inv_exp_nm'
 AND format ~~* 'g3foret'
 AND donnee ~~* 'DEPERIS50';
 
 UPDATE metaifn.afchamp
-SET calcin = 16, calcout = 18, validin = 16, validout = 18
+SET calcin = 16, calcout = 19, validin = 16, validout = 18
 WHERE famille ~~* 'inv_exp_nm'
 AND format ~~* 'p3point'
 AND donnee ~~* 'DEPERIS50';
@@ -242,5 +240,11 @@ AND donnee ~~* 'DEPERIS50';
 -- Affectation à un groupe d'utilisateurs
 INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee) 
 VALUES ('IFN', 'DEPERIS50');
-*/		
-		
+
+
+
+
+
+
+
+	

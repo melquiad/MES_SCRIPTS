@@ -10,8 +10,7 @@ AS SELECT c.millesime AS annee,
      JOIN echantillon e USING (id_campagne)
      JOIN point_lt pl USING (id_ech)
      JOIN point p USING (id_point)
-  WHERE e.phase_stat = 2 AND e.type_ech::text = 'IFN'::character varying::text AND e.type_ue = 'P'::bpchar AND e.ech_parent IS NULL
-   AND NOT (EXISTS ( SELECT p.id_point FROM point_lt pl2 WHERE pl2.id_point = pl.id_point AND pl2.id_ech < pl.id_ech));
+  WHERE e.phase_stat = 2 AND e.type_ech::text = 'IFN'::character varying::text AND e.type_ue = 'P'::bpchar AND e.stat = true AND e.passage = 1;
 -------------------------------------------------------------------------------------------------------------------------------------   
 -- inv_prod_new.v_liste_points_lt1_pi2 source
 
@@ -26,8 +25,9 @@ AS SELECT c.millesime AS annee,
      JOIN echantillon e USING (id_campagne)
      JOIN point_lt pl USING (id_ech)
      JOIN point p USING (id_point)
-  WHERE e.phase_stat = 2 AND e.type_ech::text = 'IFN'::character varying::text AND e.type_ue = 'P'::bpchar AND e.ech_parent IS NOT NULL
-   AND NOT (EXISTS ( SELECT p.id_point FROM point_lt pl2 WHERE pl2.id_point = pl.id_point AND pl2.id_ech < pl.id_ech));
+  WHERE e.phase_stat = 2 AND e.type_ech::text = 'IFN'::character varying::text AND e.type_ue = 'P'::bpchar AND e.passage = 2 AND NOT (EXISTS ( SELECT p.id_point
+           FROM point_lt pl2
+          WHERE pl2.id_point = pl.id_point AND pl2.id_ech = e.ech_parent));
 -------------------------------------------------------------------------------------------------------------------------------------
 -- inv_prod_new.v_liste_points_lt2 source
 
@@ -45,6 +45,7 @@ AS SELECT c.millesime AS annee,
    AND e.ech_parent IS NOT NULL AND (EXISTS ( SELECT p.id_point FROM point_lt pl2 WHERE pl2.id_point = pl.id_point AND pl2.id_ech < pl.id_ech));
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- inv_prod_new.v_liste_points_pi1 source
+SET search_path TO inv_prod_new, inv_exp_nm, metaifn, public, topology;
 
 CREATE OR REPLACE VIEW inv_prod_new.v_liste_points_pi1
 AS SELECT c.millesime AS annee,
