@@ -87,6 +87,9 @@ SET calcin = 0, calcout = 18, validin = 0, validout = 18, defin = 0, defout = 18
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'APB';
 
+-- modification de l'unite de APB
+UPDATE metaifn.addonnee SET unite = 'IN_ZONE' WHERE donnee = 'APB' AND unite = 'APB';
+
 
 
 

@@ -1,4 +1,4 @@
-SET search_path = inv_prod_new, metaifn, inv_exp_nm, public, topology;
+SET search_path = inv_prod_new, inv_exp_nm, metaifn, public, topology;
 
 SET search_path TO inv_prod_new, inv_exp_nm, metaifn, public, topology;
 

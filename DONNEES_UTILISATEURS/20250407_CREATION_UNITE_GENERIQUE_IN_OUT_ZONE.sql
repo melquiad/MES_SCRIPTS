@@ -13,5 +13,11 @@ SET position = 2 WHERE unite = 'IN_ZONE' AND mode = '1';
 UPDATE metaifn.abmode
 SET position = 1 WHERE unite = 'IN_ZONE' AND mode = '0';
 
+UPDATE metaifn.abmode
+SET classe = 2 WHERE unite = 'IN_ZONE' AND mode = '1'; 
 
------------------------------------------------------------------------------------------------------------------------------------------------------
+UPDATE metaifn.abmode
+SET classe = 1 WHERE unite = 'IN_ZONE' AND mode = '0';
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------

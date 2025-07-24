@@ -139,7 +139,7 @@ GRANT SELECT ON TABLE prod_exp.tarifs TO prod_exp_datareader;
 RESET ROLE;
 SHOW ROLE;
 
-cSET ROLE = exploitation_admin;
+SET ROLE = exploitation_admin;
 SET ROLE = postgres;
 
 DROP ROLE "tmoreal-de-brevans";
@@ -203,6 +203,22 @@ SET ROLE = exploitation_admin;
 GRANT coord_datareader TO "MDassot";
 GRANT exploitation_datareader TO "MDassot";
 
+-----------------------------------------------------------------
+SET ROLE = production_admin;
+
+CREATE ROLE "SMermet" WITH 
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
+	INHERIT
+	LOGIN
+	NOREPLICATION
+	NOBYPASSRLS
+	CONNECTION LIMIT -1;
+
+GRANT metaifn_reader TO "SMermet";
+GRANT production_datareader TO "SMermet";
+GRANT sig_datareader TO "SMermet";
 
 
 
