@@ -18,8 +18,8 @@ AND id_ech IN (141,142);
 -------------------------------------------
 
 
-CREATE TABLE public.pts_39 AS
-(
+--CREATE TABLE public.pts_39 AS
+--(
 WITH pts_v1 AS
 (
 SELECT vp.npp, pe.dep, vp.annee, 'T' AS inv, 1::int2 AS numvisi, round(st_x (st_transform (p.geom, 27572))::numeric) AS xl, round(st_y (st_transform (p.geom, 27572))::numeric) AS yl, pe.zp AS z, st_x (st_transform (p.geom, 4326)) AS xgps, st_y (st_transform (p.geom, 4326)) AS ygps,
@@ -74,6 +74,7 @@ INNER JOIN point_pi pp ON vlp.id_point = pp.id_point
 INNER JOIN echantillon e ON pp.id_ech = e.id_ech AND e.passage > 1
 WHERE annee = 2026
 ORDER BY nppr, pp.id_ech DESC;
+
 
 
 

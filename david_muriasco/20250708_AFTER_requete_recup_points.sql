@@ -19,7 +19,7 @@ LEFT JOIN metaifn.abmode m2 ON m2.mode = pl.echelon_init
 AND m2.unite = 'EX'
 LEFT JOIN metaifn.abmode m3 ON m3.mode = pe.ser_86
 AND m3.unite = 'SER_86'
-WHERE vp.annee = 2026
+WHERE vp.annee = 2026 AND pl.reco IS NULL --> pour exclure les points reco = '3'
 UNION
 SELECT vp.nppr AS npp, pe.dep, vp.annee, 'R' AS inv, 1::int2 AS numvisi, round(st_x (st_transform (p.geom, 27572))::numeric) AS xl, round(st_y (st_transform (p.geom, 27572))::numeric) AS yl, pe.zp AS z, st_x (st_transform (p.geom, 4326)) AS xgps, st_y (st_transform (p.geom, 4326)) AS ygps,
 pe.ser_86 AS ser, pe.regn, m.libelle AS libellereg, m3.libelle AS libelleser, pl.echelon_init, m2.libelle AS libelledir, t.aztrans, round((t.aztrans * 200 / pi())::numeric, 2) AS aztransgr, decli_pt AS decli, 'NON' AS lhf,
@@ -68,7 +68,7 @@ LEFT JOIN metaifn.abmode m2 ON m2.mode = pl.echelon_init
 AND m2.unite = 'EX'
 LEFT JOIN metaifn.abmode m3 ON m3.mode = pe.ser_86
 AND m3.unite = 'SER_86'
-WHERE vp.annee = 2026
+WHERE vp.annee = 2026 --AND pl.reco IS NULL --> pour exclure les points reco = '3'
 ORDER BY dep, npp;
 
 
@@ -146,7 +146,7 @@ WITH BD AS
 	INNER JOIN metaifn.abmode m2 ON m2.mode = pl.echelon_init
 	    AND m2.unite = 'EX'
 	WHERE lp1.annee = 2026
-	AND reco IS NULL
+	--AND reco IS NULL
     )
 SELECT BD.*, rmoy PLUIE, round(tmoy, 1) AS temp, pmin, pmax, tMIN, tMAX, tmax_ete, ind_mart IA_DM, ind_emb QP_E
 FROM BD

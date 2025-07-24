@@ -352,14 +352,14 @@ WHERE ce.donnee = '_TSOL';
 SELECT vp.id_ech, vp.id_point, ce.donnee AS donnee, ce.old_val, 
 'UNION SELECT id_ech, id_point, donnee AS donnee, ' || lower(donnee) || '::TEXT AS ancienne_valeur FROM v_liste_points_lt1 vp INNER JOIN public.corr_eco ce USING (npp) INNER JOIN ecologie e USING (id_ech, id_point) WHERE npp = $$' || npp || '$$ AND ' || lower(donnee) || ' IS NOT NULL AND donnee = $$' || donnee || '$$' AS requete
 FROM v_liste_points_lt1 vp
-INNER JOINTABLE public.corr_eco public.corr_eco ce USING (npp)
+INNER JOIN public.corr_eco ce USING (npp)
 WHERE ce.donnee NOT LIKE '\_%' --
 AND ce.donnee NOT IN ('ABOND', 'CODESP', 'INCO_FLOR')
 AND ce.old_val IS NOT NULL
 ORDER BY id_ech, id_point; --> 52 lignes au lieu de 60 car 8 pour lesquelles donnee est de la forme _data ou old_val à NULL
 
 
--- On l'utilise pour insérer dans RECODAGE
+-- On l'utilise pour insérer dans RECODAGE après changement de table pour OH, HAB1 et HAB2
 WITH anciens AS (
 	SELECT id_ech, id_point, donnee AS donnee, NULL AS num_hab, oh::TEXT AS ancienne_valeur FROM v_liste_points_lt1 vp INNER JOIN public.corr_eco ce USING (npp) INNER JOIN ecologie_2017 e USING (id_ech, id_point) WHERE npp = $$24-01-253-1-149T$$ AND oh IS NOT NULL AND donnee = $$OH$$
 	UNION SELECT id_ech, id_point, donnee AS donnee, NULL AS num_hab, roche::TEXT AS ancienne_valeur FROM v_liste_points_lt1 vp INNER JOIN public.corr_eco ce USING (npp) INNER JOIN ecologie e USING (id_ech, id_point) WHERE npp = $$24-03-212-1-158T$$ AND roche IS NOT NULL AND donnee = $$ROCHE$$
@@ -414,32 +414,17 @@ WITH anciens AS (
 	UNION SELECT id_ech, id_point, donnee AS donnee, NULL AS num_hab, roche::TEXT AS ancienne_valeur FROM v_liste_points_lt1 vp INNER JOIN public.corr_eco ce USING (npp) INNER JOIN ecologie e USING (id_ech, id_point) WHERE npp = $$24-83-323-1-219T$$ AND roche IS NOT NULL AND donnee = $$ROCHE$$
 	UNION SELECT id_ech, id_point, donnee AS donnee, NULL AS num_hab, roche::TEXT AS ancienne_valeur FROM v_liste_points_lt1 vp INNER JOIN public.corr_eco ce USING (npp) INNER JOIN ecologie e USING (id_ech, id_point) WHERE npp = $$24-84-274-1-206T$$ AND roche IS NOT NULL AND donnee = $$ROCHE$$
 )
---INSERT INTO recodage (date_recodage, donnee_cible, ancienne_valeur)
+INSERT INTO recodage (date_recodage, donnee_cible, ancienne_valeur)
 SELECT --id_ech, id_point, donnee, 
   now()::date AS date_recodage
-, jsonb_build_object('id_ech', id_ech) || jsonb_build_object('id_point', id_point) || jsonb_build_object('donnee', donnee) || jsonb_build_object('num_hab', num_hab::int2) || jsonb_build_object('table_origine', 'HABITAT') || jsonb_build_object('note', 'Valeur initiale') AS donnee_cible
+, CASE WHEN donnee IN ('HAB1', 'HAB2') THEN jsonb_build_object('id_ech', id_ech) || jsonb_build_object('id_point', id_point) || jsonb_build_object('donnee', 'hab') || jsonb_build_object('num_hab', num_hab::int2) || jsonb_build_object('table_origine', 'HABITAT') || jsonb_build_object('note', 'Valeur initiale')
+       WHEN donnee = 'OH' THEN jsonb_build_object('id_ech', id_ech) || jsonb_build_object('id_point', id_point) || jsonb_build_object('donnee', donnee) || jsonb_build_object('table_origine', 'ECOLOGIE_2017') || jsonb_build_object('note', 'Valeur initiale')
+       ELSE jsonb_build_object('id_ech', id_ech) || jsonb_build_object('id_point', id_point) || jsonb_build_object('donnee', donnee) || jsonb_build_object('table_origine', 'ECOLOGIE') || jsonb_build_object('note', 'Valeur initiale')
+       END
+       AS donnee_cible
 , ancienne_valeur
-FROM anciens a
-WHERE donnee IN ('HAB1', 'HAB2')
-UNION
-SELECT --id_ech, id_point, donnee, 
-  now()::date AS date_recodage
-, jsonb_build_object('id_ech', id_ech) || jsonb_build_object('id_point', id_point) || jsonb_build_object('donnee', donnee) || jsonb_build_object('table_origine', 'ECOLOGIE_2017') || jsonb_build_object('note', 'Valeur initiale') AS donnee_cible
-, ancienne_valeur
-FROM anciens a
-WHERE donnee = 'OH'
-UNION
-SELECT --id_ech, id_point, donnee, 
-  now()::date AS date_recodage
-, jsonb_build_object('id_ech', id_ech) || jsonb_build_object('id_point', id_point) || jsonb_build_object('donnee', donnee) || jsonb_build_object('table_origine', 'ECOLOGIE') || jsonb_build_object('note', 'Valeur initiale') AS donnee_cible
-, ancienne_valeur
-FROM anciens a
-WHERE donnee NOT IN ('OH', 'HAB1', 'HAB2')
-ORDER BY id_ech , id_point;
-
-
-
-
+FROM anciens
+ORDER BY id_ech, id_point;
 
 
 /* --> sans objet en 2024
@@ -477,7 +462,7 @@ AND ce.donnee NOT IN ('ABOND', 'CODESP', 'INCO_FLOR')
 ORDER BY id_ech, id_point;
 
 
--- On l'utilise pour mettre à jour ECOLOGIE
+-- On l'utilise pour mettre à jour ECOLOGIE après avoir fait les changements de table pour OH et HAB
 UPDATE ecologie_2017 SET oh = $$0$$ WHERE id_ech = 114 AND id_point = 1189939;
 UPDATE ecologie SET roche = $$930$$ WHERE id_ech = 114 AND id_point = 1191593;
 UPDATE habitat SET hab = $$41.22A$$ WHERE id_ech = 114 AND id_point = 1191721 AND num_hab = 1;
@@ -588,12 +573,12 @@ WHERE nint = 0 AND nbrou = 0 AND nfrot = 0 AND nmixt = 0;
 
 
 
--- CORRECTIONS ASSOCIÉS À DES PROBLÈMES SUR MORTB ET MA
+-- CORRECTIONS ASSOCIÉS À DES PROBLÈMES SUR MORTB et MA
 
 CREATE TABLE public.corr_mortb_ma (
     npp CHAR(16),
-    a INT,
-    typecorr TEXT,
+    a int,
+    type_corr TEXT,
     mortb_new char(1),
     ma_new char(1),
     mortb_old char(1),
@@ -601,5 +586,32 @@ CREATE TABLE public.corr_mortb_ma (
 );
 
 \COPY public.corr_mortb_ma FROM '/home/lhaugomat/Documents/ECHANGES/MES_SCRIPTS/campagne_2024/00_prod/liste_arbres_corriges.csv' WITH CSV DELIMITER ',' NULL AS 'NA' HEADER
+
+WITH corrections AS (
+	SELECT v.annee, v.id_ech , v.id_point, t.npp, t.a, t.mortb_new
+	FROM public.corr_mortb_ma t
+	INNER JOIN v_liste_points_lt1 v ON LEFT(t.npp,15) = LEFT(v.npp,15) AND v.annee = 2024
+	WHERE t.mortb_new != t.mortb_old
+	ORDER BY 2, 4
+	)
+UPDATE sante s
+SET mortb = c.mortb_new
+FROM corrections c
+WHERE c.id_ech = s.id_ech AND c.id_point = s.id_point AND c.a = s.a;
+
+
+WITH corrections AS (
+	SELECT v.annee, v.id_ech, v.id_point, t.npp, t.a, t.ma_new
+	FROM public.corr_mortb_ma t
+	INNER JOIN v_liste_points_lt1 v ON LEFT(t.npp,15) = LEFT(v.npp,15) AND v.annee = 2024
+	WHERE t.ma_new != t.ma_old
+	ORDER BY 2, 4
+	)
+UPDATE sante s
+SET ma = c.ma_new
+FROM corrections c
+WHERE c.id_ech = s.id_ech AND c.id_point = s.id_point AND c.a = s.a;
+
+
 
 
