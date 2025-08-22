@@ -155,13 +155,24 @@ DROP TABLE public.facteurs;
 
 
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 19, validin = 0, validout = 18
+SET defin = 0, defout = NULL, calcin = 0, calcout = 19, validin = 0, validout = 19
 WHERE famille = 'INV_EXP_NM' AND donnee IN ('BIOM_AR', 'CARB_AR');
 
 
 COMMIT;
 
+-- contrôles
+SELECT g.incref, g.npp, g.biom_ar, g.carb_ar
+FROM inv_exp_nm.g3arbre g
+WHERE incref IN (18, 19)
+AND g.biom_ar IS NULL 
+AND g.carb_ar IS NULL;
 
+SELECT p.incref, p.npp, p.biom_ar, p.carb_ar
+FROM inv_exp_nm.p3arbre p
+WHERE incref IN (18, 19)
+AND p.biom_ar IS NULL 
+AND p.carb_ar IS NULL;
 
 /*-- On supprime les champs dans u_g3arbre et u_p3arbre
 ALTER TABLE inv_exp_nm.u_g3arbre DROP COLUMN u_biom_ar;

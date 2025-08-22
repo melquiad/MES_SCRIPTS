@@ -34,24 +34,12 @@ WHERE p.npp = up.npp
 AND p.a = up.a;
 
 UPDATE metaifn.afchamp
-SET defin = 0, defout = NULL, calcin = 0, calcout = 14, validin = 0, validout = 13
+SET defin = 0, defout = NULL, calcin = 0, calcout = 14, validin = 0, validout = 14
 WHERE donnee = 'PV0PR';
 
 UPDATE metaifn.addonnee
 SET definition = $$Valeur de l'actualisation du volume aérien total prélevé (accroissement en volume annualisé à mi-période)$$
 WHERE donnee = 'PV0PR';
-
-/*-- contrôle
-SELECT incref, avg(pv0pr), count(pv0pr)
-FROM inv_exp_nm.g3arbre
-GROUP BY incref
-ORDER BY incref DESC;
-
-SELECT incref, avg(pv0pr), count(pv0pr)
-FROM inv_exp_nm.p3arbre
-GROUP BY incref
-ORDER BY incref DESC;
-*/
 
 
 -- On supprime les champs dans u_g3arbre et u_p3arbre
@@ -94,7 +82,7 @@ WHERE p.npp = up.npp
 AND p.a = up.a;
 
 UPDATE metaifn.afchamp
-SET defin = 0, defout = NULL, calcin = 0, calcout = 14, validin = 0, validout = 13
+SET defin = 0, defout = NULL, calcin = 0, calcout = 14, validin = 0, validout = 14
 WHERE donnee = 'U_PV0PR';
 
 UPDATE metaifn.addonnee
@@ -102,6 +90,17 @@ SET definition = $$Valeur de l'actualisation du volume aérien total prélevé (
 WHERE donnee = 'U_PV0PR';
 
 /*-- contrôle
+ SELECT incref, avg(pv0pr), count(pv0pr)
+FROM inv_exp_nm.g3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, avg(pv0pr), count(pv0pr)
+FROM inv_exp_nm.p3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+ 
+ 
 SELECT incref, avg(u_pv0pr), count(u_pv0pr)
 FROM inv_exp_nm.u_g3arbre
 GROUP BY incref

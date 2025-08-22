@@ -35,7 +35,7 @@ WHERE g.npp = ug.npp
 AND g.a = ug.a;
 
 UPDATE metaifn.afchamp
-SET defin = 0, defout = NULL, calcin = 0, calcout = 19, validin = 0, validout = 18
+SET defin = 0, defout = NULL, calcin = 0, calcout = 19, validin = 0, validout = 19
 WHERE donnee = 'V0';
 
 
@@ -47,6 +47,16 @@ ORDER BY incref DESC;
 
 SELECT incref, count(v0), avg(v0)
 FROM inv_exp_nm.p3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, count(u_v0), avg(u_v0)
+FROM inv_exp_nm.u_g3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, count(u_v0), avg(u_v0)
+FROM inv_exp_nm.u_p3arbre
 GROUP BY incref
 ORDER BY incref DESC;
 */

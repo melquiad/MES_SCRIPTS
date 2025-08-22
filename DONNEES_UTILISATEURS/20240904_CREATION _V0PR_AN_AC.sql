@@ -34,7 +34,7 @@ WHERE p.npp = up.npp
 AND p.a = up.a;
 
 UPDATE metaifn.afchamp
-SET defin = 0, defout = NULL, calcin = 0, calcout = 14, validin = 0, validout = 13
+SET defin = 0, defout = NULL, calcin = 0, calcout = 14, validin = 0, validout = 14
 WHERE donnee = 'V0PR_AN_AC';
 
 
@@ -46,6 +46,16 @@ ORDER BY incref DESC;
 
 SELECT incref, count(v0pr_an_ac), avg(v0pr_an_ac)
 FROM inv_exp_nm.p3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, count(u_v0pr_an_ac), avg(u_v0pr_an_ac)
+FROM inv_exp_nm.u_g3arbre
+GROUP BY incref
+ORDER BY incref DESC;
+
+SELECT incref, count(u_v0pr_an_ac), avg(u_v0pr_an_ac)
+FROM inv_exp_nm.u_p3arbre
 GROUP BY incref
 ORDER BY incref DESC;
 */

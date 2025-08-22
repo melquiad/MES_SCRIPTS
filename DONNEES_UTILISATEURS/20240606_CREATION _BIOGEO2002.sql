@@ -122,6 +122,9 @@ FROM inv_exp_nm.e2point
 GROUP BY incref, biogeo2002
 ORDER BY incref DESC;
 
+-- mise à jour de l'unité -> passage à l'unité générique
+ UPDATE metaifn.addonnee SET unite = 'IN_ZONE' WHERE donnee = 'BIOGEO2002' AND unite = 'BIOGEO';
+
 
 
 

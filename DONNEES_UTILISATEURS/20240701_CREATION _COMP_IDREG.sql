@@ -90,7 +90,7 @@ AND p.incref <= 17;
 
 
 
--- MAJ incref 18
+-- MAJ incref 19
 BEGIN;
 
 UPDATE inv_exp_nm.g3foret uf
@@ -236,7 +236,7 @@ END
 FROM inv_exp_nm.g3foret f
 INNER JOIN inv_exp_nm.e2point using (npp)
 WHERE uf.npp = f.npp 
-and f.incref IN (18);
+and f.incref IN (19);
 
 COMMIT;
 
@@ -385,7 +385,7 @@ END
 FROM inv_exp_nm.p3point f
 INNER JOIN inv_exp_nm.e2point using (npp)
 WHERE uf.npp = f.npp
-AND f.incref IN (18);
+AND f.incref IN (19);
 
 
 SELECT incref, count(*)
@@ -407,7 +407,7 @@ ROLLBACK;
 BEGIN;
 
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 19, validin = 0, validout = 18, defout = 19
+SET calcin = 0, calcout = 19, validin = 0, validout = 19, defin = 0, defout = NULL
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'COMP_IDREG';
 

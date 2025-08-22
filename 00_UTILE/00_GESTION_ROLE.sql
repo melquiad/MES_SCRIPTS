@@ -205,7 +205,6 @@ GRANT exploitation_datareader TO "MDassot";
 
 -----------------------------------------------------------------
 SET ROLE = production_admin;
-
 CREATE ROLE "SMermet" WITH 
 	NOSUPERUSER
 	NOCREATEDB
@@ -219,6 +218,27 @@ CREATE ROLE "SMermet" WITH
 GRANT metaifn_reader TO "SMermet";
 GRANT production_datareader TO "SMermet";
 GRANT sig_datareader TO "SMermet";
+
+
+
+SET ROLE = exploitation_admin;
+CREATE ROLE "SMermet" WITH 
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
+	INHERIT
+	LOGIN
+	NOREPLICATION
+	NOBYPASSRLS
+	CONNECTION LIMIT -1;
+
+GRANT exploitation_datareader TO "SMermet";
+GRANT prod_exp_datareader TO "SMermet";
+GRANT carto_datareader TO "SMermet";
+GRANT coord_datareader TO "SMermet";
+
+REVOKE USAGE ON SCHEMA carto_exo FROM "SMermet";
+
 
 
 

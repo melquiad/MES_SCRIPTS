@@ -66,7 +66,7 @@ WHERE p.npp = c.npp AND p.incref = 18;
 
 
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 18, validin = 0, validout = 18, defin = 0, defout = 18
+SET calcin = 0, calcout = 18, validin = 0, validout = 18, defin = 0, defout = NULL
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'ZICO';
 
@@ -93,7 +93,7 @@ WHERE p.npp = c.npp AND p.incref = 19;
 
 
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 19, validin = 0, validout = 18, defin = 0, defout = 18
+SET calcin = 0, calcout = 19, validin = 0, validout = 19, defin = 0, defout = NULL
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'ZICO';
 

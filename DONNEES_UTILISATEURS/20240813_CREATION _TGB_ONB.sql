@@ -79,7 +79,7 @@ COMMIT;
 
 
 
---------------------- MAJ incref 18 -----------------------------------------------------------------------
+--------------------- MAJ incref 19 -----------------------------------------------------------------------
 BEGIN;
 
 CREATE TEMPORARY TABLE type_bio
@@ -125,10 +125,10 @@ SET tgb_onb =  CASE
 FROM inv_exp_nm.g3arbre AS a
 INNER JOIN inv_exp_nm.e2point AS p2 ON a.npp = p2.npp
 INNER JOIN type_bio AS tb ON a.espar = tb.espar
-WHERE ua.npp = a.npp AND ua.a = a.a AND p2.incref = 18;
+WHERE ua.npp = a.npp AND ua.a = a.a AND p2.incref = 19;
 
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 19, validin = 0, validout = 18, defout = 18
+SET calcin = 0, calcout = 19, validin = 0, validout = 19, defin = 0, defout = NULL
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'TGB_ONB';
 

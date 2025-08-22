@@ -5,6 +5,8 @@ DELETE FROM metaifn.addonnee WHERE donnee = 'U_APB';
 DELETE FROM metaifn.abmode WHERE unite = 'U_APB';
 DELETE FROM metaifn.abunite WHERE unite = 'U_APB';
 
+-- test 
+-- UPDATE metaifn.addonnee SET unite = 'APB' WHERE donnee = 'APB' AND unite = 'IN_ZONE';
 -- UPDATE metaifn.addonnee SET unite = 'IN_ZONE' WHERE donnee = 'APB' AND unite = 'APB';
 
 /* INUTILE DEPUIS LA CREATION DE L'UNITE IN_ZONE
@@ -128,8 +130,6 @@ WHERE apb = '1'
 GROUP BY incref, apb
 ORDER BY incref DESC;
 
--- test 
-UPDATE metaifn.addonnee SET unite = 'APB' WHERE donnee = 'APB' AND unite = 'IN_ZONE';
 
 
 

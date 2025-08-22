@@ -19,12 +19,13 @@ SELECT * FROM metaifn.ajoutchamp('RES_BIO', 'E2POINT', 'INV_EXP_NM', FALSE, 0, 1
 --              ou
 SELECT * FROM metaifn.ajoutchamp('RES_BIO'::varchar, 'E2POINT'::varchar, 'INV_EXP_NM'::varchar, FALSE::boolean, 1, 18, 'bpchar'::varchar, 1::int4);
 
-/*
-UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 13, validin = 0, validout = 13
-WHERE famille = 'INV_EXP_NM'
-AND donnee = 'RES_BIO';
 
+UPDATE metaifn.afchamp
+SET defin = 0, defout = 19, calcin = 0, calcout = 19, validin = 0, validout = 19
+WHERE famille = 'INV_EXP_NM'
+AND donnee = 'U_RES_BIO';
+
+/*
 --controle
 select *
 FROM metaifn.afchamp
@@ -75,7 +76,7 @@ WHERE p2.npp = c.npp;
 UPDATE inv_exp_nm.u_e2point u
 SET u_res_bio = c.res_bio
 FROM inv_exp_nm.e2point c
-WHERE u.npp = c.npp AND incref = 18;
+WHERE u.npp = c.npp AND u.incref = 18;
 
 
 /*

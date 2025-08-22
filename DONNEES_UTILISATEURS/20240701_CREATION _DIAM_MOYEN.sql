@@ -69,7 +69,7 @@ ORDER BY INCREF DESC;
 
 -- MAJ métadonnées
 UPDATE metaifn.afchamp
-SET calcin = 0, calcout = 19, validin = 0, validout = 19
+SET defin = 0, defout = NULL, calcin = 0, calcout = 19, validin = 0, validout = 19
 WHERE famille = 'INV_EXP_NM'
 AND donnee = 'DIAM_MOY';
 
