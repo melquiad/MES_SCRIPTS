@@ -1,5 +1,6 @@
 -- EXTENSION POSTGRES
-INSTALL postgres;
+INSTALL postgres; --> le faire hors réseau !
+LOAD postgres;
 
 
 -- IMPORT CSV

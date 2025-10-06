@@ -3,7 +3,7 @@
 DROP SERVER IF EXISTS fdw_ogr_inpn_metropole;
 
 CREATE SERVER fdw_ogr_inpn_metropole FOREIGN DATA WRAPPER ogr_fdw
-OPTIONS (datasource 'WFS:http://ws.carmencarto.fr/WFS/119/fxx_inpn?',format 'WFS');
+OPTIONS (datasource 'WFS:https://ws.carmencarto.fr/WFS/119/fxx_inpn',format 'WFS');
 
 CREATE SCHEMA IF NOT EXISTS inpn_metropole;
 

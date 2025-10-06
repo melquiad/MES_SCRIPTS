@@ -11,5 +11,5 @@ AND donnee IN ('U_AI1', 'U_AI2', 'U_AI3', 'U_AI4');
 UPDATE metaifn.afchamp
 SET format = 'ARCHIVE', famille = 'ARCHIVE'
 WHERE famille = 'INV_EXP_NM'
-AND fformat = 'U_G3ARBRE'
+AND format = 'U_G3ARBRE'
 AND donnee IN ('U_AI1', 'U_AI2', 'U_AI3', 'U_AI4');

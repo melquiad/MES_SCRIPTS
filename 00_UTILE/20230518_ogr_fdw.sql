@@ -11,11 +11,7 @@ SET ROLE = lhaugomat;
 SHOW ROLE;
 ------------------------------------------------------------------------------------------------
 
-CREATE SERVER meteo FOREIGN DATA WRAPPER ogr_fdw
-	OPTIONS (datasource '/home/lhaugomat/Documents/MES_SCRIPTS/lionel_hertzog/safran_grid.shp',
-			format 'ESRI Shapefile');
--------------------------------------------------------------------------------------------------
 
-CREATE SERVER onf_2023 FOREIGN DATA WRAPPER ogr_fdw
-	OPTIONS (datasource '/home/lhaugomat/Documents/DATA_SIG/ONF2023/REFFOR_PUB_2023.shp',
+CREATE SERVER onf_2025 FOREIGN DATA WRAPPER ogr_fdw
+	OPTIONS (datasource '/home/lhaugomat/Documents/ECHANGES/SIG/ONF2025/REFFOR_PUB_ONF2025.shp',
 			format 'ESRI Shapefile');

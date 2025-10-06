@@ -6,3 +6,5 @@ GROUP BY nom, prenom
 HAVING COUNT(*) > 1;
 
 SELECT * FROM agent WHERE nom = 'BRIEU';
+
+SHOW ROLE;

@@ -3,11 +3,11 @@
 --> DONNEE à CREER AUSSI EN PEUPLERAIE : pour l'instant elle n'existe qu'en forêt.
 
 -- on ajoute les colonnes en base
-ALTER TABLE inv_exp_nm.g3foret ADD COLUMN diam_moy FLOAT;
-ALTER TABLE inv_exp_nm.p3point ADD COLUMN diam_moy FLOAT;
+ALTER TABLE inv_exp_nm.g3foret ADD COLUMN diam_moy varchar(3);
+ALTER TABLE inv_exp_nm.p3point ADD COLUMN diam_moy varchar(3);
 	--> en base de production
-ALTER FOREIGN TABLE inv_exp_nm.g3foret ADD COLUMN diam_moy FLOAT;
-ALTER FOREIGN TABLE inv_exp_nm.p3point ADD COLUMN diam_moy FLOAT;
+ALTER FOREIGN TABLE inv_exp_nm.g3foret ADD COLUMN diam_moy varchar(3);
+ALTER FOREIGN TABLE inv_exp_nm.p3point ADD COLUMN diam_moy varchar(3);
 
 /*
 --contrôle
@@ -18,11 +18,11 @@ GROUP BY incref;
 
 BEGIN;
 
-SELECT * FROM metaifn.ajoutdonnee ('DIAM_MOY', NULL, 'CLAD', 'IFN', NULL, 0, 'float', 'CC', TRUE, TRUE
+SELECT * FROM metaifn.ajoutdonnee ('DIAM_MOY', NULL, 'CLAD', 'IFN', NULL, 0, 'varchar(3)', 'CC', TRUE, TRUE
 , 'Diamètre moyen sur la placette', 'Diamètre moyen des arbres recensables sur la placette ');
 
-SELECT * FROM metaifn.ajoutchamp ('DIAM_MOY', 'G3FORET', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 8);
-SELECT * FROM metaifn.ajoutchamp ('DIAM_MOY', 'P3POINT', 'INV_EXP_NM', FALSE, 0, 18, 'float8', 8);
+SELECT * FROM metaifn.ajoutchamp ('DIAM_MOY', 'G3FORET', 'INV_EXP_NM', FALSE, 0, 18, 'varchar(3)', 8);
+SELECT * FROM metaifn.ajoutchamp ('DIAM_MOY', 'P3POINT', 'INV_EXP_NM', FALSE, 0, 18, 'varchar(3)', 8);
 
 
 INSERT INTO utilisateur.autorisation_groupe_donnee(groupe, donnee)

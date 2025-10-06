@@ -18,7 +18,7 @@ INNER JOIN metaifn.abmode ab ON u.unite = ab.unite;
 SELECT d.donnee, d.unite, i.incref, i.dcunite, d.libelle
 FROM metaifn.addonnee d
 LEFT JOIN metaifn.aiunite i ON d.unite = i.unite AND i.usite = 'P'  AND i.incref BETWEEN 0 AND 20
-WHERE d.donnee ~~* 'INCID'
+WHERE d.donnee ~~* 'TPLANT'
 ORDER BY incref;
 
 
@@ -27,7 +27,7 @@ SELECT d.donnee, COALESCE(i.dcunite, d.unite) AS unite
 , COALESCE(min(i.incref + 2005), 2020) AS debut, COALESCE(max(i.incref + 2005), 2025) AS fin
 FROM metaifn.addonnee d
 LEFT JOIN metaifn.aiunite i ON d.unite = i.unite AND i.usite = 'P' AND i.incref BETWEEN 0 AND 20
-WHERE d.donnee ~~* 'VCHAB'
+WHERE d.donnee ~~* 'TPLANT'
 GROUP BY 1, 2
 ORDER BY 3, 4;
 
