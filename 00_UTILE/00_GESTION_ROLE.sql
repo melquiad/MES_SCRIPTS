@@ -10,7 +10,7 @@ RESET ROLE;
 SHOW ROLE;
 ---------------------------------------------------
 
-ALTER USER "LHaugomat" WITH superuser;
+ALTER USER "LHaugomat" WITH superuser;Connections
 ALTER USER "LHaugomat" WITH nosuperuser;
 ---------------------------------------------------------
 
@@ -31,7 +31,7 @@ CREATE ROLE "LHaugomat" WITH
 	CONNECTION LIMIT -1
 	VALID UNTIL 'infinity';
 
-ALTER ROLE LHaugomat WITH ENCRYPTED PASSWORD 'password';
+ALTER ROLE "LHaugomat" WITH ENCRYPTED PASSWORD 'password';
 
 GRANT pg_read_all_data TO "LHaugomat";
 REVOKE pg_read_all_data FROM "LHaugomat";
@@ -238,6 +238,47 @@ GRANT carto_datareader TO "SMermet";
 GRANT coord_datareader TO "SMermet";
 
 REVOKE USAGE ON SCHEMA carto_exo FROM "SMermet";
+
+-------------------- Attribution droits à Quentin de Peretti --------------------------------------------------------------------
+SET ROLE = exploitation_admin;
+SHOW ROLE;
+
+CREATE ROLE "QDe-Peretti" WITH 
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
+	INHERIT
+	LOGIN
+	NOREPLICATION
+	NOBYPASSRLS
+	CONNECTION LIMIT -1;
+
+DROP ROLE "QDe-Peretti";
+
+GRANT exploitation_datareader TO "QDe-Peretti";
+GRANT prod_exp_datareader TO "QDe-Peretti";
+GRANT exploitation_u_datawriter TO "QDe-Peretti";
+
+SHOW ROLE;
+RESET ROLE;
+
+--------------- Attribution de droits à Christophe -----------------------------
+SET ROLE = exploitation_admin;
+SHOW ROLE;
+
+CREATE ROLE "CRoux" WITH 
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
+	INHERIT
+	LOGIN
+	NOREPLICATION
+	NOBYPASSRLS
+	CONNECTION LIMIT -1;
+
+GRANT exploitation_admin TO "CRoux";
+GRANT exploitation_datareader TO "CRoux";
+GRANT exploitation_u_datawriter TO "CRoux";
 
 
 

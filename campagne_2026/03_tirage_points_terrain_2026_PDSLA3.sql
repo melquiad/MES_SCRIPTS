@@ -25,7 +25,7 @@ WHERE c.millesime = 2026
 ORDER BY nom_ech DESC;
 
 -- échantillon de transects
-INSERT INTO inv_prod_new.echantillon (id_campagne, nom_ech, proprietaire, date_tirage, type_ech, phase_stat, ech_parent_stat, descript_ech, stat, type_ue, passage)
+INSERT INTO ifn_prod.echantillon (id_campagne, nom_ech, proprietaire, date_tirage, type_ech, phase_stat, ech_parent_stat, descript_ech, stat, type_ue, passage)
 SELECT id_campagne, REPLACE(nom_ech, 'PI', 'RE') AS nom_ech, proprietaire, now()::date AS date_tirage, type_ech, 2 AS phase_stat, id_ech AS ech_parent_stat
 , $$Échantillon de phase 2 des transects associés aux points de l'inventaire forestier national, campagne $$ || millesime
 , TRUE AS stat, 'T' AS type_ue, 1 AS passage
@@ -174,7 +174,7 @@ BEGIN;
 
 -- recopie de l'échantillon première visite, 5 ans avant, rattaché au nouvel échantillon
 --/!\ À PARTIR DE 2025, LE RATTACHEMENT À L'ÉCHANTILLON PARENT D'UN ÉCHANTILLON TERRAIN A CHANGÉ, IL FAUDRA REVOIR LES JOINTURES POUR LE TIRAGE DE LA CAMPAGNE 2025
-INSERT INTO inv_prod_new.point_ech (id_ech, id_point, id_ech_nd, id_noeud, poids, commune, dep, zp, pro, regn, ser_86, ser_alluv, rbi, proba_hetre, angle_gams)
+INSERT INTO ifn_prod.point_ech (id_ech, id_point, id_ech_nd, id_noeud, poids, commune, dep, zp, pro, regn, ser_86, ser_alluv, rbi, proba_hetre, angle_gams)
 SELECT e.id_ech, pet1.id_point, e.id_ech AS id_ech_nd, pet1.id_noeud, pet1.poids, pet1.commune, pet1.dep
 , pet1.zp, pet1.pro, pet1.regn, pet1.ser_86, pet1.ser_alluv, pet1.rbi, pet1.proba_hetre, pet1.angle_gams
 FROM echantillon e
@@ -604,7 +604,7 @@ WHERE d.id_transect = t.id_transect;
 DROP TABLE public.declinaison1;
 
 -- ajout des zonages de tirage sans allègement
-INSERT INTO inv_prod_new.tirage (id_ech, id_zonage, code_zone, formation, niveau, nvx_alleges)
+INSERT INTO ifn_prod.tirage (id_ech, id_zonage, code_zone, formation, niveau, nvx_alleges)
 VALUES (144, 8, '0', 46, 2, NULL)--'{4, 7}')     -- campagne 2026 (échantillon n°144)
 , (144, 8, '1', 46, 3, NULL)--'{5, 8}')
 , (144, 8, '2', 46, 3, NULL)--'{5, 8}')
@@ -621,6 +621,8 @@ VALUES (144, 8, '0', 46, 2, NULL)--'{4, 7}')     -- campagne 2026 (échantillon 
 , (144, 8, '6', 16, 3, NULL)
 --, (144, 1, 'F', 32, 1, NULL)
 , (144, 1, 'F', 897, 4, NULL);
+
+-- UPDATE ifn_prod.tirage SET niveau = 4 WHERE id_ech = 144 AND formation = 897;
 
 --TABLE zonage;
 
@@ -669,7 +671,7 @@ SELECT c.millesime, et.id_ech AS id_ech_ph2, epi.id_ech AS id_ech_ph1
     WHEN pp.cso IN ('1', '3') THEN 'tir'                            -- couverture boisée
     WHEN pp.cso = '4L' THEN 'tir'                                   -- lande
     WHEN pp.cso = '5' THEN 'tir'                                    -- peupleraie
-    WHEN pp.pdsla = '3' THEN 'tir'                                  -- point dans SLA > 15m
+    --WHEN pp.pdsla = '3' THEN 'tir'                                  -- point dans SLA > 15m
     ELSE 'pas tir'                                                  -- autre
   END AS tire
 , pepi.poids, pp.cso, ST_X(p.geom), ST_Y(p.geom)
@@ -692,7 +694,6 @@ ORDER BY id_point;
 --TABLE points;
 
 ANALYZE points;
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- TIRAGE NON ALLÉGÉ
@@ -915,7 +916,7 @@ FROM points_tir_12;
 ----------------------------------------------
 -- tirage définitif (allègement à 12.5 %)
 ----------------------------------------------
-UPDATE inv_prod_new.tirage
+UPDATE ifn_prod.tirage
 SET nvx_alleges = 
     CASE
         WHEN niveau = 2 THEN array[4]::int2[]
@@ -1013,7 +1014,7 @@ INNER JOIN point p1 USING (id_point)
 INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p1.geom);
 
 SELECT v.npp, p.id_point, v.id_ech, round(st_x(p.geom)) AS X, round(st_y(p.geom)) AS Y, d.ex AS DT
-FROM  inv_prod_new.v_liste_points_lt1_pi2 v
+FROM  ifn_prod.v_liste_points_lt1_pi2 v
 INNER JOIN point p USING (id_point)
 INNER JOIN sig_inventaire.dir_2024 d ON ST_Intersects(d.geom, p.geom)
 WHERE v.annee = 2026;
@@ -1044,7 +1045,7 @@ WITH totaux_dep AS (
             END AS formation
     , p1.depn
     , count(*) AS nb_pts_terrain
-    FROM points_tir_10 p
+    FROM points_tir_12 p
     INNER JOIN points p1 USING (id_point)
     GROUP BY 1, 2
 )
@@ -1102,6 +1103,8 @@ FROM points_tir_final pt
 INNER JOIN points p ON pt.id_ech = p.id_ech_ph2 AND pt.id_point = p.id_point
 INNER JOIN point_ech pep ON p.id_ech_ph1 = pep.id_ech AND p.id_point = pep.id_point
 ORDER BY 1, 2;
+
+SELECT sum(poids) FROM point_ech WHERE id_ech = 144;
 
 CREATE TABLE public.point_lt2 AS 
 --INSERT INTO point_lt (id_ech, id_point, formation, azpoint, decli_pt, echelon_init)
@@ -1244,43 +1247,43 @@ ANALYZE point_lt;
 -- Rattachement des points à l'échantillon de transects via le transect
 SET enable_nestloop = FALSE;
 
-DELETE FROM inv_prod_new.transect_ech
+DELETE FROM ifn_prod.transect_ech
 WHERE id_ech = 146;
 
 WITH camp AS (
     SELECT id_campagne, millesime
-    FROM inv_prod_new.campagne
+    FROM ifn_prod.campagne
     WHERE lib_campagne LIKE 'Campagne annuelle%'
     AND millesime = 2026
 )
 , ech_pts_1 AS (
     SELECT id_ech, id_campagne, nom_ech
-    FROM inv_prod_new.echantillon
+    FROM ifn_prod.echantillon
     INNER JOIN camp USING (id_campagne)
     WHERE nom_ech = 'FR_IFN_ECH_' || (millesime)::TEXT || '_PH1_PTS_' || (millesime)::TEXT
 )
 , ech_pts_2 AS (
     SELECT id_ech, id_campagne, nom_ech, ech_parent_stat, millesime
-    FROM inv_prod_new.echantillon
+    FROM ifn_prod.echantillon
     INNER JOIN camp USING (id_campagne)
     WHERE nom_ech = 'FR_IFN_ECH_' || (millesime)::TEXT || '_PH2_PTS_' || (millesime)::TEXT
 )
 , pts_1 AS (
     SELECT p.npp, pe.id_ech, pe.id_point, ROUND(pe.poids::NUMERIC, 2) AS poids, ne.ztir, COUNT(*) OVER (PARTITION BY ne.id_ech, ne.id_noeud) AS nb_pts_nd
-    FROM inv_prod_new.point p
-    INNER JOIN inv_prod_new.point_ech pe ON p.id_point = pe.id_point
-    INNER JOIN inv_prod_new.noeud_ech ne ON pe.id_ech = ne.id_ech AND pe.id_noeud = ne.id_noeud
+    FROM ifn_prod.point p
+    INNER JOIN ifn_prod.point_ech pe ON p.id_point = pe.id_point
+    INNER JOIN ifn_prod.noeud_ech ne ON pe.id_ech = ne.id_ech AND pe.id_noeud = ne.id_noeud
     INNER JOIN ech_pts_1 ep ON ne.id_ech = ep.id_ech
 )
-INSERT INTO inv_prod_new.transect_ech (id_ech, id_transect, poids)
+INSERT INTO ifn_prod.transect_ech (id_ech, id_transect, poids)
 SELECT e.id_ech, t.id_transect, pe.poids * p1.nb_pts_nd AS poids
-FROM inv_prod_new.point_lt pl
-INNER JOIN inv_prod_new.point_ech pe USING (id_ech, id_point)
-INNER JOIN inv_prod_new.point p USING (id_point)
-INNER JOIN inv_prod_new.transect t USING (id_transect)
+FROM ifn_prod.point_lt pl
+INNER JOIN ifn_prod.point_ech pe USING (id_ech, id_point)
+INNER JOIN ifn_prod.point p USING (id_point)
+INNER JOIN ifn_prod.transect t USING (id_transect)
 INNER JOIN ech_pts_2 ep USING (id_ech)
 INNER JOIN pts_1 p1 ON ep.ech_parent_stat = p1.id_ech AND pl.id_point = p1.id_point
-INNER JOIN inv_prod_new.echantillon e ON ep.id_campagne = e.id_campagne AND e.nom_ech = 'FR_IFN_ECH_' || ep.millesime || '_TR_RE'
+INNER JOIN ifn_prod.echantillon e ON ep.id_campagne = e.id_campagne AND e.nom_ech = 'FR_IFN_ECH_' || ep.millesime || '_TR_RE'
 INNER JOIN camp c ON e.id_campagne = c.id_campagne
 ORDER BY e.id_ech, t.id_transect;
 

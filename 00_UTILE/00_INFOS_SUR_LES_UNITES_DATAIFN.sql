@@ -6,7 +6,7 @@ INNER JOIN visu_metadonnees.donnee d USING (donnee)
 WHERE lower(validite) = 2024
 AND EXISTS (
     SELECT 1
-    FROM donnee_unite du2
+    FROM ifn_meta.donnee_unite du2
     WHERE du.donnee = du2.donnee
     AND du.unite != du2.unite
 )

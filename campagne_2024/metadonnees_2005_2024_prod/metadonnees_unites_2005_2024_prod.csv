@@ -1,0 +1,254 @@
+donnee;unite;campagnes;type;libelle;definition
+A;1;2005 - ;Quantitatif;1;Unite
+ABOND;ABOND;2005 - ;Qualitatif;Coefficient d'abondance-dominance;Taux de surface couverte par une espece vegetale sur un site
+ABROU;ABROU;2005 - ;Qualitatif;Indicateur de dégâts par abroutissement;Indicateur de dégâts de gibier par abroutissement dans le peuplement non recensable
+ACCES;EXP11;2005 - ;Qualitatif;Accessibilité;Nécessite et possibilité de création de piste pour l'exploitation forestière
+ACCI;ACCI;2005 - ;Qualitatif;Accident de l'arbre;Caractérisation de l'accident ayant pu affecter l'arbre vivant sur pied
+AFFROC;1/10PCT;2005 - 2016;Qualitatif;1/10 (en %);Dixième (en pourcentage)
+AFFROC;1/10PCT_X;2017 - ;Qualitatif;1/10 (en %);Dixième (en pourcentage) avec prise en compte de l'absence
+AFPLA;1/10PCT;2005 - ;Qualitatif;1/10 (en %);Dixième (en pourcentage)
+AGE;AN;2005 - ;Quantitatif;an;MILLESIME
+AGE13;AN;2005 - ;Quantitatif;an;MILLESIME
+ALLIANCE;HAB_ALLIANCE;2011 - ;Qualitatif;Alliances végétales;Alliances végétales selon la classification phytosociologique des végétations
+ANDAIN;ANDAIN;2005 - ;Qualitatif;Présence d'andain;Indicateur de présence d'andain
+ANPYR;1;2005 - ;Quantitatif;1;Unite
+ASPERITE;ASPERITE;2008 - 2013;Qualitatif;Toutes modalités de l'aspérité du terrain (3 modalités);Indicateur du caractère accidenté du terrain dans les 200 premiers mètres de débardage, sur le trajet réel ou supposé des engins d'exploitation
+ASPERITE;ASPERITE2;2014 - 2015;Qualitatif;Indicateur d'asperite;Indicateur caracterisant la zone la plus delicate en quantite et importance d'obstacles que devra franchir un engin sur l'itineraire suppose de debusquage
+ASPERITE;ASPERITE3;2016 - ;Qualitatif;Indicateur d'asperite;Indicateur caracterisant la zone la plus delicate en quantite et importance d'obstacles que devra franchir un engin sur l'itineraire suppose de debusquage
+ASSOCIATION;HAB_ASSO;2011 - ;Qualitatif;Associations végétales;Associations végétales selon la classification phytosociologique des végétations
+AUTUT;AUTUT;2015 - 2015;Qualitatif;Autre utilisation éventuelle;Autre utilisation éventuelle
+AUTUT;AUTUT1;2016 - ;Qualitatif;Autre utilisation éventuelle;Autre utilisation éventuelle
+BOIS;BOIS;2005 - ;Qualitatif;Disponibilité pour la production de bois;Disponibilité pour la production de bois
+BORD;BORD;2008 - 2016;Qualitatif;Point dans une bordure arboree;Indicateur de position du point dans une bordure arboree de moins de 20 metres de large, par consequent non individualisable, de nature nettement differente du reste du peuplement
+BORD;BORD1;2017 - ;Qualitatif;Point dans une bordure arboree;Indicateur de position du point dans une bordure arboree de moins de 20 metres de large, par consequent non individualisable, de nature nettement differente du reste du peuplement
+BPLANT;M;2005 - ;Quantitatif;m;METRE
+C0;M;2005 - ;Quantitatif;m;METRE
+C13;M;2005 - ;Quantitatif;m;METRE
+CAI40;1/10PCT;2005 - 2016;Qualitatif;1/10 (en %);Dixième (en pourcentage)
+CAI40;1/10PCT_X;2017 - ;Qualitatif;1/10 (en %);Dixième (en pourcentage) avec prise en compte de l'absence
+CAILLOUX;1/10PCT;2005 - 2016;Qualitatif;1/10 (en %);Dixième (en pourcentage)
+CAILLOUX;1/10PCT_X;2017 - ;Qualitatif;1/10 (en %);Dixième (en pourcentage) avec prise en compte de l'absence
+CAM;CAM;2005 - 2007;Qualitatif;Classe d'age mesure;Caracteristique discretisee en 20 classes de l'age
+CAM;CAM2;2008 - ;Qualitatif;Classe d'age mesure;Caracteristique discretisee en 7 classes d'age
+CB_IFN;CORINE_IFN;2011 - ;Qualitatif;Code Corine proposé par l’inventaire;Correspondance avec la Nomenclature CORINE, proposée par l’inventaire
+CD_HAB;CD_HAB;2011 - ;Qualitatif;Nomenclature HABREF;Correspondance avec la nomenclature HABREF du Muséum 
+CD_REF;CDREF13;2005 - ;Qualitatif;Identifiant unique de taxon de référence (TAXREF v13);Identifiant unique de taxon de référence selon le référentiel TAXREF version 13
+CIBLE;CIBLE;2005 - ;Qualitatif;Indicateur d'appartenance au peuplement cible;Indicateur d'appartenance au peuplement cible
+CLASSE;HAB_CLASSE;2011 - ;Qualitatif;Classes végétales;Classes végétales selon la classification phytosociologique des végétations
+CLON;ESS19;2005 - 2013;Qualitatif;Cultivar de peuplier;Espece (ou groupe d'especes) botanique(s) de cultivar de peuplier cultive
+CSA;CS;2005 - 2005;Qualitatif;Couverture du sol;Caracteristique spatiale hierarchique deduite des taux de recouvrement des elements biophysiques presents sur le site
+CSA;CSG2;2006 - 2006;Qualitatif;Couverture du sol;Couverture du sol detaillee en 9 postes
+CSA;CSG3;2007 - 2014;Qualitatif;Couverture du sol;Couverture du sol detaillee en 10 postes
+CSA;CSG5;2015 - 2017;Qualitatif;Couverture du sol;Couverture du sol détaillée en 
+CSA;CSG13;2018 - ;Qualitatif;Couverture du sol;Couverture du sol sur la placette d'observation
+CSLISI;CSLISI;2007 - 2014;Qualitatif;Couverture du sol au-dela de la lisiere;Caracterisation fine de la couverture du sol au-dela de la lisiere
+CSLISI;CSLISI2;2015 - 2016;Qualitatif;Couverture du sol au-dela de la lisiere;Caracterisation fine de la couverture du sol au-dela de la lisiere
+CSLISI;CSLISI3;2017 - 2017;Qualitatif;Couverture du sol au-dela de la lisiere;Caracterisation fine de la couverture du sol au-dela de la lisiere
+CSLISI;CSLISI4;2018 - ;Qualitatif;Couverture du sol au-dela de la lisiere;Caracterisation fine de la couverture du sol au-dela de la lisiere
+DATEECO;JJ/MM/AAAA;2005 - ;Temporel;jj/mm/aaaa;DATE EN JOUR/MOIS/ANNEE
+DATEMORT;DATEMORT;2005 - ;Qualitatif;Date présumée de la mort;Date présumée de la mort d'un arbre debout sur pied
+DATEPOINT;JJ/MM/AAAA;2005 - ;Temporel;jj/mm/aaaa;DATE EN JOUR/MOIS/ANNEE
+DBM;M;2008 - ;Quantitatif;m;METRE
+DC;DC;2005 - 2006;Qualitatif;Detail de coupe;Detail de l'execution eventuelle d'une coupe dans un peuplement
+DC;DCG7;2007 - 2007;Qualitatif;Detail de coupe;Detail de l'execution eventuelle d'une coupe dans un peuplement
+DC;DCG8;2008 - 2014;Qualitatif;Detail de coupe;Detail de l'execution eventuelle d'une coupe dans un peuplement
+DC;DCG9;2015 - ;Qualitatif;Détail de coupe;Détail de l'exécution d'une coupe récente dans un peuplement
+DCESPAR1;ESPAR;2005 - 2006;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+DCESPAR1;ESPAR0;2007 - 2008;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+DCESPAR1;ESPAR1;2009 - ;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+DCESPAR2;ESPAR;2005 - 2006;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+DCESPAR2;ESPAR0;2007 - 2008;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+DCESPAR2;ESPAR1;2009 - ;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+DDEC;M;2005 - ;Quantitatif;m;METRE
+DECOMP;DECOMP;2008 - ;Qualitatif;Tous les états de décomposition du bois mort au sol (5 mod.);Etat de décomposition d'un morceau de bois au sol, estimé au niveau de l'intersection du transect avec le morceau de bois mort (pas sur la totalité de la pièce de bois), prenant en compte l'altération de l'écorce et du bois ainsi que la texture du bois.
+DECOUPE;DECOUPE;2008 - 2016;Qualitatif;Type de découpe;Caractérisation de la découpe au niveau de la hauteur de découpe
+DECOUPE;DECOUPE1;2017 - ;Qualitatif;Type de découpe;Caractérisation de la découpe au niveau de la hauteur de découpe
+DEF5;DEF5;2005 - ;Qualitatif;Indicateur de défrichement;Indicateur permettant d'identifier des défrichements avec changement de couverture du sol ayant affecté tout ou partie de la placette d'observation initiale
+DEGGIB;DEGGIB;2005 - ;Qualitatif;Nature de dégât de gibier;Nature de dégât de gibier sur l'arbre
+DENIVRIV;DENIVRIV;2013 - 2013;Qualitatif;Dénivelé de la placette à l'unité hydro. la plus proche;Dénivelé entre le point le plus bas de la placette de 20 ares et l'unité hydrographique la plus proche
+DENIVRIV;DENIVRIV2;2014 - ;Qualitatif;Denivele de la placette a l'unite hydro la plus proche;Denivele entre le point le plus bas de la placette de 20 ares et l'unite hydrographique la plus proche
+DEP;DP;2005 - ;Qualitatif;Departement;Departement (annee de reference 2002)
+DIST;EXP12;2005 - ;Qualitatif;Classe de longueur;Caracteristique discretisee d'une longueur planimetrique
+DISTRIV;DISTRIV;2005 - ;Qualitatif;Distance a l'unite hydro la plus proche;Classe de distance entre le pr de la placette d'inventaire et l'unite hydrographique la plus proche presente a moins de 50m
+DPYR;DPYR;2005 - ;Qualitatif;Dégâts liés à la pyrale;Indicateur de dégâts provoqués par la pyrale sur la placette de 15 m de rayon (700 m²).
+ELAG;ELAG;2005 - ;Qualitatif;Indicateur d'elagage artificiel;Indicateur d'elagage artificiel
+ELISI;RADIAN;2005 - ;Quantitatif;radian;MESURE D'ANGLE
+ENTP;FP4;2005 - 2005;Qualitatif;Entretien;Qualite d'entretien d'une peupleraie - 4 postes
+ENTP;FP3;2006 - ;Qualitatif;Entretien;Qualité d'entretien d'une peupleraie - 3 postes
+ESPAR;ESPAR;2005 - 2006;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+ESPAR;ESPAR0;2007 - 2008;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+ESPAR;ESPAR1;2009 - ;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+ESPAR_BM;ESPAR0;2008 - 2008;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+ESPAR_BM;ESPAR1;2009 - ;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+ESPAR_C;ESPAR;2005 - 2006;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+ESPAR_C;ESPAR0;2007 - 2008;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+ESPAR_C;ESPAR1;2009 - ;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+EUNIS;EUNIS;2011 - ;Qualitatif;Habitat code EUNIS;Correspondance avec la Nomenclature EUNIS
+EXPO;GR;2005 - ;Quantitatif;gr;GRADE
+FORME;DOM2;2005 - ;Qualitatif;Forme du houppier;Existence de taille a moins de 4 metres et rapport du volume du houppier au volume de la tige (moins/plus de 2 steres par m3)
+FREPLI;FREPLI;2008 - ;Qualitatif;Facteur de repli en limite;Facteur de repli en limite
+GEST;GEST;2005 - ;Qualitatif;Indicateur de gestion;Indicateur permettant d'apprehender le niveau de gestion et/ou exploitation actuelle du peuplement ou de son voisinage immediat
+GRECO;GRECO;2005 - ;Qualitatif;Regroupement des 86 sylvoécorégions en GRECO;Regroupement des 86 sylvoécorégions en GRECO
+HAB;HAB;2011 - ;Qualitatif;Type d'habitat;Type d'habitat présent au centre de la placette de 20 ares apprécié sur le terrain, en s'appuyant sur une clé de détermination régionalisée
+HDEC;M;2005 - ;Quantitatif;m;METRE
+HERB;1/10;2005 - ;Qualitatif;1/10;Dixieme
+HIC;HIC;2011 - ;Qualitatif;Habitats d'intérêt communautaire;Regroupement des habitats élémentaires IFN en habitats génériques, pour les seuls habitats d'intérêt communautaire, les autres étant dans une catégorie "habitats n'étant pas d'intérêt communautaire"
+HRB;M;2020 - ;Quantitatif;m;METRE
+HTOT;M;2005 - ;Quantitatif;m;METRE
+HUMUS;HUMUS;2005 - 2021;Qualitatif;Type d'humus;Type d'humus selon la classification de jabiol
+HUMUS;HUMUS22;2022 - ;Qualitatif;Type d'humus;Type d'humus selon la classification de jabiol (version 2022)
+IDP;CODE;2005 - ;Texte;Code;Unité de codification non documentée
+INCID;INCID2;2005 - ;Qualitatif;Indicateur d'incident;Indicateur d'incident
+INCO_FLOR;INCO_FLOR;2016 - ;Qualitatif;Incohérence floristique;Indicateur d'incohérence floristique avec le reste du relevé floristique en raison d'une particularité locale
+INSTP5;INSTP5;2015 - 2023;Qualitatif;Installation de peuplement de moins de 5 ans;Indicateur de travaux d'installation de peuplement de moins de 5 ans
+INSTP5;INSTP52;2024 - ;Qualitatif;Installation de peuplement de moins de 5 ans;Indicateur de travaux d'installation de peuplement de moins de 5 ans
+INTEGR;INTEGR;2008 - 2014;Qualitatif;Detail integre non individualise;Indication de la prise en compte d'un detail non individualisable (seuils de surface et/ou de largeur et/ou de longueur non atteints) dans la description du peuplement sur 20 ares
+INTEGR;INTEGR2;2015 - 2017;Qualitatif;Detail integre non individualise;Indication de la prise en compte d'un detail non individualisable (seuils de surface et/ou de largeur et/ou de longueur non atteints) dans la description du peuplement sur 20 ares
+INTEGR;INTEGR3;2018 - ;Qualitatif;Detail integre non individualise;Indication de la prise en compte d'un detail non individualisable (seuils de surface et/ou de largeur et/ou de longueur non atteints) dans la description du peuplement sur 20 ares
+IPLANT;M;2005 - ;Quantitatif;m;METRE
+IR1;M;2007 - ;Quantitatif;m;METRE
+IR5;M;2005 - ;Quantitatif;m;METRE
+ITI;ITI;2005 - ;Qualitatif;Itinéraire de débardage;INDICATEUR DE LA PRESENCE D'ITINERAIRES DE DEBARDAGE (PISTES DE DEBARDAGE OU AUTRES)
+LFSD;M;2005 - ;Quantitatif;m;METRE
+LIB;DOM3;2005 - ;Qualitatif;Taux de couvert libre de l'arbre;Appreciation de l'importance du taux de couvert libre de l'arbre par rapport a son couvert total
+LIB_HAB;LIBELLE;2013 - ;Texte;Libellé informatif;Libellé décrivant une modalité
+LIB_HAB_FR;LIBELLE;2013 - ;Texte;Libellé informatif;Libellé décrivant une modalité
+LIB_HIC;LIBELLE;2013 - ;Texte;Libellé informatif;Libellé décrivant une modalité
+LIB_OBSHAB;LIBELLE;2013 - ;Texte;Libellé informatif;Libellé décrivant une modalité
+LIB_QUALHAB;LIBELLE;2013 - ;Texte;Libellé informatif;Libellé décrivant une modalité
+LIGN1;1/10;2005 - ;Qualitatif;1/10;Dixieme
+LIGN2;1/10;2005 - ;Qualitatif;1/10;Dixieme
+MA;MA_PCT;2020 - ;Qualitatif;Manque d’aiguilles;Estimation du manque d’aiguilles pour un arbre résineux.
+MASQUE;%;2005 - ;Quantitatif;%;Pourcentage
+MES_C13;MES_C13;2005 - ;Qualitatif;Indicateur de la qualité de mesure de C13;Indicateur de la qualité/difficulté de mesure de la circonférence à 1,30 m
+MORTB;MORTB;2006 - 2018;Qualitatif;Mortalité de branche;Mortalité de branche dans la moitié supérieure du houppier
+MORTB;MORTB2;2019 - 2020;Qualitatif;Mortalité de branche;Mortalité de branche dans la moitié supérieure du houppier
+MORTB;MORTB3;2021 - ;Qualitatif;Mortalité de branche;Mortalité de branche dans la moitié supérieure du houppier
+MOUSSE;1/10;2010 - ;Qualitatif;1/10;Dixieme
+MR;MR;2020 - ;Qualitatif;Manque de ramifications;Estimation du manque de ramifications secondaires pour un arbre feuillu.
+MSUD;%;2005 - ;Quantitatif;%;Pourcentage
+NINCID;NINCID;2005 - ;Qualitatif;Nature d'incident;Nature d'incident
+NLISI5;NLISI5;2005 - ;Qualitatif;Changement de lisière de moins de 5 ans;Indicateur de changement de lisière de moins de 5 ans
+OBSCHEMIN;OBSCHEMIN;2005 - ;Qualitatif;Chemin ou sommiere;Placette de 7 ares traversee ou bordee par un chemin ou une sommiere
+OBSDATE;OBSDATE;2005 - ;Qualitatif;Type d'aleas climatiques;Type d'aleas climatiques pouvant influer sur le releve ecologique et floristique
+OBSHAB;OBSHAB;2011 - ;Qualitatif;Indicateur des conditions d'observation de la donnée habitat;Donnée d'observation-qualité de la donnée habitat renseignée sur le terrain, en association avec un schéma
+OBSHYDR;OBSHYDR;2005 - 2016;Qualitatif;Observation sur l'hydromorphie;Observation sur l'hydromorphie
+OBSHYDR;OBSHYDR1;2017 - ;Qualitatif;Observation sur l'hydromorphie;Observation sur l'hydromorphie
+OBSPEDO;OBSPEDO;2005 - 2016;Qualitatif;Observation sur le releve pedologique;Indicateur des conditions d'observation des donnees pedologiques
+OBSPEDO;OBSPEDO1;2017 - ;Qualitatif;Observation sur le releve pedologique;Indicateur des conditions d'observation des donnees pedologiques
+OBSPROF;OBSPROF;2005 - ;Qualitatif;Observation sur la profondeur de sondage;Observation sur la profondeur de sondage
+OBSRIV;OBSRIV;2005 - ;Qualitatif;Mare, source, cours d'eau;Mare, source, cours d'eau sur la placette de 20 ares ou en bordure
+OBSRIV2;OBSRIV2;2005 - ;Qualitatif;Type d'unité hydrographique à proximité du point;Type d'unité hydrographique présente à proximité de la placette d'inventaire, à moins de 50 m du piquet repère ou présentant un dénivelé inférieur ou égal à 10 m avec la placette de 20 ares.
+OBSROC;OBSROC;2005 - ;Qualitatif;Observation sur la roche;Nature lithologique des elements grossiers si different du type de roche note
+OBSTOPO;OBSTOPO;2005 - ;Qualitatif;Observation sur le releve topographique;Indicateur des conditions d'observation des donnees topographiques
+OBSVEGET;OBSVEGET;2005 - ;Qualitatif;Observation sur le releve de la vegetation;Indicateur des conditions d'observation des donnees de vegetation
+OFR;OL;2005 - ;Qualitatif;Couche de litière;Couche de litière
+OH;OH;2005 - ;Qualitatif;Couche de litière humifiée;Couche de litière humifiée
+OLN;OL;2005 - ;Qualitatif;Couche de litière;Couche de litière
+OLT;OL;2005 - ;Qualitatif;Couche de litière;Couche de litière
+OLV;OL;2005 - ;Qualitatif;Couche de litière;Couche de litière
+ORDRE;HAB_ORDRE;2011 - ;Qualitatif;Ordres végétaux;Ordres végétaux selon la classification phytosociologique des végétations
+ORI;DOM1;2005 - 2006;Qualitatif;Origine de l'arbre;Mode de reproduction ayant donne naissance a l'arbre (2 classes)
+ORI;DOM1M0;2007 - ;Qualitatif;Origine de l'arbre (3 modalités);Mode de reproduction ayant donné naissance à l'arbre 
+ORNIERE;ORNIERE;2005 - ;Qualitatif;Indicateur de présence d'ornières;Indicateur de présence d'ornières
+P1525;P1525;2006 - 2015;Qualitatif;Présence dans la couronne 15m - 25m;Présence de l'espèce arborée recensable dans la couronne entre 15 et 25m de rayon
+P7ARES;P7ARES;2016 - ;Qualitatif;Présence sur 7 ares;Présence d'au moins un individu de l'espèce considérée sur la placette de 7 ares.
+PASSAGE;PASSAGE;2005 - ;Qualitatif;Numéro de passage;Indique si le point est issu d'un échantillon statistique de premier ou deuxième passage.
+PBUIS;PBUIS;2005 - ;Qualitatif;présence de buis;Indicateur de présence de buis vivant ou mort sur la placette de 7 ares.
+PCALC;1/10CM;2005 - 2016;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m
+PCALC;1/10CM_X;2017 - ;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m avec prise en compte de l'absence
+PCALF;1/10CM;2005 - 2016;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m
+PCALF;1/10CM_X;2017 - ;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m avec prise en compte de l'absence
+PENT2;%;2005 - ;Quantitatif;%;Pourcentage
+PENTEXP;PENTEXP;2008 - 2013;Qualitatif;Toutes classes de pente de débusquage (6 modalités);Plus grande pente dans les 200 premiers mètres de debusquage, sur le trajet réel ou supposé des engins d'exploitation
+PENTEXP;PENTEXP2;2014 - ;Qualitatif;Indicateur de pente;Plus grande pente dans les premiers 200 metres de debusquage, sur le trajet reel ou suppose des engins d'exploitation
+PENTN;GZ;2005 - ;Qualitatif;Classe de pente du sol;Caractéristique discrétisée de la pente d'un site
+PEUPNR;PEUPNR;2005 - ;Qualitatif;Indicateur de peuplement non recensable;Indicateur de peuplement non recensable
+PGLEY;1/10CM;2005 - 2016;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m
+PGLEY;1/10CM_X;2017 - ;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m avec prise en compte de l'absence
+PLISI;PLISI;2007 - 2007;Qualitatif;Presence de lisiere;Indication de presence d'au moins une lisiere sur la placette theorique de description (cercle de 25 metres de rayon)
+PLISI;PLISI3;2008 - ;Qualitatif;Presence de lisiere;Indication de presence d'au moins une lisiere sur la placette theorique de description (cercle de 25 metres de rayon)
+PORTANCE;PORTANCE;2008 - 2013;Qualitatif;Toutes classes de portance du terrain (3 modalités);Indicateur de portance des engins d'exploitation dans les 200 premiers mètres de débardage, sur le trajet réel ou supposé des engins d'exploitation
+PORTANCE;PORTANCE2;2014 - 2015;Qualitatif;Indicateur de portance;Indicateur caracterisant la zone la plus delicate en portance que devra franchir un engin sur l'itineraire suppose de debusquage
+PORTANCE;PORTANCE3;2016 - ;Qualitatif;Indicateur de portance;Indicateur caracterisant la zone la plus delicate en portance que devra franchir un engin sur l'itineraire suppose de debusquage
+PORTN;EXP22;2005 - ;Qualitatif;Portance du sol (2 modalités);Praticabilité d'un site par des engins mécaniques
+POX;1/10CM;2005 - 2016;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m
+POX;1/10CM_X;2017 - ;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m avec prise en compte de l'absence
+PPSEUDO;1/10CM;2005 - 2016;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m
+PPSEUDO;1/10CM_X;2017 - ;Qualitatif;1/10 (en cm);Profondeur (de 10 cm en 10 cm), limitée à 1 m avec prise en compte de l'absence
+PRELEV5;PRELEV5;2005 - ;Qualitatif;Indicateur de coupe dans les 5 dernieres annees;Indicateur de coupe survenue dans les 5 dernieres annees
+PROF1;DM;2005 - ;Quantitatif;dm;DECIMETRE
+PROF2;DM;2005 - ;Quantitatif;dm;DECIMETRE
+Q1;1;2005 - ;Quantitatif;1;Unite
+Q2;1;2005 - ;Quantitatif;1;Unite
+Q3;1;2005 - ;Quantitatif;1;Unite
+QUALHAB;QUALHAB2;2013 - ;Qualitatif;Indicateur de qualite sur habitat;Indiquateur de qualite sur habitat
+QUALITE;QUALITE;2005 - ;Qualitatif;Qualite de l'arbre;Qualite de l'arbre appreciee dans sa globalite
+R;1;2005 - ;Quantitatif;1;Unite
+RAD13;RAD13;2005 - ;Qualitatif;13 Régions administratives;13 Régions administratives 
+ROCHE;ROCHED0;2005 - ;Qualitatif;Type simplifié de roche mère;Type simplifié de roche mère
+SER;SER;2005 - ;Qualitatif;Sylvoécorégions;Découpage en 86 sylvoécorégions, ne tenant pas compte des sylvoécorégions d'alluvions récentes
+SFCOEUR;SFCOEUR;2005 - ;Qualitatif;Pourriture a coeur;Pourriture a coeur
+SFDORGE;SFDORGE;2005 - ;Qualitatif;Dorge et balais de sorcière sur sapins;Dorge et balais de sorcière sur sapins
+SFGELIV;SFGELIV;2005 - ;Qualitatif;Présence de gélivure;Présence de gélivure
+SFGUI;SFGUI;2005 - ;Qualitatif;Présence de gui;Présence de gui
+SFO;SF;2005 - 2006;Qualitatif;Structure forestière;Caractéristique complexe d'un peuplement associant le régime et la distribution verticale
+SFO;SF0;2007 - 2013;Qualitatif;Structure forestière;Caractéristique complexe d'un peuplement associant le régime et la distribution verticale distinguant l'absence de structure
+SFPIED;SFPIED;2005 - ;Qualitatif;Blessure ou pourriture de pied;Blessure ou pourriture de pied
+SIMPLIF;SIMPLIF;2005 - ;Qualitatif;Indicateur d'arbre simplifie;Indicateur d'arbre simplifie
+STRATE;STRATE;2006 - ;Qualitatif;Recensabilité de la strate arborée;Strate à laquelle appartient une espèce arborée. Le seuil de recensabilité est fixé à 23,5 cm de circonférence.
+SVER;SVER;2014 - ;Qualitatif;Structure verticale;Structure verticale du peuplement
+TCA;%;2005 - ;Quantitatif;%;Pourcentage
+TCAT10;1/10;2017 - ;Qualitatif;1/10;Dixieme
+TCL;%;2005 - ;Quantitatif;%;Pourcentage
+TETARD;TETARD;2005 - ;Qualitatif;Indicateur d'arbre tetard;Indicateur d'arbre tetard
+TEXT1;TEXT;2005 - 2016;Qualitatif;Texture des horizons du sol;Estimation manuelle de la texture des horizons du sol
+TEXT1;TEXT1;2017 - ;Qualitatif;Texture des horizons du sol;Estimation manuelle de la texture des horizons du sol
+TEXT2;TEXT;2005 - 2016;Qualitatif;Texture des horizons du sol;Estimation manuelle de la texture des horizons du sol
+TEXT2;TEXT1;2017 - ;Qualitatif;Texture des horizons du sol;Estimation manuelle de la texture des horizons du sol
+TFORM;TFORM;2005 - ;Qualitatif;Taille de formation;Taille de formation
+TIGE;DOM4;2005 - ;Qualitatif;Forme de la tige;Existence de jumelle ou fourche ou cassure en cime
+TM2;TM;2005 - 2005;Qualitatif;Type de formation surfacique;Caracteristique discrete d'une formation selon la couverture du sol et la taille
+TM2;TMG8;2006 - 2017;Qualitatif;Taille de formation inventoriee;Caracteristique discrete d'une formation selon la couverture du sol et la taille
+TOPO;TOPO;2005 - ;Qualitatif;Situation topographique;Position topographique du site ou de la station
+TPESPAR1;ESPAR;2005 - 2006;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+TPESPAR1;ESPAR0;2007 - 2008;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+TPESPAR1;ESPAR1;2009 - ;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+TPESPAR2;ESPAR;2005 - 2006;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+TPESPAR2;ESPAR0;2007 - 2008;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+TPESPAR2;ESPAR1;2009 - ;Qualitatif;Espèce arborée;Espèce botanique d'arbre ou groupe d'espèces détaillé
+TPLANT;TPLANT;2005 - 2006;Qualitatif;Type de plantation;Caracteristique nominale a 3 modes du type de plantation effectuee
+TPLANT;TPLANT0;2007 - 2007;Qualitatif;Type de plantation;Caracteristique nominale a 4 modes du type de plantation effectuee
+TPLANT;TPLANT1;2008 - 2012;Qualitatif;Type de plantation;Caracteristique nominale a 4 modes du type de plantation effectuee
+TPLANT;TPLANT2;2013 - 2013;Qualitatif;Type de plantation;Caracteristique nominale a 4 modes du type de plantation effectuee
+TPLANT;TPLANT3;2014 - 2016;Qualitatif;Type de plantation;Caracteristique nominale a 4 modes du type de plantation effectuee
+TPLANT;TPLANT4;2017 - 2023;Qualitatif;Type de plantation;Type de plantation
+TPLANT;TPLANT5;2024 - ;Qualitatif;Type de plantation;Type de plantation (version 2024)
+TSOL;TSOL;2005 - 2021;Qualitatif;Type de sol;Type de sol selon la classification de duchaufour
+TSOL;TSOL22;2022 - ;Qualitatif;Type de sol;Type de sol selon la classification de duchaufour (version 2022)
+TYPCAI;OBSROC;2017 - 2018;Qualitatif;Observation sur la roche;Nature lithologique des elements grossiers si different du type de roche note
+TYPCAI;TYPCAI;2019 - ;Qualitatif;nature des éléments grossiers;Nature lithologique des éléments grossiers, si cette nature est différente du type de roche-mère.
+TYPRIV;OBSRIV2;2005 - ;Qualitatif;Type d'unité hydrographique à proximité du point;Type d'unité hydrographique présente à proximité de la placette d'inventaire, à moins de 50 m du piquet repère ou présentant un dénivelé inférieur ou égal à 10 m avec la placette de 20 ares.
+UTA1;UT;2005 - 2005;Qualitatif;Usage du sol;Caractéristique décrivant l'objectif principal de gestion du site
+UTA1;UTA;2006 - 2007;Qualitatif;Utilisation du sol en phase 2;Caracteristique decrivant l'objectif principal de gestion du site en phase 2
+UTA1;UTA3;2008 - 2013;Qualitatif;Utilisation du sol en phase 2;Caracteristique decrivant l'objectif principal de gestion du site en phase 2
+UTA1;UTA9;2014 - 2014;Qualitatif;Utilisation du sol en phase 2;Caracteristique decrivant l'objectif principal de gestion du site en phase 2
+UTA2;UT;2005 - 2005;Qualitatif;Usage du sol;Caractéristique décrivant l'objectif principal de gestion du site
+UTA2;UTA;2006 - 2007;Qualitatif;Utilisation du sol en phase 2;Caracteristique decrivant l'objectif principal de gestion du site en phase 2
+UTA2;UTA3;2008 - 2013;Qualitatif;Utilisation du sol en phase 2;Caracteristique decrivant l'objectif principal de gestion du site en phase 2
+UTA2;UTA9;2014 - 2014;Qualitatif;Utilisation du sol en phase 2;Caracteristique decrivant l'objectif principal de gestion du site en phase 2
+UTIP;UTIP;2005 - ;Qualitatif;Utilisation principale;Utilisation principale
+V;M3;2005 - ;Quantitatif;m3;METRE CUBE
+VEGET;DOM8;2005 - 2006;Qualitatif;Etat de végétation d'arbre;Caractéristique nominale d'un arbre
+VEGET;DOM8M0;2007 - 2007;Qualitatif;Etat de végétation d'arbre;RATTACHEMENT DE L'ARBRE A UNE CATEGORIE SELON SON APPARTENANCE OU NON AU PEUPLEMENT EN CROISSANCE
+VEGET;DOM8M1;2008 - 2018;Qualitatif;Etat de végétation d'arbre;RATTACHEMENT DE L'ARBRE A UNE CATEGORIE SELON SON APPARTENANCE OU NON AU PEUPLEMENT EN CROISSANCE
+VEGET;DOM8M2;2019 - ;Qualitatif;Etat de végétation d'arbre;Indicateur caractérisant globalement l'état de l’arbre par rapport au peuplement en croissance.
+VEGET5;VEGET5;2010 - 2014;Qualitatif;Etat de végétation de l'arbre 5 ans après;ETAT DE VEGETATION DE L'ARBRE LORS DU RETOUR SUR POINT, 5 ANS APRES
+VEGET5;VEGET56;2015 - 2016;Qualitatif;Etat de végétation de l'arbre 5 ans après;ETAT DE VEGETATION DE L'ARBRE LORS DU RETOUR SUR POINT, 5 ANS APRES
+VEGET5;VEGET57;2017 - 2018;Qualitatif;Etat de végétation de l'arbre 5 ans après;ETAT DE VEGETATION DE L'ARBRE LORS DU RETOUR SUR POINT, 5 ANS APRES
+VEGET5;VEGET59;2019 - ;Qualitatif;Etat de végétation de l'arbre 5 ans après;ETAT DE VEGETATION DE L'ARBRE LORS DU RETOUR SUR POINT, 5 ANS APRES
+VIDEPEUPLIER;1;2005 - ;Quantitatif;1;Unite
+VIDEPLANT;1/10PCT;2006 - 2013;Qualitatif;1/10 (en %);Dixième (en pourcentage)
+VIDEPLANT;1/10PCT_X;2018 - ;Qualitatif;1/10 (en %);Dixième (en pourcentage) avec prise en compte de l'absence
+VISITE;VISITE;2005 - ;Qualitatif;Numéro de visite;Indique si le point est issu de la première ou de la deuxième visite sur le terrain.
+W;1;2005 - ;Quantitatif;1;Unite

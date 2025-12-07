@@ -34,4 +34,9 @@ SELECT * FROM pg_db_role_setting;
 
 SELECT current_user;
 
+---------------------- PGDATA -------------------------------------------
+SET ROLE = exploitation_admin;
+
+SHOW data_directory;
+
 

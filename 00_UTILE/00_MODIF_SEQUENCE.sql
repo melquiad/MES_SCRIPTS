@@ -1,10 +1,10 @@
 
-DELETE FROM inv_prod_new.echantillon
-WHERE id_ech = 144;
+DELETE FROM ifn_prod.echantillon
+WHERE id_ech = 150;
 
-SELECT setval('inv_prod_new.echantillon_id_ech_seq',145);
+SELECT setval('ifn_prod.echantillon_id_ech_seq',147);
 --ou
-ALTER SEQUENCE inv_prod_new.echantillon_id_ech_seq RESTART 143;
+ALTER SEQUENCE ifn_prod.echantillon_id_ech_seq RESTART 149;
 ---------------------------------------------------------------
 
 DELETE FROM inv_exp_nm.unite_ech WHERE id_ech IN (49);

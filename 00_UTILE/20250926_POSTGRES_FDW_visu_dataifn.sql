@@ -45,12 +45,12 @@ INTO visu_metadonnees
 
 
 -- Tester
-SELECT * FROM visu_donnees.placette WHERE LIMIT 10;
+SELECT * FROM visu_donnees.placette LIMIT 10;
 
 SELECT * FROM visu_metadonnees.donnee LIMIT 10;
 
 
--- changement du SRID de la table placette liée à la vue v_placette_gp
+-- changement du SRID de la table placette liée à la vue v_placette_gp --> dans la base visu
 DROP VIEW IF EXISTS donnees.v_placette_gp;
 
 SELECT UpdateGeometrySRID('donnees', 'placette', 'geom93', 2154);
