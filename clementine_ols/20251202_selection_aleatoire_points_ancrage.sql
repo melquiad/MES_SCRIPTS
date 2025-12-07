@@ -22,6 +22,7 @@ LIMIT 20;
 END LOOP;
 END;
 
+<<<<<<< HEAD
 -----------------------------------
 SELECT 'soif' AS soif, 
 p1.npp, p1.incref, p1.dep, a.anref
@@ -30,6 +31,8 @@ INNER join soif.point_anref a on p1.npp=a.npp
 WHERE a.anref= '2025';
 
 
+=======
+>>>>>>> abcbadd1659f75ccf7131ec7e33082035b1e8c41
 
 
 
